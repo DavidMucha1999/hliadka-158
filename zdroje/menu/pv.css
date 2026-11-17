@@ -159,3 +159,28 @@
 .pv .mm-mode button[data-mode="water"]{--mc:#38bdf8;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M4 30c10-10 18 10 28 0s18 10 28 0s18 10 28 0M4 46c10-10 18 10 28 0s18 10 28 0s18 10 28 0' fill='none' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
 .pv .mm-mode button[data-mode="heli"]{--mc:#f2c230;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M14 14h62' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M45 14v8' stroke='%23fff' stroke-width='4'/%3E%3Cellipse cx='42' cy='36' rx='20' ry='12' fill='%23fff'/%3E%3Cpath d='M60 34l24-6v6l-22 6zM30 52h28' stroke='%23fff' stroke-width='4' fill='%23fff'/%3E%3C/svg%3E")}
 .pv .mm-mode button[data-mode="acad"]{--mc:#e5e7eb;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M46 10l40 16l-40 16L6 26z' fill='%23fff'/%3E%3Cpath d='M24 36v12c12 10 32 10 44 0V36' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M80 28v20' stroke='%23fff' stroke-width='4'/%3E%3C/svg%3E")}
+/* balik B: zive pozadie, pohyb a odozva */
+#pv-bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s;filter:blur(1px) saturate(1.15)}
+#pv-bg.on{opacity:1}
+body.pvbg-on main,body.pvbg-on .wrap,body.pvbg-on header,body.pvbg-on #hud{position:relative;z-index:1}
+body.pvbg-on .pv .card{background:linear-gradient(180deg,rgba(19,31,55,.76),rgba(13,22,40,.8));backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+body.pvbg-on .pv .mm-tabs{background:rgba(12,21,38,.86);backdrop-filter:blur(7px)}
+@keyframes pvIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pvPop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:none}}
+@keyframes pvGlow{0%,100%{box-shadow:0 12px 28px -12px rgba(79,140,255,.9)}50%{box-shadow:0 14px 38px -8px rgba(110,165,255,1)}}
+.mm.intro.pv .pvr>*{animation:pvIn .5s cubic-bezier(.2,.7,.2,1) both}
+.mm.intro.pv .pvr>*:nth-child(2){animation-delay:.08s}
+.mm.intro.pv .pvr>*:nth-child(3){animation-delay:.16s}
+.mm.intro.pv .pv-steps>*,.mm.intro.pv .pv-main>*,.mm.intro.pv .pv-row>*{animation:pvIn .5s cubic-bezier(.2,.7,.2,1) both}
+.mm.intro.pv .pv-steps>*:nth-child(1),.mm.intro.pv .pv-main>*:nth-child(1){animation-delay:.1s}
+.mm.intro.pv .pv-steps>*:nth-child(2),.mm.intro.pv .pv-main>*:nth-child(2){animation-delay:.2s}
+.mm.intro.pv .pv-steps>*:nth-child(3){animation-delay:.3s}
+.pv .pv-new{animation:pvPop .28s ease-out}
+.pv .mm-go{animation:pvGlow 2.6s ease-in-out infinite}
+.pv-step{transition:border-color .18s,box-shadow .18s,transform .18s}
+.pv-step:hover,.pv-step:focus-within{border-color:rgba(110,165,255,.55)!important;box-shadow:0 18px 40px -22px rgba(79,140,255,.9)}
+.pv-step:hover .pv-h i,.pv-step:focus-within .pv-h i{box-shadow:0 0 0 4px rgba(79,140,255,.25)}
+.pv .mm-where,.pv .mm-shift .seg button,.pv .pv-pin{transition:border-color .15s,background .15s,transform .15s}
+.pv .pv-pin:hover:not(:disabled){transform:translateY(-1px);border-color:var(--blue)}
+.pv-mapc.one .pv-pin:hover:not(:disabled){transform:translate(-50%,-50%) scale(1.04)}
+@media (prefers-reduced-motion:reduce){.pv *,.pv .mm-go{animation:none!important;transition:none!important}}

@@ -15,7 +15,7 @@ def block(name,code):
 N=["Pôvodné","Garáž – scéna cez celú obrazovku","Nástenka – dlaždice služieb","Mapa služieb","Tri kroky","Služobný preukaz"]
 OPT="".join('<option value="%d" ${(s.menuPv==null?4:+s.menuPv)===%d?"selected":""}>%s</option>'%(i,i,n) for i,n in enumerate(N))
 OLD='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
-patch("nastavenia vzhlad",OLD,'<div class="rrow"><span>Vzhľad hlavnej obrazovky</span><select id="pv-pick">'+OPT+'</select></div>'+chr(10)+'    '+OLD)
+patch("nastavenia vzhlad",OLD,'<div class="rrow"><span>Vzhľad hlavnej obrazovky</span><select id="pv-pick">'+OPT+'</select></div>'+chr(10)+'    <div class="rrow"><span>Živé pozadie hlavnej obrazovky</span><select id="pvbg-pick"><option value="on" ${s.menuBg!==false?"selected":""}>Zapnuté – mapa okresu s premávkou</option><option value="off" ${s.menuBg===false?"selected":""}>Vypnuté</option></select></div>'+chr(10)+'    '+OLD)
 block("menu-pv",open(os.path.join(here,"menu","pv.js"),encoding="utf8").read())
 css=open(os.path.join(here,"menu","pv.css"),encoding="utf8").read()
 d=re.sub(r'<style id="pv-css">.*?</style>',"",d,flags=re.S)
