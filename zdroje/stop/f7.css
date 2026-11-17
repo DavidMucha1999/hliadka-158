@@ -1,0 +1,29 @@
+#scr-stop.f7 .stop-scene{height:clamp(150px,26vh,250px)}
+#scr-stop.f7.f7ns .stop-scene{display:none}
+#scr-stop.f7 .stop-head{margin-bottom:8px}
+#scr-stop.f7 .f7sc{margin-left:auto}
+#scr-stop.f7 .sgrid{margin-top:10px;padding:0;grid-template-columns:minmax(0,280px) minmax(0,1fr) minmax(0,340px);gap:12px}
+#scr-stop.f7 .colL,#scr-stop.f7 .colM,#scr-stop.f7 .colR{display:grid;gap:10px;min-width:0;align-content:start}
+#scr-stop.f7 .card{padding:10px 12px}
+#scr-stop.f7 .window{max-width:140px}
+#scr-stop.f7 .log{max-height:190px;font-size:.86rem}
+#scr-stop.f7 .docs{grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:8px}
+#scr-stop.f7 .doc{padding:7px 9px;font-size:.84em}
+#scr-stop.f7 .doc .db{grid-template-columns:54px minmax(0,1fr);gap:8px}
+#scr-stop.f7 .doc .db.nophoto{grid-template-columns:minmax(0,1fr)}
+#scr-stop.f7 .results{grid-template-columns:minmax(0,1fr);gap:8px}
+#scr-stop.f7 .colR .tools .btn{padding:6px 9px;font-size:.8rem}
+.f7zc{border-color:rgba(255,178,31,.35)!important}
+.f7zc ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px;max-height:230px;overflow-y:auto}
+.f7zc li{display:flex;gap:8px;align-items:flex-start;font-size:.86rem;padding:5px 8px;border-radius:6px;background:rgba(255,255,255,.04);line-height:1.3}
+.f7zc li i{font-style:normal;width:16px;flex:none;text-align:center}
+.f7zc li.bad{background:rgba(255,96,96,.13);color:#ffc0c0}
+.f7zc li.ok{color:#9fe3c4}.f7zc li.obs{color:#ffd98a}.f7zc li.flag{background:rgba(255,96,96,.08);color:#ffb0b0}
+.f7zc li.e{color:#8b97ab}
+.f1i.f7ev{border-color:rgba(255,120,90,.75);background:rgba(255,96,96,.1)}
+.f1i.f7ob{border-color:rgba(255,203,92,.5)}
+.f1i .f7b{display:block;font-size:.72rem;margin-top:2px;color:#ffb39a}
+.f1i.f7ob .f7b{color:#ffd98a}
+.f1i.f7sg{border-color:#4f8cff;box-shadow:0 0 0 1px rgba(79,140,255,.5) inset}
+.f7sug{grid-column:1/-1;font-size:.74rem;color:#8b97ab;margin:2px 0 0}
+@media (max-width:1150px){#scr-stop.f7 .sgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#scr-stop.f7 .colR{grid-column:1/-1}}

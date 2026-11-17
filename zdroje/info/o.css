@@ -1,0 +1,12 @@
+.oh-o{align-self:center;margin-left:auto;font-size:.8rem;padding:.35rem .7rem;white-space:nowrap}
+.oh{max-width:640px}
+.oh h4{margin:1rem 0 .35rem;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.oh p{line-height:1.5;margin:.3rem 0}
+.oh ul{margin:.2rem 0 0;padding-left:1.1rem;line-height:1.5}
+.oh li{margin:.2rem 0}
+.oh-st{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:.8rem 0 .2rem}
+.oh-st div{border:1px solid rgba(140,175,235,.25);border-radius:10px;padding:.5rem .6rem;text-align:center}
+.oh-st b{display:block;font-size:1.15rem}
+.oh-st span{font-size:.74rem;opacity:.8}
+.oh-b{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.1rem;flex-wrap:wrap}
+.oh-b a.btn{text-decoration:none}

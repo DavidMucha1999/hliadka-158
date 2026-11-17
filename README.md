@@ -26,3 +26,9 @@ Netreba nič inštalovať. Hra je určená pre počítač s klávesnicou a myšo
 - Celá hra je jeden súbor `index.html` (HTML, CSS a JavaScript, vlastné 3D vykresľovanie cez WebGL). Nepoužíva server ani externé knižnice.
 - Postup hry sa ukladá len v prehliadači hráča.
 - Kód vznikal s pomocou AI nástrojov.
+
+## Zdrojový kód
+
+- [`index.html`](index.html) – zostavená hra.
+- [`zdroje/`](zdroje) – skripty a moduly, ktorými sa do hry vkladajú jednotlivé úpravy (cestná kontrola, 3D scéna, Hliadka za volantom, obrazovka O hre). Popis je v [`zdroje/README.md`](zdroje/README.md). Základná záloha hry, od ktorej sa zostavuje, v repozitári nie je.
+- [`CHANGELOG.md`](CHANGELOG.md) – zoznam zmien.

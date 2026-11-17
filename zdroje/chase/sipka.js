@@ -1,0 +1,10 @@
+/* Oznacenie unikajuceho vozidla pri prenasledovani – velka sipka a sipka na okraji obrazovky */
+let F6C=null;
+function f6Ctx(w,h){const c2=$("#chase"),par=c2&&c2.parentElement;if(!par)return null;if(!F6C||!F6C.isConnected){F6C=document.createElement("canvas");F6C.id="f6ov";F6C.setAttribute("aria-hidden","true");F6C.style.cssText="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3";par.appendChild(F6C)}const dpr=Math.min(2,window.devicePixelRatio||1),W=Math.round(w*dpr),H=Math.round(h*dpr);if(F6C.width!==W||F6C.height!==H){F6C.width=W;F6C.height=H}const g=F6C.getContext("2d");g.setTransform(dpr,0,0,dpr,0,0);return g}
+{const cr0=chRender;chRender=function(){if(F6C){const g=F6C.getContext("2d");g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,F6C.width,F6C.height)}return cr0.apply(this,arguments)}}
+function f6Arrow(g0,w,h,x,y,gap,dim){const g2=f6Ctx(w,h)||g0;const t=performance.now()/1e3,m=40;let cx=x,side=0;if(cx<m){cx=m;side=-1}else if(cx>w-m){cx=w-m;side=1}const bob=side?0:Math.sin(t*5)*4,ty=clamp(y-12,58,h-24)+bob,a=dim?.5+.45*Math.abs(Math.sin(t*3.2)):1;
+ g2.save();g2.globalAlpha=a;g2.lineJoin="round";g2.shadowColor="rgba(0,0,0,.45)";g2.shadowBlur=6;g2.fillStyle="#ff3b30";g2.strokeStyle="#fff";g2.lineWidth=2.5;g2.beginPath();
+ if(side){const d=side,hx=cx+d*14;g2.moveTo(hx,ty);g2.lineTo(hx-d*20,ty-16);g2.lineTo(hx-d*20,ty-7);g2.lineTo(hx-d*36,ty-7);g2.lineTo(hx-d*36,ty+7);g2.lineTo(hx-d*20,ty+7);g2.lineTo(hx-d*20,ty+16)}
+ else{g2.moveTo(cx,ty);g2.lineTo(cx-17,ty-18);g2.lineTo(cx-7,ty-18);g2.lineTo(cx-7,ty-34);g2.lineTo(cx+7,ty-34);g2.lineTo(cx+7,ty-18);g2.lineTo(cx+17,ty-18)}
+ g2.closePath();g2.fill();g2.shadowBlur=0;g2.stroke();
+ const tx="PÁCHATEĽ"+(gap>40?" · "+Math.round(gap)+" m":"");g2.font=`800 13px ${COND}`;const tw=g2.measureText(tx).width+16,lx=side?clamp(cx-side*30,tw/2+4,w-tw/2-4):cx,ly=side?ty-30:ty-50;g2.fillStyle="rgba(190,24,24,.92)";rrect(g2,lx-tw/2,ly-11,tw,22,7);g2.fill();g2.fillStyle="#fff";g2.textAlign="center";g2.textBaseline="middle";g2.fillText(tx,lx,ly+1);g2.restore()}

@@ -1,0 +1,16 @@
+#scr-stop .f9b{font-size:.8rem;padding:7px 12px;margin-left:auto}
+#scr-stop.f7 .f9b+.f7sc{margin-left:0}
+#scr-stop .stop-scene{cursor:zoom-in}
+.doc .f9x{border:0;background:rgba(0,0,0,.14);color:inherit;border-radius:5px;width:22px;height:20px;line-height:1;cursor:pointer;font-size:.85rem;padding:0;margin-left:4px}
+.doc .f9x:hover{background:rgba(0,0,0,.3)}
+.f9hand{position:fixed;inset:0;z-index:9000;background:rgba(4,8,16,.82);display:grid;place-items:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.f9hw{display:grid;gap:16px;justify-items:center}
+.f9hc{perspective:900px;width:min(560px,86vw)}
+.f9hc .doc{font-size:1.5em;padding:18px 22px;transition:transform .08s linear;transform-style:preserve-3d;box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.f9hc .doc:hover{box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.f9hc .doc::after{opacity:.9!important}
+.f9hc .doc .db{grid-template-columns:130px minmax(0,1fr);gap:16px}
+.f9hc .doc .db.nophoto{grid-template-columns:minmax(0,1fr)}
+.f9hc .doc .f{cursor:pointer}
+.f9hh{color:#c3cddc;font-size:.86rem;margin:0;text-align:center}
+#scr-stop.f7.f9on .stop-scene{height:clamp(300px,54vh,470px)}

@@ -1,0 +1,4 @@
+body.drv-on #hx-card,body.drv-on #h17-co,body.drv-on #h-hud{display:none!important}
+.fd-c .w-help{font-size:.78rem}
+.fd-opts{display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem}
+.fd-opts .btn{text-align:left;white-space:normal;line-height:1.3;padding:.7rem .9rem}

@@ -1,0 +1,13 @@
+#mbox.f2wide{max-width:900px}
+.f2ps{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.f2p{display:grid;gap:4px;text-align:left;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:inherit;cursor:pointer;font:inherit;position:relative}
+.f2p:hover,.f2p:focus-visible{background:rgba(79,140,255,.14);border-color:#4f8cff}
+.f2p.cur{border-color:var(--ok)}
+.f2p .ic{position:absolute;right:12px;top:10px;font-size:1.4rem;opacity:.85}
+.f2p b{font-size:.98rem;padding-right:30px}.f2p b kbd{font-size:.68rem;margin-right:4px}
+.f2p span{font-size:.84rem;color:#c3cddc;line-height:1.35}
+.f2p small{font-size:.74rem;color:#ffcb5c;text-transform:uppercase;letter-spacing:.04em}
+.f2rm{display:flex;align-items:center;gap:8px;font-size:.88rem;color:#c3cddc}
+.f2rm input{accent-color:#4f8cff;width:16px;height:16px}
+.f2mv{margin-top:8px;width:100%;justify-content:center;font-size:.8rem}
+.f2o{font-style:normal;color:#ff9a9a}

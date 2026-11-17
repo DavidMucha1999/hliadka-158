@@ -1,0 +1,9 @@
+.f8s{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;margin:10px 0 0;padding:7px 10px;border-radius:10px;background:rgba(14,22,38,.9);border:1px solid var(--line)}
+.f8st{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.76rem}
+.f8st span{padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.06);color:#9fb0c8;font-weight:700;letter-spacing:.02em}
+.f8st span.d{background:rgba(60,203,140,.18);color:#9fe3c4}
+.f8st i{font-style:normal;color:#5b6678}
+.f8tip{flex:1;min-width:240px;font-size:.84rem;color:#d7deea}
+.f8tip b{color:#86b9ff}
+.f8lv{margin-left:auto;font-size:.76rem;padding:5px 10px}
+.btn .f8p{margin-left:4px;font-size:.68rem;color:#ff9a8a;font-weight:700;opacity:.9}
