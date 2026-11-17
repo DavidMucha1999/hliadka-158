@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 17. 11. 2026
 
+- Oprava: záložka „Stanica“ v hlavnom menu sa po pridaní režimu Hliadka za volantom nevykreslila.
 - **Obrazovka „O hre“** v hlavnom menu: čo hra obsahuje, ako vznikla, technické údaje.
 - **Hliadka za volantom – naháňačky:** panel s lištou kontaktu, hlásenia do vysielačky, zátaras (kláves `B`), vytlačenie utekajúceho auta, šmyk a únava utekajúceho, ostatné autá uhýbajú majákom.
 - **Hliadka za volantom – výjazdy a navigácia:** navigácia po cestách s pokynmi na odbočenie, minimapa, veľká mapa (kláves `M`) s vlastným cieľom, tri druhy výjazdov od vysielačky.

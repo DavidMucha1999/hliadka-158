@@ -1,6 +1,7 @@
 /* Hliadka za volantom – krok 1: novy rezim, jazda po mape leteckeho rezimu, kamera, zakladny HUD */
 const fdOn=()=>!!(S.shift&&S.shift.drv);
 try{MODES.splice(1,0,{id:"drive",n:"Hliadka za volantom",d:"jazda po mape, vlastné tempo",min:0,ic:'<path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 2a7 7 0 016.7 5H5.3A7 7 0 0112 5zm0 6.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM5.1 12.8l4.2.8a3 3 0 001.7 1.9v3.4a7 7 0 01-5.9-6.1zm13.8 0a7 7 0 01-5.9 6.1v-3.4a3 3 0 001.7-1.9z"/>'})}catch(e){console.warn("fd modes",e)}
+try{for(const T of[H9MI,H9MN,typeof H9MP==="object"?H9MP:null])if(T&&!Array.isArray(T)&&T.patrol!==undefined&&T.drive===undefined)T.drive=T.patrol;H9MI.drive=["🚔","#4f8cff","Hliadka 21"];H9MN.drive="Vodič hliadky"}catch(e){console.warn("fd h9",e)}
 {const ml0=mList;mList=function(m){return m==="drive"?HELILOCS:ml0.apply(this,arguments)}}
 {const mk0=mKey;mKey=function(m){return m==="drive"?"drvloc":mk0.apply(this,arguments)}}
 function fdStartPos(W3){const E=W3.net&&W3.net.E||[];let best=null;const C=W3.city||{x:HW/2,y:HW/2};for(const e of E){if(e.type!=="city"&&e.type!=="main")continue;const p=hPtAt(e.pts,e.cum,e.len/2),d=Math.hypot(p.x-C.x,p.y-C.y);if(e.len>120&&(!best||d<best.d))best={p,d,e}}if(best)return{x:best.p.x,y:best.p.y,a:best.p.a};return{x:HBASE.x+60,y:HBASE.y+60,a:0}}
