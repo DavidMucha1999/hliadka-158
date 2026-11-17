@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 17. 11. 2026
 
+- **Horná lišta menu a karta úseku:** policajt s kruhovým ukazovateľom postupu k ďalšej hodnosti, peniaze a reputácia ako prehľadné štítky, profil sa otvára kliknutím. Karta úseku má väčší obrázok a ikony pre limit, počasie, odmenu a smer jazdy. Rozloženie Tri kroky sa zmestí bez posúvania do okna 1366 × 768 aj 1920 × 1080.
 - **Živé pozadie hlavnej obrazovky:** za menu sa pomaly posúva svietiaca mapa okresu s premávkou a hliadkami, karty sú polopriehľadné. Dá sa vypnúť v Nastaveniach. Pribudli nábehové animácie kariet a odozva pri výbere služby, úseku a zmeny.
 - **Grafika hlavnej obrazovky:** jednotný štýl kariet a tlačidiel, každá služba má vlastnú farbu a motív, 3D scéna so služobným autom sa mení podľa rannej, poobednej a nočnej zmeny, majáky sa zapnú pri tlačidle nástupu.
 - **Nová hlavná obrazovka:** päť rozložení (Tri kroky, Garáž, Nástenka, Mapa služieb, Služobný preukaz) a pôvodné menu. Predvolené sú Tri kroky, zmena je v Nastaveniach.

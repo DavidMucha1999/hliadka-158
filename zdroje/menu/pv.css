@@ -184,3 +184,57 @@ body.pvbg-on .pv .mm-tabs{background:rgba(12,21,38,.86);backdrop-filter:blur(7px
 .pv .pv-pin:hover:not(:disabled){transform:translateY(-1px);border-color:var(--blue)}
 .pv-mapc.one .pv-pin:hover:not(:disabled){transform:translate(-50%,-50%) scale(1.04)}
 @media (prefers-reduced-motion:reduce){.pv *,.pv .mm-go{animation:none!important;transition:none!important}}
+/* balik C: horna lista, karta useku, prisposobenie oknu */
+.pv-prof{display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:relative}
+.pv-pb{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid var(--pv-line);border-radius:999px;padding:4px 16px 4px 4px;color:var(--fg);font:inherit;cursor:pointer;text-align:left;transition:border-color .15s}
+.pv-pb:hover{border-color:var(--blue)}
+.pv-ring{position:relative;width:52px;height:52px;flex:none;display:block}
+.pv-ring svg{position:absolute;inset:0;width:100%;height:100%}
+.pv-ring circle{fill:none;stroke-width:4}
+.pv-ring .bg{stroke:rgba(140,175,235,.2)}
+.pv-ring .fg{stroke:var(--amber);stroke-linecap:round}
+.pv-face{position:absolute;inset:6px;border-radius:50%;overflow:hidden;background:#0d1628;display:grid;place-items:center}
+.pv-face svg{position:static;width:100%;height:auto}
+.pv-pt b{display:block;font-size:.98rem;line-height:1.2}
+.pv-pt small{color:var(--muted);font-size:.76rem}
+.pv-chip{display:grid;gap:1px;padding:6px 14px;border:1px solid var(--pv-line);border-radius:12px;background:rgba(255,255,255,.03);min-width:92px}
+.pv-chip small{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.pv-chip b{font-size:1rem;font-family:var(--f-mono,monospace)}
+.pv-chip.mon b{color:var(--amber)}
+.pv-chip u{display:block;height:3px;border-radius:2px;background:rgba(140,175,235,.2);text-decoration:none;overflow:hidden}
+.pv-chip u em{display:block;height:100%;background:var(--ok,#3ccb8c)}
+.pv-prof #btn-shop{width:auto;margin:0;padding:10px 14px}
+.pv-pop{display:none;position:absolute;top:calc(100% + 10px);left:0;z-index:30;width:380px;max-width:90vw}
+.pv-pop.open{display:block}
+.pv-pop .mm-ofc{display:grid!important;grid-template-columns:92px minmax(0,1fr)!important;gap:10px 12px!important;padding:14px!important;border:1px solid var(--pv-line)!important;border-radius:14px!important;background:#111c31!important;box-shadow:0 24px 50px -18px rgba(0,0,0,.9)!important}
+.pv-pop .mm-ofc .mm-av{width:92px!important;height:auto!important;border-radius:0!important;grid-row:auto!important}
+.pv-pop .mm-ofc .mm-av svg{width:92px!important}
+.pv-pop .mm-ofc .mm-stats{display:grid!important}
+.pv-pop .mm-ofc label{display:block!important}
+.pv-pop .mm-rank{grid-column:1/-1!important}
+.pv-top.pv-t2{position:relative;z-index:6}
+.pv-top.pv-t2 .mm-brand{flex:1 1 300px}
+.pvr4 .pv-top .mm-life{display:none!important}
+.pv-art2 .la-w{position:relative;max-height:none;border:1px solid var(--pv-line)}
+.pv-art2 .la-w svg{width:100%;height:clamp(110px,17vh,190px);display:block}
+.pv-artn{position:absolute;left:10px;bottom:8px;padding:3px 10px;border-radius:999px;background:rgba(8,13,24,.8);font-weight:700;font-size:.86rem}
+.pv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pv-chips span{display:flex;align-items:center;gap:6px;border:1px solid var(--pv-line);border-radius:999px;padding:4px 11px 4px 8px;font-size:.8rem;background:rgba(255,255,255,.03)}
+.pv-chips i{font-style:normal;font-size:.95rem}
+.pv-art2 p{font-size:.84rem}
+.pvr4 .mm-where small{display:none}
+/* prisposobenie oknu */
+.pvr4 #hero-cv{height:clamp(190px,calc(100vh - 562px),460px)!important}
+.pv .hero-cap{padding:6px 10px}
+.pv .hero-cap b{font-size:.95rem}
+.pv .hero-cap span{font-size:.72rem}
+.pv .hero-hint{display:none}
+.pvr4 .pv-steps{align-items:stretch}
+.pvr4 .pv-step{align-content:start}
+.pvr4 .pv-s3{grid-template-rows:auto 1fr auto auto}
+.pvr2 #hero-cv,.pvr3 #hero-cv{height:clamp(150px,22vh,300px)!important}
+.pvr5 #hero-cv{height:clamp(170px,calc(100vh - 640px),420px)!important}
+@media (max-height:820px){.pv .pvr{gap:10px}.pv-top{padding:8px 14px}.pv-step{padding:12px;gap:9px}.pvr4 .mm-mode button{padding:6px 10px}.pvr4 .mm-mode{gap:5px}.pv .mm-go{padding:11px 18px!important;font-size:1.2rem!important}.pv-art2 p{display:none}.pv .hero-cap span{display:none}.pv-ring{width:44px;height:44px}.pv-chip{padding:4px 12px}.pv .mm-story,.pv .mm-mate{padding:8px 12px}}
+@media (max-width:1400px){.pv-chip.xp{display:none}.pv-steps{grid-template-columns:1.2fr 1fr 1.1fr;gap:10px}.pv-top .mm-brand p{display:none}}
+@media (max-width:1100px){.pv-steps{grid-template-columns:1fr 1fr}.pv-s3{grid-column:1/-1}.pv-step:after{display:none}.pvr2 .pv-main,.pvr3 .pv-main,.pvr5{grid-template-columns:1fr}}
+@media (min-width:1800px){.pv .mm-mode b{font-size:1rem}.pv-step{padding:20px;gap:14px}.pv-step .pv-h{font-size:1.2rem}}
