@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 17. 11. 2026
 
+- **Hliadka za volantom – vyhodnotenie a dĺžka služby:** vlastné hodnotenie služby podľa kontrol, výjazdov, naháňačiek a priestupkov za volantom (najazdené kilometre, trvanie, zoznam chýb), okresy Novosady a Horné Lazy namiesto názvov leteckého útvaru, voľba dĺžky služby 16, 32 alebo 64 minút v Nastaveniach.
 - **Hliadka za volantom – chodci, semafory a zvuk:** v meste a v dedinách chodia chodci po chodníkoch a prechádzajú cez cestu, autá im dávajú prednosť, za ohrozenie alebo zrazenie chodca je postih. Prejazd na červenú bez majákov stojí reputáciu a pred križovatkou sa ukazuje stav semafora. Pribudol zvuk motora, bŕzd a jazdy mimo cesty.
 - **Hliadka za volantom – opravy sveta:** mosty sú prejazdné, lampy už nestoja vo vozovke a dá sa do nich naraziť, cesty sú od začiatku služby plné a v okolí hráča vzniká premávka aj v meste, ostatné autá zastanú za policajným autom, auto ide po nadjazde vo výške cesty, budovy zasahujúce do cesty sú odstránené.
 - **Horná lišta menu a karta úseku:** policajt s kruhovým ukazovateľom postupu k ďalšej hodnosti, peniaze a reputácia ako prehľadné štítky, profil sa otvára kliknutím. Karta úseku má väčší obrázok a ikony pre limit, počasie, odmenu a smer jazdy. Rozloženie Tri kroky sa zmestí bez posúvania do okna 1366 × 768 aj 1920 × 1080.

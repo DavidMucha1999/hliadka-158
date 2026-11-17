@@ -17,6 +17,8 @@ patch("bez zameriavaca",'if(C.mode!=="belly"){const tg=M&&M.locked','if(C.mode!=
 patch("lampy dalej od cesty",'off=H2.w/2+(e.type==="city"?3.2:1.8),step=e.type==="city"?30:urb?40:34;','off=H2.w/2+(e.type==="city"?3.2:3),step=e.type==="city"?30:urb?40:34;')
 patch("lampy nie na ceste",'if(hIsWaterW(W3,x,z)||hBldAt(x,z))continue;const y=T(x,z)+hElev(e,s),g2=G(x,z),hx=','if(hIsWaterW(W3,x,z)||hBldAt(x,z)||h8OnRoad(W3,x,z,1.3))continue;(H8.poles=H8.poles||[]).push([x,z]);const y=T(x,z)+hElev(e,s),g2=G(x,z),hx=')
 patch("lampy pomocna funkcia",'function h8Build(W3){','function h8OnRoad(W3,x,z,m){const gx=Math.floor(x/100),gz=Math.floor(z/100),seen=new Set;for(let i=-1;i<=1;i++)for(let j=-1;j<=1;j++){const L=W3.rg&&W3.rg.get((gx+i)+","+(gz+j));if(!L)continue;for(const ei of L){if(seen.has(ei))continue;seen.add(ei);const e=W3.net.E[ei];if(e&&hPolyD(x,z,e.pts)<HROAD[e.type].w/2+m)return true}}return false}function h8Build(W3){')
+OLDR='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
+patch("nastavenia dlzka sluzby",OLDR,'<div class="rrow"><span>Dĺžka služby za volantom</span><select id="fdl-pick"><option value="s" ${s.drvLen==="s"?"selected":""}>Krátka – 16 minút</option><option value="n" ${s.drvLen!=="s"&&s.drvLen!=="l"?"selected":""}>Štandardná – 32 minút</option><option value="l" ${s.drvLen==="l"?"selected":""}>Dlhá – 64 minút</option></select></div>'+chr(10)+'    '+OLDR)
 block("drive-fd",open(os.path.join(here,"drive","fd.js"),encoding="utf8").read())
 css=open(os.path.join(here,"drive","fd.css"),encoding="utf8").read()
 d=re.sub(r'<style id="fd-css">.*?</style>',"",d,flags=re.S)
