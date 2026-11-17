@@ -209,6 +209,128 @@ body.drv-on #hx-card,body.drv-on #h17-co,body.drv-on #h-hud{display:none!importa
 .oh-st span{font-size:.74rem;opacity:.8}
 .oh-b{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1.1rem;flex-wrap:wrap}
 .oh-b a.btn{text-decoration:none}
+</style><style id="pv-css">
+.pvr{display:grid;gap:14px;min-width:0}
+.pv-h{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.pv-h small{font-weight:400;text-transform:none;letter-spacing:0;opacity:.8}
+.pv .mm-brand{border:0;padding:0}
+.pv #hero-wrap{display:block!important;margin:0;border-radius:10px;overflow:hidden}
+.pv .mm-mode{border:0;background:none;gap:6px}
+.pv .mm-mode button{border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03)}
+.pv .mm-mode button.on{border-color:var(--amber);background:linear-gradient(180deg,#1a2c4f,#14223b)}
+.pv .mm-mode button:disabled{opacity:.5}
+.pv-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}
+.pv-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:12px 16px}
+.pv-top .mm-brand{flex:1;min-width:260px}
+.pv-top .mm-ofc,.pv4 .pv-top .mm-life{padding:0;border:0;background:none;box-shadow:none}
+.pv-top .mm-ofc{grid-template-columns:48px auto;gap:2px 10px;align-items:center}
+.pv-top .mm-ofc .mm-av{width:48px;height:48px;overflow:hidden;border-radius:50%;grid-row:span 2}
+.pv-top .mm-ofc .mm-av svg{width:48px;height:auto}
+.pv-top .mm-ofc .mm-stats,.pv-top .mm-ofc .mm-kit,.pv-top .mm-ofc label,.pv-top .mm-ofc .mm-idrow{display:none}
+.pv-top .mm-ofc input{width:130px}
+.pv-top .mm-rank{grid-column:2}
+.pv-top .mm-slots{margin:0}
+.pv-top .mm-life{display:flex;gap:14px;align-items:center}
+.pv-today{display:grid;gap:10px;align-content:start;padding:14px}
+.pv-today .mm-go,.pv-step .mm-go,.pv-l .mm-go{width:100%;padding:16px 20px;font-size:1.35rem}
+.pv .mm-where{width:100%}
+/* 1 – Garaz */
+.pvr1{position:relative;display:block;min-height:max(620px,calc(100vh - 190px));border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0b1322}
+.pvr1>#hero-wrap{position:absolute;inset:0;border-radius:0}
+.pvr1>#hero-wrap canvas{width:100%!important;height:100%!important;display:block}
+.pvr1 .pv-l,.pvr1 .pv-r{position:absolute;top:16px;bottom:16px;display:grid;gap:10px;align-content:start;overflow:auto;padding:16px;border-radius:14px;background:rgba(9,15,28,.82);border:1px solid rgba(140,175,235,.22);backdrop-filter:blur(8px)}
+.pvr1 .pv-l{left:16px;width:360px}
+.pvr1 .pv-r{right:16px;width:330px;background:rgba(9,15,28,.7)}
+.pvr1 .pv-r>*{margin:0}
+.pvr1 .mm-mode{grid-template-columns:1fr 1fr}
+.pvr1 .mm-mode button{padding:7px 9px}
+.pvr1 .mm-mode small{display:none}
+.pvr1 .hero-cap{left:50%;transform:translateX(-50%);bottom:22px;text-align:center}
+/* 2 – Nastenka */
+.pvr2 .pv-main{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:14px;align-items:start}
+.pvr2 .pv-tiles{display:grid;gap:12px;padding:16px}
+.pvr2 .mm-mode{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.pvr2 .mm-mode button{flex-direction:column;align-items:flex-start;gap:10px;padding:16px 14px;min-height:118px;border-radius:12px}
+.pvr2 .mm-mode svg{width:34px;height:34px;padding:8px;box-sizing:content-box;border-radius:10px;background:rgba(79,140,255,.14);color:#8fb6ff}
+.pvr2 .mm-mode button.on svg{background:var(--amber);color:#1a1000}
+.pvr2 .mm-mode b{font-size:1.02rem;display:block}
+.pvr2 .mm-mode small{display:block;margin-top:2px;line-height:1.3}
+/* 3 – Mapa */
+.pvr3 .pv-top .mm-mode{flex:1 1 100%;display:flex;flex-wrap:wrap}
+.pvr3 .pv-top .mm-mode button{padding:6px 12px;border-radius:999px}
+.pvr3 .pv-top .mm-mode small{display:none}
+.pvr3 .pv-main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:stretch}
+.pvr3 .pv-side{display:grid;gap:14px;align-content:start}
+.pvr3 .pv-map{display:grid;grid-template-rows:auto 1fr;gap:10px;padding:14px}
+.pv-mapc{position:relative;min-height:520px;border-radius:12px;overflow:hidden;background:radial-gradient(circle at 55% 55%,#16294a,#0b1424 70%);border:1px solid var(--line)}
+.pv-mapc:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(140,175,235,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(140,175,235,.07) 1px,transparent 1px);background-size:40px 40px}
+.pv-grid{position:absolute;inset:0;width:100%;height:100%;color:rgba(140,175,235,.35)}
+.pv-reg{position:absolute;border:1px solid rgba(140,175,235,.3);border-radius:14px;background:rgba(12,22,40,.72);padding:8px;display:grid;grid-template-rows:auto 1fr;gap:6px;overflow:auto}
+.pv-reg>b{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:flex;gap:6px;align-items:center}
+.pv-reg>div{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+.pv-pin{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 3px;color:var(--fg);font:inherit;font-size:.78rem;cursor:pointer;max-width:100%}
+.pv-pin>*:first-child{transform:scale(.72);transform-origin:left center;margin-right:-8px;flex:none}
+.pv-pin span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-pin.on{border-color:#ffb21f;background:rgba(255,178,31,.16);box-shadow:0 0 0 3px rgba(255,178,31,.18)}
+.pv-pin.lk{opacity:.45;cursor:default;padding-left:8px}
+.pv-pin em{font-style:normal;transform:none!important;margin:0!important}
+.pv-art .la-w{border-radius:10px;overflow:hidden;max-height:150px}
+.pv-art .la-w svg{display:block;width:100%;height:auto}
+.pv-art p{margin:8px 0 0;color:var(--muted);font-size:.86rem;line-height:1.4}
+.pv-heroc{padding:0;overflow:hidden}
+/* 4 – Tri kroky */
+.pv-steps{display:grid;grid-template-columns:1.15fr 1fr 1.15fr;gap:14px;align-items:stretch}
+.pv-step{display:grid;gap:12px;align-content:start;padding:16px;position:relative}
+.pv-step .pv-h{font-size:1.05rem;color:var(--fg);letter-spacing:.03em}
+.pv-step .pv-h i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#06101f;font-size:1rem}
+.pv-step:not(:last-child):after{content:"›";position:absolute;right:-13px;top:14px;font-size:1.8rem;color:var(--muted);z-index:2}
+.pv-s3{border-color:rgba(79,140,255,.5)}
+.pvr4 .mm-mode{grid-template-columns:1fr 1fr}
+.pvr4 .mm-mode button{padding:10px}
+.pv-sum{display:flex;gap:8px;flex-wrap:wrap}
+.pv-sum span{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.85rem;color:var(--muted)}
+/* 5 – Preukaz */
+.pvr5{grid-template-columns:400px minmax(0,1fr);align-items:start}
+.pv-id{padding:0;overflow:hidden;display:grid;gap:0}
+.pv-idh{display:flex;gap:12px;align-items:center;padding:12px 16px;background:linear-gradient(90deg,#1d3f7c,#14294f);border-bottom:3px solid var(--amber)}
+.pv-idh svg{width:40px;height:40px}
+.pv-idh b{display:block;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.1em;font-size:1.05rem}
+.pv-idh span{font-size:.78rem;opacity:.8;font-family:monospace}
+.pv-id .mm-ofc,.pv-id .mm-life{border:0;background:none;box-shadow:none;border-radius:0}
+.pv-id .mm-ofc{grid-template-columns:130px minmax(0,1fr);padding:16px}
+.pv-id .mm-av{width:130px}
+.pv-id .mm-av svg{width:130px;height:auto}
+.pv-id .mm-slots{padding:0 16px 12px;margin:0}
+.pv-id .mm-life{border-top:1px solid var(--line)}
+.pv-duty{display:grid;gap:14px;min-width:0}
+.pvr5 .pv-today{padding:16px;gap:12px}
+.pvr5 .mm-mode{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pvr5 .mm-mode button{padding:8px 10px}
+.pvr5 .mm-mode small{display:none}
+.pv-line{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(220px,.8fr);gap:12px;align-items:stretch}
+.pv-line .mm-go{padding:10px 20px;font-size:1.25rem}
+.pv .mm-mode small{display:block!important}
+.pvr1 .mm-mode small,.pvr3 .pv-top .mm-mode small,.pvr5 .mm-mode small{display:none!important}
+.pv .mm-mate{display:flex!important}
+.pv .h158-brief{margin:0;padding:0;color:var(--muted)}
+.pv .h158-prof{width:100%}
+.pvr>*,.pvr [class*="pv-"]>*{grid-area:auto!important;min-width:0}
+.pvr1 .pv-l,.pvr1 .pv-r{overflow-x:hidden}
+.pvr1 .mm-brand{flex-direction:column;align-items:flex-start;gap:6px}
+.pv .mm-mode button{border-radius:10px!important;justify-content:flex-start}
+.pv .mm-mode{display:grid!important}
+.pvr3 .pv-top .mm-mode{display:flex!important}
+.pv-top .h158-prof{width:auto;margin-left:auto}
+.pvr2 .pv-left{display:grid;gap:14px;align-content:start}
+.pv-mapc.one .pv-pin{position:absolute;transform:translate(-50%,-50%);padding:5px 14px 5px 5px;font-size:.86rem;background:rgba(12,22,40,.9)}
+.pv-mapc.one .pv-pin>*:first-child{transform:none;margin-right:0}
+.pv-mapc .pv-cn{position:absolute;left:14px;bottom:10px;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.pvr1 .mm-mode,.pvr4 .mm-mode{grid-template-columns:1fr 1fr!important}
+.pvr2 .mm-mode{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.pvr5 .mm-mode{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+.pvr4 .mm-mode button{padding:10px 12px;gap:10px}
+.pvr4 .mm-mode b{font-size:.92rem}
+.pv-reg .pv-pin span{white-space:normal;line-height:1.15;text-align:left}
 </style></head><body>
 
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1963,6 +2085,7 @@ void main(){vec2 uv=vU;vec3 c;if(uCA>0.){vec2 d=(uv-.5)*uCA*.014*length(uv-.5);c
    <div class="card"><h3>Sezóna a zvuk</h3><div class="rrow"><span>Udalosť</span><select id="se-pick">${[["auto","Podľa dátumu"+(ev&&(!s.season||s.season==="auto")?" ("+SEASONS[ev].n+")":"")],["none","Žiadna"],...Object.entries(SEASONS).map(([k,v])=>[k,v.ic+" "+v.n])].map(([k,n])=>`<option value="${k}" ${(s.season||"auto")===k?"selected":""}>${n}</option>`).join("")}</select></div>${ev?`<p class="se-d">${SEASONS[ev].ic} <b>${SEASONS[ev].n}</b> – ${SEASONS[ev].d}</p>`:""}
     <div class="rrow"><span>Hlas operačného</span><select id="op-v">${[["off","Vypnutý"],["m","Mužský"],["f","Ženský"],["robot","Vysielačka (robotický)"]].map(([k,n])=>`<option value="${k}" ${(s.opVoice||"off")===k?"selected":""}>${n}</option>`).join("")}</select></div>
     <div class="rrow"><span>Letecká polícia</span><select id="hx-pick"><option value="new" ${s.hx!==false?"selected":""}>Posádka – pilot a operátor (nový)</option><option value="old" ${s.hx===false?"selected":""}>Pôvodný režim</option></select></div>
+    <div class="rrow"><span>Vzhľad hlavnej obrazovky</span><select id="pv-pick"><option value="0" ${(s.menuPv==null?4:+s.menuPv)===0?"selected":""}>Pôvodné</option><option value="1" ${(s.menuPv==null?4:+s.menuPv)===1?"selected":""}>Garáž – scéna cez celú obrazovku</option><option value="2" ${(s.menuPv==null?4:+s.menuPv)===2?"selected":""}>Nástenka – dlaždice služieb</option><option value="3" ${(s.menuPv==null?4:+s.menuPv)===3?"selected":""}>Mapa služieb</option><option value="4" ${(s.menuPv==null?4:+s.menuPv)===4?"selected":""}>Tri kroky</option><option value="5" ${(s.menuPv==null?4:+s.menuPv)===5?"selected":""}>Služobný preukaz</option></select></div>
     <div class="rrow"><span>Pomoc pri kontrole vodiča</span><select id="hl-pick"><option value="easy" ${s.helpLvl==="easy"?"selected":""}>Ľahká – tipy, dôkazy, návrhy opatrení</option><option value="norm" ${s.helpLvl!=="easy"&&s.helpLvl!=="hard"?"selected":""}>Normálna</option><option value="hard" ${s.helpLvl==="hard"?"selected":""}>Ťažká – bez pomôcok</option></select></div>
     <div class="rrow"><span>Hlas postáv</span><select id="hv-pick">${window.__hvOpts?__hvOpts():""}</select><button class="btn ghost" id="hv-test" type="button" title="Vyskúšať hlas">▶ Vyskúšať</button></div><p class="se-d" id="hv-tip">${window.__hvTip?__hvTip():""}</p>
     <div class="rrow"><span>Volací znak</span><input id="cs-in" maxlength="24" value="${esc(s.callsign||"Hliadka 158")}"></div><div class="rrow"><span>Dynamická hudba</span><button class="btn" id="mu-t">${s.music===false?"Vypnutá":"Zapnutá"}</button></div></div>
@@ -4134,7 +4257,29 @@ function ohOpen(){const nC=new Set(LOCS.map(x=>x.ct)).size,st=[[MODES.length,"dr
 function ohBtn(){const b=document.querySelector("#scr-menu .mm-brand");if(!b||b.querySelector("#oh-o"))return;b.insertAdjacentHTML("beforeend",`<button class="btn ghost oh-o" id="oh-o" title="Čo je to za hru, čo obsahuje a ako vznikla">ℹ O hre</button>`);$("#oh-o").onclick=()=>{try{SFX.play("click")}catch(e){}ohOpen()}}
 {const rm0=renderMenu;renderMenu=function(){const r=rm0.apply(this,arguments);try{ohBtn()}catch(e){console.warn("oh",e)}return r}}
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.querySelector("#mbox .oh")){e.stopPropagation();closeModal()}},true);
-/*</info-o>*/{const _go=d=>{showLoad();gzReady().then(()=>{start(d);hideLoad()})};window.claude?.hot?.ready?window.claude.hot.ready(_go):_go(window.claude?.hot?.data??{})}})();
+/*</info-o>*//*<menu-pv>*//* Vzhlad hlavnej obrazovky: 5 rozlozeni + povodne, volba v Nastaveniach (S.save.menuPv) */
+function pvGet(){const v=S.save&&S.save.menuPv;return v==null?4:clamp(+v||0,0,5)}
+const PVN=["Pôvodné","Garáž","Nástenka","Mapa služieb","Tri kroky","Služobný preukaz"];
+const PVR={UK:[2,4,17,27],DE:[21,4,17,27],CZ:[40,4,17,27],AT:[21,35,17,27],SK:[40,35,34,61],US:[2,48,17,48],JP:[77,4,21,27],AE:[77,35,21,27],AU:[77,66,21,30]};
+function pvEl(cls,html){const d=document.createElement("div");d.className=cls;if(html)d.innerHTML=html;return d}
+function pvBox(cls,...k){const d=pvEl(cls);for(const x of k)if(x)d.appendChild(typeof x==="string"?pvEl("pv-h",x):x);return d}
+function pvPick(id){S.save[mKey(S.save.mode||"patrol")]=id;persist();try{SFX.play("click")}catch(e){}renderMenu()}
+function pvMap(){const s=S.save,MD=s.mode||"patrol",LIST=mList(MD),cur=s[mKey(MD)]||(LIST[0]&&LIST[0].id),G={};for(const L of LIST){const k=PVR[L.ct]?L.ct:"SK";(G[k]=G[k]||[]).push(L)}
+ const ks=Object.keys(G);if(ks.length===1){const n=LIST.length,cols=Math.ceil(Math.sqrt(n*1.7)),rows=Math.ceil(n/cols),C=CTRY[ks[0]]||{n:""};const m1=pvEl("pv-mapc one",`<svg class="pv-grid" viewBox="0 0 100 60" preserveAspectRatio="none"><path d="M4 30C20 10 34 44 50 28S80 12 96 34M20 4C26 24 14 40 30 56M70 4C62 22 78 40 66 56" fill="none" stroke="currentColor" stroke-width=".35" stroke-dasharray="1.2 1.2"/></svg>`+LIST.map((L,i)=>{const c=i%cols,r=Math.floor(i/cols),h=(i*37%11-5)*.9,x=12+(c+.5)/cols*76+(r%2?4:-4),y=14+(r+.5)/rows*72+h,lock=s.rank<L.min;return`<button class="pv-pin${L.id===cur?" on":""}${lock?" lk":""}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%" data-pvloc="${L.id}" ${lock?"disabled":""} title="${esc(lock?"Odomkne sa pri hodnosti "+RANKS[L.min].n:L.desc||"")}">${lock?'<em>🔒</em>':limSign(L)}<span>${esc(L.name)}</span></button>`}).join("")+`<span class="pv-cn">${C.n||""}</span>`);m1.querySelectorAll("[data-pvloc]").forEach(b=>b.onclick=()=>pvPick(b.dataset.pvloc));return m1}
+ const m=pvEl("pv-mapc",`<svg class="pv-grid" viewBox="0 0 100 60" preserveAspectRatio="none"><path d="M10 18C25 30 30 12 48 20S70 44 88 20M10 72C30 40 44 56 58 52S80 50 88 78M29 18V50M58 30L88 48" fill="none" stroke="currentColor" stroke-width=".35" stroke-dasharray="1.2 1.2"/></svg>`+Object.keys(G).map(k=>{const r=PVR[k],C=CTRY[k]||{n:k};return`<div class="pv-reg" style="left:${r[0]}%;top:${r[1]}%;width:${r[2]}%;height:${r[3]}%"><b><i class="ccode">${k}</i>${C.n}</b><div>${G[k].map(L=>{const lock=s.rank<L.min;return`<button class="pv-pin${L.id===cur?" on":""}${lock?" lk":""}" data-pvloc="${L.id}" ${lock?"disabled":""} title="${esc(lock?"Odomkne sa pri hodnosti "+RANKS[L.min].n:L.desc||"")}">${lock?'<em>🔒</em>':limSign(L)}<span>${esc(L.name)}</span></button>`}).join("")}</div></div>`}).join(""));
+ m.querySelectorAll("[data-pvloc]").forEach(b=>b.onclick=()=>pvPick(b.dataset.pvloc));return m}
+function pvArt(){const l=curLoc();return pvEl("pv-art",`<div class="la-w">${locArt(l)}</div><p>${esc(l.desc||"")}</p>`)}
+function pvApply(){const scr=$("#scr-menu"),mm=scr&&scr.querySelector(".mm");if(!mm)return;const PV=pvGet(),pk=$("#pv-pick");if(pk)pk.onchange=()=>{S.save.menuPv=+pk.value;persist();toast("Vzhľad hlavnej obrazovky: "+PVN[pvGet()]);renderMenu();window.scrollTo(0,0)};if(!PV)return;
+ const q=s=>mm.querySelector(s),top=q(".mm-top"),E={brand:q(".mm-brand"),hero:q("#hero-wrap"),mode:q(".mm-mode"),where:q(".mm-where"),shift:q(".mm-shift"),go:q("#btn-start"),ofc:q(".mm-ofc"),life:q(".mm-life"),mate:q(".mm-mate"),story:q(".mm-story"),slots:q(".h158-prof")||q(".mm-slots"),brief:q(".h158-brief")};if(!top||!E.hero||!E.mode)return;
+ const s=S.save,md=MODES.find(m=>m.id===(s.mode||"patrol"))||MODES[0],root=pvEl("pvr pvr"+PV);mm.classList.add("pv","pv"+PV);
+ if(PV===1)root.append(E.hero,pvBox("pv-l",E.brand,E.brief,E.go,"Druh služby",E.mode,"Kde a kedy",E.where,E.shift),pvBox("pv-r",E.ofc,E.life,E.story,E.mate,E.slots));
+ else if(PV===2)root.append(pvBox("pv-top card",E.brand,E.ofc,E.slots),pvBox("pv-main",pvBox("pv-left",pvBox("pv-tiles card","Vyber si druh služby",E.mode),pvBox("pv-row",E.life,E.story,E.mate)),pvBox("pv-today card",`Dnešná služba · ${md.n}`,E.hero,E.where,E.shift,E.go)));
+ else if(PV===3)root.append(pvBox("pv-top card",E.brand,E.mode),pvBox("pv-main",pvBox("pv-map card",`Mapa služieb · ${md.n} <small>klikni na miesto</small>`,pvMap()),pvBox("pv-side",pvBox("pv-today card","Vybrané miesto",pvArt(),E.where,E.shift,E.go),pvBox("card pv-heroc",E.hero))),pvBox("pv-row",E.ofc,E.life,E.story,E.mate));
+ else if(PV===4)root.append(pvBox("pv-top card",E.brand,E.ofc,E.life),pvBox("pv-steps",pvBox("pv-step card","<i>1</i>Akú službu chceš?",E.mode),pvBox("pv-step card","<i>2</i>Kde a kedy?",pvArt(),E.where,E.shift),pvBox("pv-step card pv-s3","<i>3</i>Nastúpiť",E.hero,pvEl("pv-sum",`<span>${md.n}</span><span>${esc(curLoc().name)}</span>`),E.go)),pvBox("pv-row",E.story,E.mate,E.slots));
+ else if(PV===5)root.append(pvBox("pv-id card",pvEl("pv-idh",`${badgeSVG()}<div><b>Policajný zbor</b><span>Služobný preukaz č. ${String(1580000+(s.xp||0)%99999).padStart(7,"0")}</span></div>`),E.ofc,E.slots,E.life),pvBox("pv-duty",pvBox("pv-today card",E.brand,E.hero,"Dnešná služba",E.mode,pvBox("pv-line",E.where,E.shift,E.go)),pvBox("pv-row",E.story,E.mate)));
+ top.style.display="none";mm.insertBefore(root,top);try{if(!heroStart3D(copCar()))window.dispatchEvent(new Event("resize"))}catch(e){}}
+{const rm0=renderMenu;renderMenu=function(){const r=rm0.apply(this,arguments);try{pvApply()}catch(e){console.warn("pv",e)}return r}}
+/*</menu-pv>*/{const _go=d=>{showLoad();gzReady().then(()=>{start(d);hideLoad()})};window.claude?.hot?.ready?window.claude.hot.ready(_go):_go(window.claude?.hot?.data??{})}})();
 </script>
 
 

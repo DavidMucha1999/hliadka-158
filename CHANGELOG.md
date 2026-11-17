@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 17. 11. 2026
 
+- **Nová hlavná obrazovka:** päť rozložení (Tri kroky, Garáž, Nástenka, Mapa služieb, Služobný preukaz) a pôvodné menu. Predvolené sú Tri kroky, zmena je v Nastaveniach.
 - Oprava: záložka „Stanica“ v hlavnom menu sa po pridaní režimu Hliadka za volantom nevykreslila.
 - **Obrazovka „O hre“** v hlavnom menu: čo hra obsahuje, ako vznikla, technické údaje.
 - **Hliadka za volantom – naháňačky:** panel s lištou kontaktu, hlásenia do vysielačky, zátaras (kláves `B`), vytlačenie utekajúceho auta, šmyk a únava utekajúceho, ostatné autá uhýbajú majákom.

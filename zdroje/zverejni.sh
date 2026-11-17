@@ -10,7 +10,7 @@ cp "../Hliadka 158.html" index.html
 rm -rf zdroje
 mkdir zdroje
 cp "$Z"/README.md "$Z"/*.sh "$Z"/*.py zdroje/
-for d in stop drive chase info hx; do cp -r "$Z/$d" zdroje/; done
+for d in stop drive chase info menu hx; do cp -r "$Z/$d" zdroje/; done
 git add -A index.html README.md CHANGELOG.md zdroje
 if git diff --cached --quiet; then echo "Bez zmien – nie je co nahrat."; exit 0; fi
 git commit -q -m "${1:-Aktualizácia hry}
