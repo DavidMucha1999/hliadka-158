@@ -331,6 +331,46 @@ body.drv-on #hx-card,body.drv-on #h17-co,body.drv-on #h-hud{display:none!importa
 .pvr4 .mm-mode button{padding:10px 12px;gap:10px}
 .pvr4 .mm-mode b{font-size:.92rem}
 .pv-reg .pv-pin span{white-space:normal;line-height:1.15;text-align:left}
+/* balik A: jednotny styl, ilustrovane karty sluzieb */
+.pv{--pv-line:rgba(140,175,235,.2)}
+.pv .card{border-radius:14px;border:1px solid var(--pv-line);background:linear-gradient(180deg,#131f37,#0f192c);box-shadow:0 14px 34px -22px rgba(0,0,0,.85)}
+.pv .pv-h{font-size:.72rem;letter-spacing:.12em}
+.pv .pv-step .pv-h{font-family:inherit;text-transform:none;letter-spacing:0;font-size:1.08rem;font-weight:700}
+.pv .mm-mode button{position:relative;overflow:hidden;--mc:#4f8cff;text-transform:none;border:1px solid var(--pv-line);background:linear-gradient(135deg,color-mix(in srgb,var(--mc) 16%,#101a2e),#101a2e 72%);transition:transform .12s,border-color .12s,box-shadow .12s}
+.pv .mm-mode button>*{position:relative;z-index:1}
+.pv .mm-mode button b{text-transform:none;letter-spacing:0;font-family:inherit;font-weight:700;font-size:.93rem;color:var(--fg)}
+.pv .mm-mode button small{text-transform:none;letter-spacing:0;font-family:inherit;font-size:.76rem;color:var(--muted)}
+.pv .mm-mode button svg{color:var(--mc);background:color-mix(in srgb,var(--mc) 20%,transparent);border-radius:9px;padding:6px;box-sizing:content-box;flex:none}
+.pv .mm-mode button:after{content:"";position:absolute;right:4px;bottom:2px;width:46px;height:31px;background:var(--mi) no-repeat right bottom/contain;opacity:.1;pointer-events:none;z-index:0}
+.pv .mm-mode button:hover:not(:disabled){transform:translateY(-2px);border-color:color-mix(in srgb,var(--mc) 65%,transparent);box-shadow:0 10px 22px -14px var(--mc)}
+.pv .mm-mode button.on{border-color:var(--amber);background:linear-gradient(135deg,color-mix(in srgb,var(--mc) 34%,#14223b),#14223b 78%);box-shadow:0 0 0 2px rgba(255,178,31,.22) inset}
+.pv .mm-mode button.on:after{opacity:.22}
+.pv .mm-mode button.on svg{background:var(--amber);color:#1a1000}
+.pv .mm-mode button:disabled{opacity:.6;filter:saturate(.25);cursor:not-allowed}
+.pvr2 .mm-mode button:after{right:8px;bottom:6px;width:105px;height:70px;opacity:.12}
+.pvr3 .pv-top .mm-mode button:after,.pvr5 .mm-mode button:after,.pvr1 .mm-mode button:after{display:none}
+.pv .mm-go{border-radius:12px;text-transform:none;letter-spacing:0;background:linear-gradient(180deg,#6aa2ff,#3f7af0);border-color:#6aa2ff;box-shadow:0 12px 28px -12px rgba(79,140,255,.9);transition:transform .12s,box-shadow .12s}
+.pv .mm-go:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(79,140,255,1)}
+.pv .mm-go small{text-transform:none;letter-spacing:0;opacity:.8}
+.pv .mm-where{border-radius:12px;border-color:var(--pv-line);background:rgba(255,255,255,.03)}
+.pv .mm-where:hover{border-color:var(--blue)}
+.pv .mm-shift .seg button.on{background:var(--amber);color:#1a1000;border-color:var(--amber)}
+.pv #hero-wrap{border-radius:12px;border:1px solid var(--pv-line)}
+.pv-step .pv-h i{background:linear-gradient(180deg,#6aa2ff,#3f7af0)}
+.pv-sum span{border-color:var(--pv-line);background:rgba(255,255,255,.03)}
+.pv .pv-shl{font-size:.8rem;color:var(--muted);margin:-4px 0 0}
+.pv .mm-mode button[data-mode="patrol"]{--mc:#4f8cff;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M26 60L41 8h8l15 52z' fill='%23fff'/%3E%3Cpath d='M44 54h2v-9h-2zm0-16h2v-7h-2zm0-13h2v-5h-2z' fill='%23000' opacity='.55'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="drive"]{--mc:#7c8cff;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Ccircle cx='56' cy='34' r='21' fill='none' stroke='%23fff' stroke-width='6'/%3E%3Ccircle cx='56' cy='34' r='5' fill='%23fff'/%3E%3Cpath d='M36 34h15M61 34h16M56 39v16' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="moto"]{--mc:#78beff;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Ccircle cx='24' cy='42' r='12' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Ccircle cx='68' cy='42' r='12' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M24 42l14-18h16l14 18M38 24l8 18M52 16h10' fill='none' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="border"]{--mc:#3ccb8c;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Crect x='72' y='18' width='8' height='42' fill='%23fff'/%3E%3Cpath d='M6 22h70v9H6z' fill='%23fff'/%3E%3Cpath d='M16 22h10v9H16zm20 0h10v9H36zm20 0h10v9H56z' fill='%23000' opacity='.5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="city"]{--mc:#ffb21f;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M8 60V30h16v30zm20 0V14h18v46zm22 0V24h14v36zm18 0V36h14v24z' fill='%23fff'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="crim"]{--mc:#c084fc;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Ccircle cx='48' cy='28' r='17' fill='none' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M60 41l18 17' stroke='%23fff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="civil"]{--mc:#9aa6b5;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M10 34c16-20 54-20 70 0c-16 20-54 20-70 0z' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Ccircle cx='45' cy='34' r='9' fill='%23fff'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="disp"]{--mc:#5ad1e6;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Ccircle cx='62' cy='46' r='6' fill='%23fff'/%3E%3Cpath d='M62 30a16 16 0 00-16 16M62 18a28 28 0 00-28 28M62 6a40 40 0 00-40 40' fill='none' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="crowd"]{--mc:#ff7a59;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M48 6l26 8v18c0 14-11 22-26 26c-15-4-26-12-26-26V14z' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M48 18v28M36 30h24' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="water"]{--mc:#38bdf8;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M4 30c10-10 18 10 28 0s18 10 28 0s18 10 28 0M4 46c10-10 18 10 28 0s18 10 28 0s18 10 28 0' fill='none' stroke='%23fff' stroke-width='5'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="heli"]{--mc:#f2c230;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M14 14h62' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M45 14v8' stroke='%23fff' stroke-width='4'/%3E%3Cellipse cx='42' cy='36' rx='20' ry='12' fill='%23fff'/%3E%3Cpath d='M60 34l24-6v6l-22 6zM30 52h28' stroke='%23fff' stroke-width='4' fill='%23fff'/%3E%3C/svg%3E")}
+.pv .mm-mode button[data-mode="acad"]{--mc:#e5e7eb;--mi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M46 10l40 16l-40 16L6 26z' fill='%23fff'/%3E%3Cpath d='M24 36v12c12 10 32 10 44 0V36' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M80 28v20' stroke='%23fff' stroke-width='4'/%3E%3C/svg%3E")}
 </style></head><body>
 
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -4278,6 +4318,11 @@ function pvApply(){const scr=$("#scr-menu"),mm=scr&&scr.querySelector(".mm");if(
  else if(PV===4)root.append(pvBox("pv-top card",E.brand,E.ofc,E.life),pvBox("pv-steps",pvBox("pv-step card","<i>1</i>Akú službu chceš?",E.mode),pvBox("pv-step card","<i>2</i>Kde a kedy?",pvArt(),E.where,E.shift),pvBox("pv-step card pv-s3","<i>3</i>Nastúpiť",E.hero,pvEl("pv-sum",`<span>${md.n}</span><span>${esc(curLoc().name)}</span>`),E.go)),pvBox("pv-row",E.story,E.mate,E.slots));
  else if(PV===5)root.append(pvBox("pv-id card",pvEl("pv-idh",`${badgeSVG()}<div><b>Policajný zbor</b><span>Služobný preukaz č. ${String(1580000+(s.xp||0)%99999).padStart(7,"0")}</span></div>`),E.ofc,E.slots,E.life),pvBox("pv-duty",pvBox("pv-today card",E.brand,E.hero,"Dnešná služba",E.mode,pvBox("pv-line",E.where,E.shift,E.go)),pvBox("pv-row",E.story,E.mate)));
  top.style.display="none";mm.insertBefore(root,top);try{if(!heroStart3D(copCar()))window.dispatchEvent(new Event("resize"))}catch(e){}}
+/* balik A: scena v menu podla zmeny, majaky pri tlacidle nastupu */
+const PVSH={r:{sunD:[.75,.7,.45],sunC:[2.7,2.45,2.1],hSky:[.33,.39,.5],hGnd:[.06,.06,.07],t:"Ranná zmena · svitá, premávka hustne"},p:{sunD:[-.7,.5,.55],sunC:[3,2.2,1.45],hSky:[.46,.34,.28],hGnd:[.07,.055,.05],t:"Poobedná zmena · nízke slnko, špička"},n:{sunD:[.3,1,.4],sunC:[.32,.38,.62],hSky:[.045,.06,.11],hGnd:[.015,.018,.028],t:"Nočná zmena · tma, svetlá a lampy"}};
+let pvBeacon=0;
+{const gs0=g3Studio;g3Studio=function(cv2,sp,o,ang,fl,zm){if(!(cv2&&cv2.id==="hero-cv"&&S.save&&pvGet()))return gs0.apply(this,arguments);const P=PVSH[S.save.shiftType||"r"]||PVSH.r,keep={};for(const k of["sunD","sunC","hSky","hGnd"]){keep[k]=STUDIO[k];STUDIO[k]=P[k]}const night=(S.save.shiftType||"r")==="n",f=fl||[0,0,.3];try{return gs0.call(this,cv2,sp,o,ang,[pvBeacon?f[0]:0,pvBeacon?f[1]:0,night?1:f[2]],zm)}finally{for(const k in keep)STUDIO[k]=keep[k]}}}
+{const pa0=pvApply;pvApply=function(){pa0.apply(this,arguments);try{const mm=document.querySelector("#scr-menu .mm.pv");if(!mm)return;const go=mm.querySelector("#btn-start");if(go){go.addEventListener("mouseenter",()=>{pvBeacon=1});go.addEventListener("mouseleave",()=>{pvBeacon=0});go.addEventListener("focus",()=>{pvBeacon=1});go.addEventListener("blur",()=>{pvBeacon=0})}const sh=mm.querySelector(".mm-shift");if(sh&&!sh.parentElement.querySelector(".pv-shl")){const P=PVSH[S.save.shiftType||"r"]||PVSH.r;sh.insertAdjacentHTML("afterend",`<p class="pv-shl">${P.t}</p>`)}}catch(e){console.warn("pvA",e)}}}
 {const rm0=renderMenu;renderMenu=function(){const r=rm0.apply(this,arguments);try{pvApply()}catch(e){console.warn("pv",e)}return r}}
 /*</menu-pv>*/{const _go=d=>{showLoad();gzReady().then(()=>{start(d);hideLoad()})};window.claude?.hot?.ready?window.claude.hot.ready(_go):_go(window.claude?.hot?.data??{})}})();
 </script>

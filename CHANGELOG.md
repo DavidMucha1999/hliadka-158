@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 17. 11. 2026
 
+- **Grafika hlavnej obrazovky:** jednotný štýl kariet a tlačidiel, každá služba má vlastnú farbu a motív, 3D scéna so služobným autom sa mení podľa rannej, poobednej a nočnej zmeny, majáky sa zapnú pri tlačidle nástupu.
 - **Nová hlavná obrazovka:** päť rozložení (Tri kroky, Garáž, Nástenka, Mapa služieb, Služobný preukaz) a pôvodné menu. Predvolené sú Tri kroky, zmena je v Nastaveniach.
 - Oprava: záložka „Stanica“ v hlavnom menu sa po pridaní režimu Hliadka za volantom nevykreslila.
 - **Obrazovka „O hre“** v hlavnom menu: čo hra obsahuje, ako vznikla, technické údaje.
