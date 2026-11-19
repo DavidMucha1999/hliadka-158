@@ -23,6 +23,11 @@ patch("semafor svetlo",',st=hTlState(n,ei,now);ga.push(px,4.1,pz,st==="g"?.2:1,s
 patch("stare lampy prec",'for(let s=15;s<e.len;s+=38){const p=hPtAt(e.pts,e.cum,s),o=HROAD[e.type].w/2+1.5,','for(let s=15;s<0;s+=38){const p=hPtAt(e.pts,e.cum,s),o=HROAD[e.type].w/2+1.5,')
 patch("ulice znacenie",'for(const n of W3.net.N){if(!n.tl)continue;n.e.forEach(ei=>{const e=W3.net.E[ei],P0=e.a===W3.net.N.indexOf(n)?','try{hStreetFx(W3,G,T)}catch(e){console.warn("street",e)}for(const n of W3.net.N){if(!n.tl)continue;n.e.forEach(ei=>{const e=W3.net.E[ei],P0=e.a===W3.net.N.indexOf(n)?')
 patch("stredova ciara mimo priechodov",'for(let s=6;s<e.len-6;s+=e.type==="hwy"?18:14){const p=hPtAt(e.pts,e.cum,s),q=','for(let s=e.type==="hwy"?6:13;s<e.len-(e.type==="hwy"?6:16);s+=e.type==="hwy"?18:14){const p=hPtAt(e.pts,e.cum,s),q=')
+OB='gg.box(X0,X1,Y,Y+b.h,Z0,Z1,wl,b.k==="barn"||b.k==="hangar"?0:8,{uvm:true,cols:{t:h8Roof(L2(b.roof==="flat"?"#6e747c":b.rc||"#a33a2e"))},modes:{t:0}});'
+patch("budovy fasada uv",OB,'{const n0=gg.a.length;'+OB+'hBldUv(gg,n0,Y,b,X0,X1,Z0,Z1)}')
+patch("budovy vyklady",'if(b.shop){const c=L2(shopC[Math.floor(R()*5)]);gg.box(X0-.15,X1+.15,Y+3.1,Y+3.7,Z0-.15,Z1+.15,c,12)}','if(b.shop){R();hShopFx(gg,W3,b,X0,X1,Z0,Z1,Y,rot)}')
+_i=d.index("else if(m==8.){vec2 c=uv/vec2(3.2,3.4);");_j=d.index("else if(m==9.){spec=1.4",_i)
+d=d[:_i]+open(os.path.join(here,"drive","fasada.glsl"),encoding="utf8").read().rstrip("\n")+"\n "+d[_j:];print("fasada shader: ok")
 OLDR='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
 patch("nastavenia dlzka sluzby",OLDR,'<div class="rrow"><span>Dĺžka služby za volantom</span><select id="fdl-pick"><option value="s" ${s.drvLen==="s"?"selected":""}>Krátka – 16 minút</option><option value="n" ${s.drvLen!=="s"&&s.drvLen!=="l"?"selected":""}>Štandardná – 32 minút</option><option value="l" ${s.drvLen==="l"?"selected":""}>Dlhá – 64 minút</option></select></div>'+chr(10)+'    '+OLDR)
 block("drive-fd",open(os.path.join(here,"drive","fd.js"),encoding="utf8").read())
