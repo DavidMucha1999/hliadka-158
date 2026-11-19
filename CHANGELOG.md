@@ -2,6 +2,10 @@
 
 Najnovšie zmeny sú hore.
 
+## 19. 11. 2026
+
+- **Semafory a lampy v meste:** semafor má tri šošovky a svietiace svetlo je viditeľné aj cez deň, stojí vpravo pred križovatkou a opakuje sa na jej vzdialenej strane. Pred semaforom je stopčiara a priechod pre chodcov, do stĺpa semaforu sa dá naraziť. Odstránená stará sada lámp, ktorá stála priamo v križovatkách, ostatné lampy sú až za chodníkom a na kruhových objazdoch len po vonkajšom obvode.
+
 ## 17. 11. 2026
 
 - **Hliadka za volantom – vyhodnotenie a dĺžka služby:** vlastné hodnotenie služby podľa kontrol, výjazdov, naháňačiek a priestupkov za volantom (najazdené kilometre, trvanie, zoznam chýb), okresy Novosady a Horné Lazy namiesto názvov leteckého útvaru, voľba dĺžky služby 16, 32 alebo 64 minút v Nastaveniach.
