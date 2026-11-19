@@ -21,6 +21,8 @@ patch("lampy na objazde zvonka",'sd=-sd;const x=p.x+nx*off*sd,z=p.y+nz*off*sd;',
 patch("semafor model",'g2=G(px,pz);g2.cyl(px,pz,0,4,.1,.1,5,L2("#2a2d31"),9);g2.box(px-.25,px+.25,3.2,4.4,pz-.25,pz+.25,L2("#1a1c1f"),9)})}','g2=G(px,pz);hTlGeo(g2,W3,n,ei,a,T)})}')
 patch("semafor svetlo",',st=hTlState(n,ei,now);ga.push(px,4.1,pz,st==="g"?.2:1,st==="g"?1:st==="a"?.75:.12,st==="g"?.45:.08,1.1,.7)})}',';hTlLit(extra,ga,W3,n,ni,ei,a,now,T,hp)})}')
 patch("stare lampy prec",'for(let s=15;s<e.len;s+=38){const p=hPtAt(e.pts,e.cum,s),o=HROAD[e.type].w/2+1.5,','for(let s=15;s<0;s+=38){const p=hPtAt(e.pts,e.cum,s),o=HROAD[e.type].w/2+1.5,')
+patch("ulice znacenie",'for(const n of W3.net.N){if(!n.tl)continue;n.e.forEach(ei=>{const e=W3.net.E[ei],P0=e.a===W3.net.N.indexOf(n)?','try{hStreetFx(W3,G,T)}catch(e){console.warn("street",e)}for(const n of W3.net.N){if(!n.tl)continue;n.e.forEach(ei=>{const e=W3.net.E[ei],P0=e.a===W3.net.N.indexOf(n)?')
+patch("stredova ciara mimo priechodov",'for(let s=6;s<e.len-6;s+=e.type==="hwy"?18:14){const p=hPtAt(e.pts,e.cum,s),q=','for(let s=e.type==="hwy"?6:13;s<e.len-(e.type==="hwy"?6:16);s+=e.type==="hwy"?18:14){const p=hPtAt(e.pts,e.cum,s),q=')
 OLDR='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
 patch("nastavenia dlzka sluzby",OLDR,'<div class="rrow"><span>Dĺžka služby za volantom</span><select id="fdl-pick"><option value="s" ${s.drvLen==="s"?"selected":""}>Krátka – 16 minút</option><option value="n" ${s.drvLen!=="s"&&s.drvLen!=="l"?"selected":""}>Štandardná – 32 minút</option><option value="l" ${s.drvLen==="l"?"selected":""}>Dlhá – 64 minút</option></select></div>'+chr(10)+'    '+OLDR)
 block("drive-fd",open(os.path.join(here,"drive","fd.js"),encoding="utf8").read())

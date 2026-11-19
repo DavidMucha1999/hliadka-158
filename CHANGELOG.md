@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 19. 11. 2026
 
+- **Ulice v meste:** okrajové čiary na cestách, obrubníky a zvýšené chodníky, priechody pre chodcov so značkou na križovatkách bez semaforov, smerová šípka pred stopčiarou, stredová čiara sa končí pred priechodom. Pri krajnici stoja zaparkované autá, do ktorých sa dá naraziť.
 - **Semafory a lampy v meste:** semafor má tri šošovky a svietiace svetlo je viditeľné aj cez deň, stojí vpravo pred križovatkou a opakuje sa na jej vzdialenej strane. Pred semaforom je stopčiara a priechod pre chodcov, do stĺpa semaforu sa dá naraziť. Odstránená stará sada lámp, ktorá stála priamo v križovatkách, ostatné lampy sú až za chodníkom a na kruhových objazdoch len po vonkajšom obvode.
 
 ## 17. 11. 2026
