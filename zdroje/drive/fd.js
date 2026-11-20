@@ -10,10 +10,10 @@ function fdRender(){const sh=S.shift,el=$("#scr-heli"),L2=curLoc(),cop=copCar();
 {const sh0=show;show=function(id){if(id!=="heli"||!fdOn())document.body.classList.remove("drv-on");return sh0.apply(this,arguments)}}
 function fdUpdate(dt){const sh=S.shift,hp=sh.hp,fl=sh.fl,D=sh.dv,W3=sh.W,T=hTer(),K=k=>!!KEYS[k];sh.min+=dt*fdRate();D.rt=(D.rt||0)+dt;fl.t+=dt;
  const acc=(K("w")||K("arrowup")?1:0)-(K("s")||K("arrowdown")?1:0),str=(K("d")||K("arrowright")?1:0)-(K("a")||K("arrowleft")?1:0),hb=K(" ");
- D.off=!hRoadNear(W3,hp.x,hp.y,1.5);const VM=D.off?13:(copCar().top||190)/3.6;
- if(acc>0){if(D.v<0)D.v+=14*dt;else D.v+=(D.off?3.2:7.5)*(1-Math.min(1,D.v/VM)*.85)*dt}else if(acc<0){if(D.v>.5)D.v-=15*dt;else D.v-=4*dt}else D.v-=Math.sign(D.v)*Math.min(Math.abs(D.v),(1.2+Math.abs(D.v)*.03)*dt);
+ D.off=!h8OnRoad(W3,hp.x,hp.y,1.5);const PF=avPerf(D),VM=D.off?13:(copCar().top||190)/3.6*PF.top;
+ if(acc>0){if(D.v<0)D.v+=14*dt;else D.v+=(D.off?3.2:7.5)*PF.acc*(1-Math.min(1,D.v/VM)*.85)*dt}else if(acc<0){if(D.v>.5)D.v-=15*dt;else D.v-=4*dt}else D.v-=Math.sign(D.v)*Math.min(Math.abs(D.v),(1.2+Math.abs(D.v)*.03)*dt);
  if(hb)D.v-=Math.sign(D.v)*Math.min(Math.abs(D.v),22*dt);if(D.off&&Math.abs(D.v)>13)D.v-=Math.sign(D.v)*18*dt;D.v=clamp(D.v,-8,VM);
- D.st+=(str-D.st)*Math.min(1,dt*6);const sp=Math.abs(D.v),yaw=D.st*clamp(D.v/5,-1,1)*(1.75-1.2*Math.min(1,sp/45));fl.hd=hAng(fl.hd+yaw*dt);fl.yr=yaw;
+ D.st+=(str+(Math.abs(D.v)>3?PF.pull:0)-D.st)*Math.min(1,dt*6);const sp=Math.abs(D.v),yaw=D.st*clamp(D.v/5,-1,1)*(1.75-1.2*Math.min(1,sp/45));fl.hd=hAng(fl.hd+yaw*dt);fl.yr=yaw;
  const nx=hp.x+Math.cos(fl.hd)*D.v*dt,ny=hp.y+Math.sin(fl.hd)*D.v*dt;let blk=nx<10||nx>HW-10||ny<10||ny>HW-10||(hIsWater(nx,ny)&&!fdOnRoad(nx,ny));try{const bb=!blk&&hBldAt(nx,ny);if(bb&&!bb.fdOff)blk=true;if(!blk&&sp>2&&fdPole(nx,ny)){blk=true;if(D.bumpT<=0){D.msg="Náraz do stĺpa.";D.msgT=3}}}catch(e){}if(!blk&&D.off&&hInF(nx,ny)&&sp>3)blk=true;
  if(blk){if(sp>6){try{SFX.play("crash")}catch(e){}D.bumpT=.5;D.wall=(D.wall||0)+1;try{avHit(null,D.v>0)}catch(e){}}D.v=-D.v*.25}else{hp.x=nx;hp.y=ny;D.odo+=D.v*dt}
  for(const c of sh.cars){const d=Math.abs((c.e3||0)-(D.el||0))>3?1e9:Math.hypot(c.x-hp.x,c.y-hp.y);if(d<3.2&&c.flee&&D.st2===c&&sp>2&&D.bumpT<=0){try{fdPit(c)}catch(e){console.warn("fdpit",e)}continue}if(d<2.6&&sp>2&&D.bumpT<=0){try{avHit(c,D.v>0)}catch(e){}D.v*=-.3;D.bumpT=1.2;try{SFX.play("crash")}catch(e){}c.stop=Math.max(c.stop||0,2);S.save.rep=Math.max(0,S.save.rep-2);persist();renderHUD();D.crash=(D.crash||0)+1;toast("Náraz do vozidla! Reputácia −2.")}}
