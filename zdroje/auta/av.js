@@ -76,3 +76,7 @@ function avMoto(sp,o){const G=new Geo,L=sp.len,Z=x=>L/2-x,pol=!!o.police,c=pol?g
   for(const s of[-1,1]){G.limb([s*.2,1.4,Z(1.2)],[s*.27,1.14,Z(1.42)],.055,.05,6,rk,0);G.limb([s*.27,1.14,Z(1.42)],[s*.3,1.07,Z(1.57)],.05,.045,6,rk,0);G.limb([s*.15,.95,Z(.95)],[s*.2,.72,Z(1.22)],.085,.07,6,pants,0);G.limb([s*.2,.72,Z(1.22)],[s*.19,.36,Z(1.08)],.065,.055,6,pants,0);G.box(s*.19-.05,s*.19+.05,.28,.38,Z(1.22),Z(1),boot,0)}
   if(pol)G.box(-.14,.14,1.2,1.3,Z(.875)-.004,Z(.875),g3L("#1f4fa8"),1)}
  plates.push({y:.5,z:Z(.06)+.012,w:.2,h:.12,moto:true});wheels.push({z:Z(xr),lat:0,r,w:.16,k:"moto"},{z:Z(xf),lat:0,r,w:.13,k:"moto"});return{geo:G,wheels,plates}}
+/* krok 4 grafiky: vlastnosti laku podla auta – [metaliza 0/1, perlet 2 | vek 0..1 | spina | tonovane skla] */
+function avPP(o){if(!o)return AVPP0;if(o._pp&&o._pps===o.color)return o._pp;o._pps=o.color;if(o.police||o.model||o.trailer||o.bus||!o.color)return o._pp=AVPP0;const k=(o.mk||"")+o.color+(o.plate||"");let h=7;for(let i=0;i<k.length;i++)h=h*31+k.charCodeAt(i)>>>0;const c=o.color.toLowerCase(),lux=/Aurex|Bavaro|Mervana|Lumeo|Nordvik|Pfalzer|Voltara|Varzetti|Moorland/.test(o.mk||""),old=!lux&&(h>>>7)%100<12,age=old?.45+(h>>>3)%50/100:0;
+ const metal=old?0:c==="#f2efe6"?2:c==="#eceff2"?((h>>>5)%100<25?2:0):(h%100<62?1:(h%100<70?2:0));return o._pp=[metal,age,old?.35:(h>>>13)%100<18?.25:0,(h>>>11)%100<(lux?55:22)?1:0]}
+const AVPP0=[0,0,0,0];
