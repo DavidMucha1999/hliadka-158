@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Pohyb karosérie:** auto sa v zákrute nakláňa von, pri brzdení sa predkloní a pri rozjazde zakloní, kolesá ostávajú na ceste. Predné kolesá sa natáčajú podľa volantu. Platí pre tvoje auto aj autá premávky do 150 m.
 - **Poškodenie má následky:** rozbitý predok zníži najvyššiu rýchlosť o 10 % alebo 30 % a pri ťažkom poškodení aj zrýchlenie, poškodený zadok uberie pár percent, preliačený bok ťahá auto mierne do strany. Nad rýchlomerom je ukazovateľ poškodenia so schémou auta. Po službe sa poškodenie pripíše do opotrebenia služobného auta, opraví ho servis vo vozovom parku.
 - **Oprava jazdy mimo cesty:** na uliciach ležiacich na hranici mriežky mapy hra na polovici cesty chybne hlásila jazdu mimo cesty a obmedzila auto na 47 km/h. Opravené.
 - **Overenie poškodenia pri jazde:** nárazy spredu, zozadu a z boku sú preverené simulovanou jazdou klávesmi cez deň aj v noci. S ťažko rozbitým predkom svietia svetlomety policajného auta v noci slabšie.
