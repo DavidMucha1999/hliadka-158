@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Deformácia karosérie:** po náraze sa predok alebo zadok auta naozaj preliači, pri druhom náraze výraznejšie a viac na jednej strane. Kapota sa zvlní, nárazník klesne a na poškodenej strane zhasne svetlomet alebo zadné svetlo. Platí pre tvoje auto aj autá premávky do 110 m. Pri cúvaní svietia tvojmu autu biele cúvacie svetlá.
 - **Svetlá a poškodenie:** po náraze ostanú na nárazníku tvojho auta aj zasiahnutého auta tmavé stopy a pri silnejšom náraze zozadu zhasne jedno brzdové svetlo. Nabúrané auto a auto zastavené hliadkou zapne výstražné svetlá, pri zastavovaní bliká pravou smerovkou. V noci svietia na cestu aj tri najbližšie autá premávky. Klávesom L sa prepínajú tri vzory blikania majákov.
 - **Lak a materiály:** každé auto má vlastné vlastnosti laku. Väčšina farebných áut má metalízu, biele a perleťové perleť s jemnou zmenou odtieňa podľa uhla pohľadu. Asi každé desiate auto bežnej značky je staré: vyblednutý matný lak, hrdza na spodku karosérie a špina. Časť áut má tónované sklá, pri drahších značkách častejšie.
 - **Detaily karosérie:** autá majú spätné zrkadlá, kľučky dverí, stierače, strešnú anténu a koncovku výfuku. Nová motorka s motorom, nádržou, vidlicou, riadidlami, zrkadlami a jazdcom s rukami a nohami, policajná má kufre a maják. Aurex Víchor Kombi má vlastnú dlhú nízku karosériu.
