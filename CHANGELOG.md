@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Detaily karosérie:** autá majú spätné zrkadlá, kľučky dverí, stierače, strešnú anténu a koncovku výfuku. Nová motorka s motorom, nádržou, vidlicou, riadidlami, zrkadlami a jazdcom s rukami a nohami, policajná má kufre a maják. Aurex Víchor Kombi má vlastnú dlhú nízku karosériu.
 - **Posledné cudzie modely preč:** odstránených 18 jednoduchých modelov, hra má 2,2 MB. Hasičské auto má vlastný model s roletami, rebríkom a majákom, sanitka pruhy, kríž a majáky, taxi strešné svetlo. Vzdialené autá sa kreslia vlastným úsporným tvarom podľa typu karosérie, vykresľovanie je v meraní asi o tretinu rýchlejšie.
 - **Farba laku pri kreslení:** farba auta už nie je súčasťou modelu, posiela sa pri vykresľovaní. Jeden model slúži pre všetky farby, v pamäti je približne tretina modelov. V premávke je 14 farieb namiesto 8 a detailné autá sa kreslia do 110 m namiesto 75 m.
 - **Karta služobného auta v menu:** pri 3D náhľade auta je názov, typ, najvyššia rýchlosť, zrýchlenie 0–100 a odolnosť. Šípkami sa prepína medzi dostupnými služobnými autami a náhľad sa hneď zmení.
