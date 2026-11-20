@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Farba laku pri kreslení:** farba auta už nie je súčasťou modelu, posiela sa pri vykresľovaní. Jeden model slúži pre všetky farby, v pamäti je približne tretina modelov. V premávke je 14 farieb namiesto 8 a detailné autá sa kreslia do 110 m namiesto 75 m.
 - **Karta služobného auta v menu:** pri 3D náhľade auta je názov, typ, najvyššia rýchlosť, zrýchlenie 0–100 a odolnosť. Šípkami sa prepína medzi dostupnými služobnými autami a náhľad sa hneď zmení.
 - **Názvy vozidiel:** 61 modelov dostalo nové mená namiesto číselných a písmenových označení, každý model má jedinečný názov. Premenované sú aj štyri služobné autá (Rheinwagen Zásah, Bavaro Tulák RT, Bavaro Orkán 4×4, Aurex Víchor Kombi). Radar a hlásenia ukazujú značku a model aj pri kamiónoch, autobusoch a traktoroch.
 - **Autá v premávke:** každé auto má značku a karosériu podľa typu (malé auto, hatchback, sedan, liftback, kupé, športový sedan, SUV, veľké SUV, kombi, dodávka, MPV) so sklami, svetlami a diskami. Kamióny majú návesy s polepmi, autobusy farby liniek. Pri brzdení a státí svietia brzdové svetlá, pred odbočením blikajú smerovky. Radar ukazuje značku a model. Vzdialené autá sa kreslia jednoduchšie kvôli plynulosti.

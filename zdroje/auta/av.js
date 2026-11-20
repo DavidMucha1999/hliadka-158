@@ -26,3 +26,5 @@ function avCard(){const wrap=$("#hero-wrap");if(!wrap)return;const old=wrap.quer
  wrap.classList.add("av");wrap.appendChild(el);
  el.querySelectorAll("button").forEach(b=>{b.onpointerdown=e=>e.stopPropagation();b.onclick=e=>{e.stopPropagation();if(one)return;S.save.copIdx=L[((k<0?0:k)+(+b.dataset.d)+L.length)%L.length];persist();try{SFX.play("click")}catch(x){}renderMenu()}})}
 {const rm=renderMenu;renderMenu=function(){const r=rm.apply(this,arguments);try{avCard()}catch(e){console.warn("avcard",e)}return r}}
+/* krok 1 grafiky: farba laku ako nastavenie pri kresleni (model sa stavia v zastupnej farbe) */
+function avPaint(o){return!!(o&&!o.model&&G3.prog&&G3.prog.m&&G3.prog.m.u&&G3.prog.m.u.uPaint)}
