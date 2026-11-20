@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Overenie poškodenia pri jazde:** nárazy spredu, zozadu a z boku sú preverené simulovanou jazdou klávesmi cez deň aj v noci. S ťažko rozbitým predkom svietia svetlomety policajného auta v noci slabšie.
 - **Škrabance a rozbité bočné sklá:** preliačený bok má škrabance, ktoré sledujú tvar plechu, pri ťažšom poškodení ich je viac. Po druhom bočnom náraze sa na zasiahnutej strane vysypú bočné sklá a ostanú z nich len črepy.
 - **Para a poškodenie bokov:** z ťažko rozbitého predku stúpa para, asi po minúte slabne a po dvoch minútach prestane. Pri náraze do boku sa preliačia dvere a blatníky na zasiahnutej strane, pri druhom náraze výraznejšie. Hra rozlišuje náraz spredu, zozadu a z každého boku pri tvojom aute aj aute premávky.
 - **Deformácia karosérie:** po náraze sa predok alebo zadok auta naozaj preliači, pri druhom náraze výraznejšie a viac na jednej strane. Kapota sa zvlní, nárazník klesne a na poškodenej strane zhasne svetlomet alebo zadné svetlo. Platí pre tvoje auto aj autá premávky do 110 m. Pri cúvaní svietia tvojmu autu biele cúvacie svetlá.
