@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Autá v premávke:** každé auto má značku a karosériu podľa typu (malé auto, hatchback, sedan, liftback, kupé, športový sedan, SUV, veľké SUV, kombi, dodávka, MPV) so sklami, svetlami a diskami. Kamióny majú návesy s polepmi, autobusy farby liniek. Pri brzdení a státí svietia brzdové svetlá, pred odbočením blikajú smerovky. Radar ukazuje značku a model. Vzdialené autá sa kreslia jednoduchšie kvôli plynulosti.
 - **Služobné autá vlastnej výroby:** odstránených 12 vložených detailných modelov áut, hra sa zmenšila zo 7,9 MB na 2,5 MB. Všetky služobné autá teraz kreslí vlastný generátor hry podľa typu karosérie, s policajným polepom, majákom a značkou. Superšport Varzetti Kuna dostal vlastný nízky dvojmiestny tvar.
 - **Nočné osvetlenie:** odstránené staré nízko položené svetlo auta, ktoré vybieľovalo fasády, tlmenejšie svetlo lámp na svetlých chodníkoch a slabšia žiara pri päte lámp.
 - **Svetlomety auta:** v noci auto osvetľuje cestu pred sebou, mimo mesta naplno a v osvetlených uliciach tlmene.
