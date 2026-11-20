@@ -21,6 +21,20 @@ patch("auta vlastnym generatorom",'const pr=!o.noK&&kProf(sp,o)','const pr0=!o.n
 patch("premavka so znackou",'sp:SPECS[HSP[c.kind]]||SPECS.hatch,o:{color:c.col[1],mk:"",police:!!c.pol,liv:"SK",lc:"bb",lights:!!(c.pol&&(c.goal||c.resp))},d:-c.y','sp:avSp(c),o:avO(c,(c.x-hp.x)*(c.x-hp.x)+(c.y-hp.y)*(c.y-hp.y)>5600),d:-c.y')
 patch("kolesa aut v premavke",'yaw:Math.atan2(-Math.cos(c.a),-Math.sin(c.a)),dist:c.s,fl:[0,0,N*.35]','yaw:Math.atan2(-Math.cos(c.a),-Math.sin(c.a)),dist:c.t||0,fl:[0,0,N*.35]')
 patch("viac modelov v pamati",'if(G3.vcache.size>120){','if(G3.vcache.size>220){')
+sys.path.insert(0,os.path.join(here,"auta"))
+import nazvy
+_n=0
+for zn,st,nv in nazvy.MODELY:
+    a1='{m:"%s",mo:"%s",'%(zn,st)
+    if d.count(a1)<1: print("NAZOV VZOR",zn,st,d.count(a1));sys.exit(1)
+    d=d.replace(a1,'{m:"%s",mo:"%s",'%(zn,nv))
+    _n+=d.count('"%s %s"'%(zn,st));d=d.replace('"%s %s"'%(zn,st),'"%s %s"'%(zn,nv))
+for st,nv in nazvy.CELE:
+    if d.count('"'+st+'"')<1: print("NAZOV VZOR",st);sys.exit(1)
+    d=d.replace('"'+st+'"','"'+nv+'"')
+print("nazvy: ok",_n)
+patch("sportove modely podla novych nazvov","/GT|RS|M5|Inovec|Sokol|911|Kuna|Type R|AMG/","/GT|RS|Inovec|Sokol|Strela|Orol|Dravec|Zenit|Šíp|Čepeľ|Orkán|Víchor|Kuna/")
+patch("hlasenie vrtulnika so znackou",'`Potvrdzujem, vozidlo ${o.col[0]} ${o.kind}, ${hEdgeName(sh.W,o.e)}.','`Potvrdzujem, vozidlo ${o.col[0]} ${avName(o)}, ${hEdgeName(sh.W,o.e)}.')
 js=os.path.join(here,"auta","av.js")
 if os.path.exists(js): block("auta-av",open(js,encoding="utf8").read())
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))
