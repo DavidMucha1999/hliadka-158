@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Stopy po jazde:** pri ručnej brzde, prudkom brzdení nad 54 km/h a v ostrej zákrute ostávajú na asfalte tmavé stopy zadných kolies a od pneumatík ide dym. Mimo cesty sa za autom dvíha prach. Služobné auto sa počas služby špiní, mimo cesty rýchlo, v daždi a snehu pomaly.
+- **Lak policajných áut:** policajné autá teraz používajú rovnaké vlastnosti laku ako ostatné, predtým sa im pre zvyšok starého nastavenia neposielali.
 - **Pohyb karosérie:** auto sa v zákrute nakláňa von, pri brzdení sa predkloní a pri rozjazde zakloní, kolesá ostávajú na ceste. Predné kolesá sa natáčajú podľa volantu. Platí pre tvoje auto aj autá premávky do 150 m.
 - **Poškodenie má následky:** rozbitý predok zníži najvyššiu rýchlosť o 10 % alebo 30 % a pri ťažkom poškodení aj zrýchlenie, poškodený zadok uberie pár percent, preliačený bok ťahá auto mierne do strany. Nad rýchlomerom je ukazovateľ poškodenia so schémou auta. Po službe sa poškodenie pripíše do opotrebenia služobného auta, opraví ho servis vo vozovom parku.
 - **Oprava jazdy mimo cesty:** na uliciach ležiacich na hranici mriežky mapy hra na polovici cesty chybne hlásila jazdu mimo cesty a obmedzila auto na 47 km/h. Opravené.

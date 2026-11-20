@@ -16,7 +16,7 @@ function avLights(sh,extra,ga,now){if(!sh.W||!sh.W.net)return;const hp=sh.hp,T=h
   if(brake&&!big)rear(c.x,c.y,c.a,sp,y-(c.avTl?c.avTl[0]:0)*sp.len/2,avDL(c.avDr)>1);
   if(turn&&bl){const ca=Math.cos(c.a),sa=Math.sin(c.a),hl=sp.len/2,lat=(big?1.02:.64)+.1,yaw=Math.atan2(-ca,-sa);for(const tn of turn===2?[-1,1]:[turn])for(const f of[-1,1]){if(big&&f<0)continue;const x=c.x+ca*(hl-.06)*f-sa*lat*tn,z=c.y+sa*(hl-.06)*f+ca*lat*tn,yy=y+(f>0?sp.fy||.8:(sp.ty||1)-.02);extra.push({m:avLens("a"),M:M4.trs(x,yy,z,yaw,.12,.1,.14)});ga.push(x,yy,z,1,.6,.1,.8,.5)}}if((c.avDf||c.avDr)&&!avCr(sp))avDent(extra,c.x,c.y,c.a,sp,y,c.avDf||0,c.avDr||0)}
  if(sh.drv&&sh.dv){const D=sh.dv,v=Math.abs(D.v),pv=D._avv==null?v:D._avv;if(v<pv-.004)D._avb=now;D._avv=v;const sp=SPECS[copCar().type];const py=T(hp.x,hp.y)+(D.el||0);if(sp&&!sp.moto&&now-(D._avb||-9)<.35)rear(hp.x,hp.y,sh.fl.hd,sp,py-(D.avTl?D.avTl[0]:0)*sp.len/2,avDL(D.dmR)>1);if(sp&&!sp.moto&&D.v<-.25){const a=sh.fl.hd,ca=Math.cos(a),sa=Math.sin(a),hl=sp.len/2+.012,yaw=Math.atan2(-ca,-sa),yy=py+(sp.ty||1)-.13;for(const s of[-1,1]){const x=hp.x-ca*hl-sa*.4*s,z=hp.y-sa*hl+ca*.4*s;extra.push({m:avLens("w"),M:M4.trs(x,yy,z,yaw,.13,.07,.05)});ga.push(x,yy,z,1,1,.95,.55,.45)}}if(sp&&!sp.moto&&!avCr(sp)&&(D.dmF||D.dmR))avDent(extra,hp.x,hp.y,sh.fl.hd,sp,py,D.dmF||0,D.dmR||0)}}
-{const x0=hX3D;hX3D=function(sh,C,extra,list,persons,ga,glass2,now){x0.apply(this,arguments);try{avMotion(sh,now);avLights(sh,extra,ga,now);avSteam(sh,glass2,now)}catch(e){if(!avLights.w){avLights.w=1;console.warn("avl",e)}}}}
+{const x0=hX3D;hX3D=function(sh,C,extra,list,persons,ga,glass2,now){x0.apply(this,arguments);try{avMotion(sh,now);avLights(sh,extra,ga,now);avSteam(sh,glass2,now);avTrail(sh,glass2,now)}catch(e){if(!avLights.w){avLights.w=1;console.warn("avl",e)}}}}
 /* skupina 3: znacka a model v radare a hlaseniach */
 function avName(c){const m=c.pc&&c.pc.mk||avMk(c);if(m)return m.m+" "+m.mo;const t={"kamión":"truck","autobus":"bus","traktor":"tractor"}[c.kind];if(t){if(!c.avN){const x=pickMake(t);c.avN=x?x.m+" "+x.mo:c.kind}return c.avN}return c.kind}
 /* skupina 4: karta sluzobneho auta v menu – nazov, vykon, vyber auta */
@@ -26,7 +26,7 @@ function avCard(){const wrap=$("#hero-wrap");if(!wrap)return;const old=wrap.quer
  el.querySelectorAll("button").forEach(b=>{b.onpointerdown=e=>e.stopPropagation();b.onclick=e=>{e.stopPropagation();if(one)return;S.save.copIdx=L[((k<0?0:k)+(+b.dataset.d)+L.length)%L.length];persist();try{SFX.play("click")}catch(x){}renderMenu()}})}
 {const rm=renderMenu;renderMenu=function(){const r=rm.apply(this,arguments);try{avCard()}catch(e){console.warn("avcard",e)}return r}}
 /* krok 1 grafiky: farba laku ako nastavenie pri kresleni (model sa stavia v zastupnej farbe) */
-function avPaint(o){return!!(o&&!o.model&&G3.prog&&G3.prog.m&&G3.prog.m.u&&G3.prog.m.u.uPaint)}
+function avPaint(o){return!!(o&&!(o.model&&typeof CMOD!=="undefined"&&CMOD[o.model])&&G3.prog&&G3.prog.m&&G3.prog.m.u&&G3.prog.m.u.uPaint)}
 /* krok 2 grafiky: vlastne modely namiesto jednoduchych – vzdialene auta, hasici, sanitka, taxi */
 SPECS.fire=Object.assign({},SPECS.truck,{len:8.2,h:3.15,wh:[1.5,6.5]});HSP["hasiči"]="fire";
 function avLow(sp,o){const G=new Geo,L=sp.len,Z=x=>L/2-x,col=g3L(o.color||"#9aa3ad"),B=sp.body,hw=sp.van?.95:.88,dark=g3L("#101114"),gl=g3L("#1b2430"),n=B.length,yb=B[0][1],cx=L/2;
@@ -77,7 +77,7 @@ function avMoto(sp,o){const G=new Geo,L=sp.len,Z=x=>L/2-x,pol=!!o.police,c=pol?g
   if(pol)G.box(-.14,.14,1.2,1.3,Z(.875)-.004,Z(.875),g3L("#1f4fa8"),1)}
  plates.push({y:.5,z:Z(.06)+.012,w:.2,h:.12,moto:true});wheels.push({z:Z(xr),lat:0,r,w:.16,k:"moto"},{z:Z(xf),lat:0,r,w:.13,k:"moto"});return{geo:G,wheels,plates}}
 /* krok 4 grafiky: vlastnosti laku podla auta – [metaliza 0/1, perlet 2 | vek 0..1 | spina | tonovane skla] */
-function avPP(o){if(!o)return AVPP0;if(o._pp&&o._pps===o.color)return o._pp;o._pps=o.color;if(o.police||o.model||o.trailer||o.bus||!o.color)return o._pp=AVPP0;const k=(o.mk||"")+o.color+(o.plate||"");let h=7;for(let i=0;i<k.length;i++)h=h*31+k.charCodeAt(i)>>>0;const c=o.color.toLowerCase(),lux=/Aurex|Bavaro|Mervana|Lumeo|Nordvik|Pfalzer|Voltara|Varzetti|Moorland/.test(o.mk||""),old=!lux&&(h>>>7)%100<12,age=old?.45+(h>>>3)%50/100:0;
+function avPP(o){if(!o)return AVPP0;if(o.avDirt>0)return[0,0,o.avDirt,0];if(o._pp&&o._pps===o.color)return o._pp;o._pps=o.color;if(o.police||o.model||o.trailer||o.bus||!o.color)return o._pp=AVPP0;const k=(o.mk||"")+o.color+(o.plate||"");let h=7;for(let i=0;i<k.length;i++)h=h*31+k.charCodeAt(i)>>>0;const c=o.color.toLowerCase(),lux=/Aurex|Bavaro|Mervana|Lumeo|Nordvik|Pfalzer|Voltara|Varzetti|Moorland/.test(o.mk||""),old=!lux&&(h>>>7)%100<12,age=old?.45+(h>>>3)%50/100:0;
  const metal=old?0:c==="#f2efe6"?2:c==="#eceff2"?((h>>>5)%100<25?2:0):(h%100<62?1:(h%100<70?2:0));return o._pp=[metal,age,old?.35:(h>>>13)%100<18?.25:0,(h>>>11)%100<(lux?55:22)?1:0]}
 const AVPP0=[0,0,0,0];
 /* krok 5 grafiky: poskodenie po naraze, vystrazne svetla, svetlomety premavky, vzory majakov */
@@ -108,7 +108,7 @@ function avCrush(r,sp,o){const lf=o.dmF|0,lr=o.dmR|0,sa=o.dmA|0,sb=o.dmB|0;if(!l
   if(lv>1)for(let i=0;i+36<=N0;i+=36){if(A[i+9]!==3||A[i+6]!==gk[0]||A[i+7]!==gk[1])continue;const cx=(A[i]+A[i+12]+A[i+24])/3,cy=(A[i+1]+A[i+13]+A[i+25])/3,cz=(A[i+2]+A[i+14]+A[i+26])/3;if(cx*sd<hw*.5||cy<belt||Math.abs(cz-zc)>zl*.62||(i/36*7+h)%5===0)continue;for(let v=1;v<3;v++){A[i+v*12]=A[i];A[i+v*12+1]=A[i+1];A[i+v*12+2]=A[i+2]}}
   for(const q of Q)G.quad(q[0],q[1],q[2],q[3],q[4],0)}}
 /* krok 7: para z rozbiteho predku */
-function avPuff(k){const P=G3.avPf||(G3.avPf=[]);if(P[k])return P[k];const G=new Geo;G.blob(0,0,0,.5,.5,.5,[.86,.87,.89],41+k,7);G.blob(.28,.12,.1,.34,.32,.34,[.8,.81,.84],41+k,5);G.blob(-.22,.2,-.14,.3,.3,.3,[.9,.9,.92],41+k,3);return P[k]=g3Up(G)}
+function avPuff(k,d){const P=G3.avPf||(G3.avPf=[]),q=k+(d?3:0);if(P[q])return P[q];const G=new Geo,c=d?[[.6,.53,.41],[.55,.48,.37],[.66,.59,.46]]:[[.86,.87,.89],[.8,.81,.84],[.9,.9,.92]];G.blob(0,0,0,.5,.5,.5,c[0],41+k,7);G.blob(.28,.12,.1,.34,.32,.34,c[1],41+k,5);G.blob(-.22,.2,-.14,.3,.3,.3,c[2],41+k,3);return P[q]=g3Up(G)}
 function avSteam(sh,gl2,now){if(!gl2||!sh.W)return;const hp=sh.hp,T=hTer(),D=sh.dv;const one=(o,x,z,a,sp,y,id)=>{if(o.avS0==null)o.avS0=now;const age=now-o.avS0,n=age<50?5:age<130?2:0;if(!n)return;const ca=Math.cos(a),sa=Math.sin(a),fx=x+ca*(sp.len/2-.5),fz=z+sa*(sp.len/2-.5),fy=y+(sp.fy||.8)+.12;for(let k=0;k<n;k++){const u=(now*.33+k/n+id*.37)%1,sc=.3+u*1.25,wob=Math.sin(u*5+k*2.1+id)*.25*u;gl2.push({m:avPuff(u<.3?0:u<.65?1:2),M:M4.trs(fx+wob-sa*.15*(k%2?1:-1),fy+u*2.4,fz+wob*.6,u*2+k,sc,sc*.9,sc)})}};
  for(const c of sh.cars){if(avDL(c.avDf)<2)continue;const dx=c.x-hp.x,dy=c.y-hp.y;if(dx*dx+dy*dy>14400)continue;const sp=avSp(c);if(!avCr(sp))continue;one(c,c.x,c.y,c.a,sp,T(c.x,c.y)+(c.e3||0),c.id||1)}
  if(sh.drv&&D&&avDL(D.dmF||0)>1){const sp=SPECS[copCar().type];if(avCr(sp))one(D,hp.x,hp.y,sh.fl.hd,sp,T(hp.x,hp.y)+(D.el||0),0)}}
@@ -124,6 +124,18 @@ function avHud(){const cv=$("#h-cv"),sh=S.shift;if(!cv||!sh||!sh.dv)return;const
 /* krok 10: pohyb karoserie - naklon v zakrute, predklon pri brzdeni, natacanie prednych kolies */
 function avTiltM(M,t){const p=t[0],b=t[1];if(Math.abs(p)<.002&&Math.abs(b)<.002)return M;const c=Math.cos(p),s=Math.sin(p),cb=Math.cos(b),sb=Math.sin(b),RX=new Float32Array([1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1]),RZ=new Float32Array([cb,sb,0,0,-sb,cb,0,0,0,0,1,0,0,0,0,1]);return M4.mul(M,M4.mul(M4.tr(0,.3,0),M4.mul(RZ,M4.mul(RX,M4.tr(0,-.3,0)))))}
 function avMotion(sh,now){const hp=sh.hp,D=sh.dv,dt=Math.max(0,Math.min(.1,now-(sh._mT==null?now:sh._mT)));sh._mT=now;if(dt<=0)return;
- const step=(o,a,v,st)=>{if(o._mA==null){o._mA=a;o._mV=v;o.avTl=[0,0];o.avSt=0;return}const yr=hAng(a-o._mA)/dt,ac=(v-o._mV)/dt;o._mA=a;o._mV=v;const k=Math.min(1,dt*7),pt=clamp(ac*.005,-.055,.035),rl=clamp(yr*v*.011,-.075,.075),sa=st!=null?st:clamp(yr*2.7/Math.max(3,Math.abs(v)),-.5,.5);o.avTl[0]+=(pt-o.avTl[0])*k;o.avTl[1]+=(rl-o.avTl[1])*k;o.avSt+=(sa-o.avSt)*k};
+ const step=(o,a,v,st)=>{if(o._mA==null){o._mA=a;o._mV=v;o.avTl=[0,0];o.avSt=0;return}const yr=hAng(a-o._mA)/dt,ac=(v-o._mV)/dt;o._mA=a;o._mV=v;o.avAc=ac;o.avLa=yr*v;const k=Math.min(1,dt*7),pt=clamp(ac*.005,-.055,.035),rl=clamp(yr*v*.011,-.075,.075),sa=st!=null?st:clamp(yr*2.7/Math.max(3,Math.abs(v)),-.5,.5);o.avTl[0]+=(pt-o.avTl[0])*k;o.avTl[1]+=(rl-o.avTl[1])*k;o.avSt+=(sa-o.avSt)*k};
  for(const c of sh.cars){if(c.park)continue;const dx=c.x-hp.x,dy=c.y-hp.y;if(dx*dx+dy*dy>22500){c._mA=null;continue}step(c,c.a,c.v||0)}
  if(sh.drv&&D)step(D,sh.fl.hd,D.v,D.st*.5*(1-.6*Math.min(1,Math.abs(D.v)/30)))}
+
+/* krok 11: brzdne stopy, dym z pneumatik, prach mimo cesty, spina */
+function avTrail(sh,gl2,now){const D=sh.dv,hp=sh.hp;if(!sh.drv||!D||!gl2)return;const sp=SPECS[copCar().type];if(!sp)return;const dt=Math.max(0,Math.min(.1,now-(D._trT==null?now:D._trT)));D._trT=now;
+ const T=hTer(),a=sh.fl.hd,ca=Math.cos(a),sa=Math.sin(a),av=Math.abs(D.v),zr=sp.len/2-Math.min(...sp.wh),lat=sp.moto?[0]:[-.78,.78],y=T(hp.x,hp.y)+(D.el||0);
+ const skid=!D.off&&(av>4&&!!KEYS[" "]||av>15&&(D.avAc||0)<-9||av>8&&Math.abs(D.avLa||0)>11),wx=sh.wx,wet=wx==="rain"||wx==="storm"||wx==="snow";
+ D.avDi=Math.min(.6,(D.avDi||0)+av*dt*(D.off?.0035:wet?.0005:.00002));
+ const K=D.avSk||(D.avSk={segs:[],last:null,mesh:null,dirty:false,t:0}),P=D.avPs||(D.avPs=[]),pts=lat.map(l=>[hp.x-ca*zr-sa*l,hp.y-sa*zr+ca*l]);
+ if(skid){if(K.last){const d=Math.hypot(pts[0][0]-K.last[0][0],pts[0][1]-K.last[0][1]);if(d>.25&&d<4){pts.forEach((p,i)=>K.segs.push([K.last[i][0],K.last[i][1],p[0],p[1],y]));K.last=pts;K.dirty=true;while(K.segs.length>420)K.segs.shift()}else if(d>=4)K.last=pts}else K.last=pts}else K.last=null;
+ if(K.dirty&&now-K.t>.1){K.dirty=false;K.t=now;const G=new Geo,c=[.012,.012,.015];for(const[x0,z0,x1,z1,yy]of K.segs){const dx=x1-x0,dz=z1-z0,l=Math.hypot(dx,dz)||1,nx=-dz/l*.1,nz=dx/l*.1,h=yy+.11;G.quad([x0-nx,h,z0-nz],[x0+nx,h,z0+nz],[x1+nx,h,z1+nz],[x1-nx,h,z1-nz],c,44);G.quad([x1-nx,h,z1-nz],[x1+nx,h,z1+nz],[x0+nx,h,z0+nz],[x0-nx,h,z0-nz],c,44)}for(let i=0;i<G.a.length;i+=12){G.a[i+3]=0;G.a[i+4]=1;G.a[i+5]=0}if(K.mesh)g3Free(K.mesh);K.mesh=G.a.length?g3Up(G):null}
+ if(K.mesh)gl2.push({m:K.mesh,M:M4.tr(0,0,0)});
+ const dust=D.off&&av>5;if((skid||dust)&&now-(D._psT||0)>(dust?.08:.09)){D._psT=now;const p=pts[(D._psN=(D._psN||0)+1)%pts.length];P.push([p[0],y+.15,p[1],now,dust?1:0]);if(P.length>44)P.shift()}
+ for(let i=P.length-1;i>=0;i--){const q=P[i],u=(now-q[3])/(q[4]?1.5:1.1);if(u>=1){P.splice(i,1);continue}const sc=.25+u*(q[4]?1.5:.8);gl2.push({m:avPuff(u<.3?0:u<.65?1:2,q[4]),M:M4.trs(q[0],q[1]+u*(q[4]?.7:.95),q[2],i*1.7,sc,sc*.8,sc)})}}
