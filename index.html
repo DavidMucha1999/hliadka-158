@@ -455,6 +455,21 @@ body.pvbg-on .pv .mm-tabs{background:rgba(12,21,38,.86);backdrop-filter:blur(7px
 @media (max-width:1400px){.pv-chip.xp{display:none}.pv-steps{grid-template-columns:1.2fr 1fr 1.1fr;gap:10px}.pv-top .mm-brand p{display:none}}
 @media (max-width:1100px){.pv-steps{grid-template-columns:1fr 1fr}.pv-s3{grid-column:1/-1}.pv-step:after{display:none}.pvr2 .pv-main,.pvr3 .pv-main,.pvr5{grid-template-columns:1fr}}
 @media (min-width:1800px){.pv .mm-mode b{font-size:1rem}.pv-step{padding:20px;gap:14px}.pv-step .pv-h{font-size:1.2rem}}
+</style><style id="av-css">
+/* karta sluzobneho auta v menu */
+#hero-wrap.av .hero-cap{display:none!important}
+.av-card{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(8,13,24,.8);border:1px solid rgba(140,175,235,.25);backdrop-filter:blur(6px);pointer-events:none;z-index:3;text-align:left}
+.av-card button{pointer-events:auto;width:30px;height:30px;padding:0;border-radius:50%;border:1px solid rgba(140,175,235,.35);background:rgba(255,255,255,.06);color:#fff;font-size:1.15rem;cursor:pointer;flex:none;line-height:1}
+.av-card button:hover{border-color:#6b8cff;background:rgba(107,140,255,.18)}
+.av-card button[disabled]{opacity:.3;cursor:default}
+.av-t{flex:1;min-width:0}
+.av-t b{display:block;color:#fff;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av-t small{display:block;color:#b9c3d6;font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av-s{display:flex;gap:4px 12px;margin-top:4px;flex-wrap:wrap}
+.av-s span{font-family:var(--f-mono,monospace);font-size:.74rem;color:#e8edf6;white-space:nowrap}
+.av-s i{font-style:normal;color:#8d98ad;margin-right:5px;text-transform:uppercase;font-size:.62rem;letter-spacing:.08em}
+.av-k{font-size:.68rem;color:#8d98ad;flex:none}
+@media (max-height:820px){.av-t small{display:none}.av-card{padding:5px 8px;bottom:6px}.av-s{flex-wrap:nowrap;gap:9px;margin-top:2px;overflow:hidden}.av-s span{font-size:.68rem}.av-t b{font-size:.92rem}}
 </style></head><body>
 
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -4575,6 +4590,12 @@ function avLights(sh,extra,ga,now){if(!sh.W||!sh.W.net)return;const hp=sh.hp,T=h
 {const x0=hX3D;hX3D=function(sh,C,extra,list,persons,ga,glass2,now){x0.apply(this,arguments);try{avLights(sh,extra,ga,now)}catch(e){if(!avLights.w){avLights.w=1;console.warn("avl",e)}}}}
 /* skupina 3: znacka a model v radare a hlaseniach */
 function avName(c){const m=c.pc&&c.pc.mk||avMk(c);if(m)return m.m+" "+m.mo;const t={"kamión":"truck","autobus":"bus","traktor":"tractor"}[c.kind];if(t){if(!c.avN){const x=pickMake(t);c.avN=x?x.m+" "+x.mo:c.kind}return c.avN}return c.kind}
+/* skupina 4: karta sluzobneho auta v menu – nazov, vykon, vyber auta */
+function avCard(){const wrap=$("#hero-wrap");if(!wrap)return;const old=wrap.querySelector(".av-card");if(old)old.remove();const cop=copCar();if(!cop)return;const fixed=S.save.mode==="civil"||S.save.mode==="moto",L=COPS.map((c,i)=>i).filter(i=>copOK(COPS[i])),k=L.indexOf(COPS.indexOf(cop)),one=fixed||L.length<2,el=document.createElement("div");el.className="av-card";const dur=Math.max(1,Math.min(5,Math.round(((cop.crash||.5)-.3)/.5*4)+1)),z=String(cop.z).replace(".",",");
+ el.innerHTML=`<button data-d="-1" ${one?"disabled":""} title="Predchádzajúce auto">‹</button><div class="av-t"><b>${esc(cop.name)}</b><small>${esc(cop.sub||"")}</small><div class="av-s"><span><i>Max</i>${cop.top} km/h</span><span><i>0–100</i>${z} s</span><span><i>Odolnosť</i>${"●".repeat(dur)}${"○".repeat(5-dur)}</span></div></div><span class="av-k">${(k<0?0:k)+1} / ${L.length}</span><button data-d="1" ${one?"disabled":""} title="Ďalšie auto">›</button>`;
+ wrap.classList.add("av");wrap.appendChild(el);
+ el.querySelectorAll("button").forEach(b=>{b.onpointerdown=e=>e.stopPropagation();b.onclick=e=>{e.stopPropagation();if(one)return;S.save.copIdx=L[((k<0?0:k)+(+b.dataset.d)+L.length)%L.length];persist();try{SFX.play("click")}catch(x){}renderMenu()}})}
+{const rm=renderMenu;renderMenu=function(){const r=rm.apply(this,arguments);try{avCard()}catch(e){console.warn("avcard",e)}return r}}
 /*</auta-av>*/{const _go=d=>{showLoad();gzReady().then(()=>{start(d);hideLoad()})};window.claude?.hot?.ready?window.claude.hot.ready(_go):_go(window.claude?.hot?.data??{})}})();
 </script>
 

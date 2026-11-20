@@ -1,0 +1,14 @@
+/* karta sluzobneho auta v menu */
+#hero-wrap.av .hero-cap{display:none!important}
+.av-card{position:absolute;left:10px;right:10px;bottom:10px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(8,13,24,.8);border:1px solid rgba(140,175,235,.25);backdrop-filter:blur(6px);pointer-events:none;z-index:3;text-align:left}
+.av-card button{pointer-events:auto;width:30px;height:30px;padding:0;border-radius:50%;border:1px solid rgba(140,175,235,.35);background:rgba(255,255,255,.06);color:#fff;font-size:1.15rem;cursor:pointer;flex:none;line-height:1}
+.av-card button:hover{border-color:#6b8cff;background:rgba(107,140,255,.18)}
+.av-card button[disabled]{opacity:.3;cursor:default}
+.av-t{flex:1;min-width:0}
+.av-t b{display:block;color:#fff;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av-t small{display:block;color:#b9c3d6;font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av-s{display:flex;gap:4px 12px;margin-top:4px;flex-wrap:wrap}
+.av-s span{font-family:var(--f-mono,monospace);font-size:.74rem;color:#e8edf6;white-space:nowrap}
+.av-s i{font-style:normal;color:#8d98ad;margin-right:5px;text-transform:uppercase;font-size:.62rem;letter-spacing:.08em}
+.av-k{font-size:.68rem;color:#8d98ad;flex:none}
+@media (max-height:820px){.av-t small{display:none}.av-card{padding:5px 8px;bottom:6px}.av-s{flex-wrap:nowrap;gap:9px;margin-top:2px;overflow:hidden}.av-s span{font-size:.68rem}.av-t b{font-size:.92rem}}

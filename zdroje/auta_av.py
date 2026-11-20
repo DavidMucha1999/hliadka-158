@@ -37,4 +37,8 @@ patch("sportove modely podla novych nazvov","/GT|RS|M5|Inovec|Sokol|911|Kuna|Typ
 patch("hlasenie vrtulnika so znackou",'`Potvrdzujem, vozidlo ${o.col[0]} ${o.kind}, ${hEdgeName(sh.W,o.e)}.','`Potvrdzujem, vozidlo ${o.col[0]} ${avName(o)}, ${hEdgeName(sh.W,o.e)}.')
 js=os.path.join(here,"auta","av.js")
 if os.path.exists(js): block("auta-av",open(js,encoding="utf8").read())
+css=os.path.join(here,"auta","av.css")
+if os.path.exists(css):
+    d=re.sub(r'<style id="av-css">.*?</style>',"",d,flags=re.S)
+    i=d.find("</head>");d=d[:i]+'<style id="av-css">'+chr(10)+open(css,encoding="utf8").read()+'</style>'+d[i:]
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))
