@@ -2,6 +2,10 @@
 
 Najnovšie zmeny sú hore.
 
+## 20. 11. 2026
+
+- **Život v uliciach:** stromoradia pozdĺž mestských ulíc, lavičky s košmi, autobusové zastávky priamo v meste s čakajúcimi ľuďmi, lavičky a kvetinové záhony na námestí a v parkoch. Do stromov, lavičiek a košov sa dá naraziť.
+
 ## 19. 11. 2026
 
 - **Budovy v meste:** výklady s dverami, markízami a tlmenými farbami namiesto pestrých pásov, len na domoch s obchodom. Okná majú rámy, priečky a záclony, tvar okien sa líši podľa domu, pribudli rímsy pod strechou a nad prízemím. Rodinné domy už nemajú na prízemí výklady.
