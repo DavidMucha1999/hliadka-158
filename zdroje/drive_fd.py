@@ -28,6 +28,7 @@ patch("budovy fasada uv",OB,'{const n0=gg.a.length;'+OB+'hBldUv(gg,n0,Y,b,X0,X1,
 patch("budovy vyklady",'if(b.shop){const c=L2(shopC[Math.floor(R()*5)]);gg.box(X0-.15,X1+.15,Y+3.1,Y+3.7,Z0-.15,Z1+.15,c,12)}','if(b.shop){R();hShopFx(gg,W3,b,X0,X1,Z0,Z1,Y,rot)}')
 _i=d.index("else if(m==8.){vec2 c=uv/vec2(3.2,3.4);");_j=d.index("else if(m==9.){spec=1.4",_i)
 d=d[:_i]+open(os.path.join(here,"drive","fasada.glsl"),encoding="utf8").read().rstrip("\n")+"\n "+d[_j:];print("fasada shader: ok")
+patch("svetlomety auta",'if(N>.5&&fl.light!==false){const ga2=sh._gimAim,sx=','if(sh.drv){if(N>.3)fdHeadL(L2,sh,T,N)}else if(N>.5&&fl.light!==false){const ga2=sh._gimAim,sx=')
 OLDR='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
 patch("nastavenia dlzka sluzby",OLDR,'<div class="rrow"><span>Dĺžka služby za volantom</span><select id="fdl-pick"><option value="s" ${s.drvLen==="s"?"selected":""}>Krátka – 16 minút</option><option value="n" ${s.drvLen!=="s"&&s.drvLen!=="l"?"selected":""}>Štandardná – 32 minút</option><option value="l" ${s.drvLen==="l"?"selected":""}>Dlhá – 64 minút</option></select></div>'+chr(10)+'    '+OLDR)
 block("drive-fd",open(os.path.join(here,"drive","fd.js"),encoding="utf8").read())
