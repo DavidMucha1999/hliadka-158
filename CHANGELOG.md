@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 20. 11. 2026
 
+- **Rozmanitosť premávky:** časť kombi, SUV a hatchbackov vozí strešný box alebo bicykel na streche, dodávky majú firemné nápisy na bokoch a niektoré rebrík a rúry na streche, pickupy vozia náklad na korbe. Kamióny a autobusy sa po náraze vpredu a vzadu preliačia a môžu pariť.
 - **Stopy po jazde:** pri ručnej brzde, prudkom brzdení nad 54 km/h a v ostrej zákrute ostávajú na asfalte tmavé stopy zadných kolies a od pneumatík ide dym. Mimo cesty sa za autom dvíha prach. Služobné auto sa počas služby špiní, mimo cesty rýchlo, v daždi a snehu pomaly.
 - **Lak policajných áut:** policajné autá teraz používajú rovnaké vlastnosti laku ako ostatné, predtým sa im pre zvyšok starého nastavenia neposielali.
 - **Pohyb karosérie:** auto sa v zákrute nakláňa von, pri brzdení sa predkloní a pri rozjazde zakloní, kolesá ostávajú na ceste. Predné kolesá sa natáčajú podľa volantu. Platí pre tvoje auto aj autá premávky do 150 m.

@@ -38,7 +38,7 @@ patch("hlasenie vrtulnika so znackou",'`Potvrdzujem, vozidlo ${o.col[0]} ${o.kin
 # krok 1 grafiky vozidiel: farba laku sa posiela pri kresleni, jeden model sluzi pre vsetky farby
 patch("lak nastavenie v programe",'uniform float uGrade;uniform sampler2D uLit;','uniform float uGrade;uniform vec4 uPaint,uPaintP;uniform float uTint;uniform sampler2D uLit;')
 patch("lak v programe",'vec3 base=vC.rgb;vec3 n=normalize(vN);','vec3 base=vC.rgb;if(uPaint.a>.5){float pw=min(base.r,base.b)-base.g;if(pw>.004&&abs(base.r-base.b)<.012)base=uPaint.rgb*pw+vec3(base.g);}vec3 n=normalize(vN);')
-patch("deformacia kluc modelu",'o.mk||"",o.kn||"",o.model?','o.mk||"",(o.dmF|0)+"d"+(o.dmR|0)+(o.dmA|0)+(o.dmB|0),o.kn||"",o.model?')
+patch("deformacia kluc modelu",'o.mk||"",o.kn||"",o.model?','o.mk||"",(o.dmF|0)+"d"+(o.dmR|0)+(o.dmA|0)+(o.dmB|0)+(o.acc||"")+(o.firm||""),o.kn||"",o.model?')
 patch("stopy material",'else if(m==4.){emis=.06+3.*uFlash.x;}','else if(m==44.){spec=0.;env=0.;alpha=.72;}  else if(m==4.){emis=.06+3.*uFlash.x;}')
 patch("stopy hlbka",'mb==35.?4.:0.','mb==35.?4.:mb==44.?5.:0.')
 patch("naklon matica",'const vm=g3Veh(v.sp,v.o),M=M4.trs(v.x,v.y||0,-v.d,v.yaw);if(vm.tex)','const vm=g3Veh(v.sp,v.o),M0=M4.trs(v.x,v.y||0,-v.d,v.yaw),M=v.tilt?avTiltM(M0,v.tilt):M0;if(vm.tex)')
