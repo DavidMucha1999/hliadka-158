@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Opravy mapy hliadky:** rieka v meste už netečie po ulici, vedie stredom radu blokov a každá ulica ju prechádza kolmým mostom. Štadión dostal dva bloky a ulica, ktorá viedla cez tribúny, je zrušená; tribúny sú pevná prekážka. Domy, kostoly a majere už nestoja vo vode ani na ceste, lesné cesty majú cez rieku mostík. Cesta na záložnú základňu už nevedie uhlopriečne cez celé mesto a cesta na hlavnú základňu nesplýva s cestou II/503.
 - **Dorobené detaily áut:** čelné sklo, kapota a strecha sú zakrivené naprieč, volant je veniec s ramenami namiesto plného valca, spätné zrkadlá sú oblejšie, svetlomety majú dva chrómové projektory a zadné svetlá rám s rebrami.
 - **Povrch a tieňovanie áut:** spodok karosérie je smerom k prahu tmavší, lak má silnejší odlesk pri pohľade pod ostrým uhlom a tieň pod autom má tmavšie jadro.
 - **Sklá a interiér:** predné sedadlá majú opierky hlavy, vzadu je sedák s opierkami, medzi sedadlami stredová konzola s radiacou pákou, pred vodičom prístrojový štít so svietiacimi prístrojmi a v strede displej. Na čelnom skle je vnútorné spätné zrkadlo, tmavý lem dole a tónovaný pás hore, zadné sklo má vlákna vyhrievania a tmavý lem.
