@@ -52,7 +52,7 @@ function avDecor(r,sp,o){const mk=o.mk||"",G=r.geo,L=sp.len,Z=x=>L/2-x;if(!G||!s
   B(.12,cb-.05,1,1.2,hw,or,1);B(.12,cb-.05,1.2,1.26,hw+.002,red,1);
   const cx=Math.min(cb-1,L*.38),cy=1.62;B(cx-.3,cx+.3,cy-.09,cy+.09,hw+.004,red,1);B(cx-.09,cx+.09,cy-.3,cy+.3,hw+.004,red,1);
   G.box(-.62,-.04,sp.h,sp.h+.15,Z(cb+.45),Z(cb+.15),bl,4);G.box(.04,.62,sp.h,sp.h+.15,Z(cb+.45),Z(cb+.15),bl,5);G.box(-.5,.5,sp.h,sp.h+.1,Z(.5),Z(.3),bl,4)}}
-{const g0=g3VehGeo;g3VehGeo=function(sp,o){o=o||{};if(o.lod&&sp.body)return avLow(sp,o);if(sp===SPECS.fire||/Hasiči/.test(o.mk||""))return avFire(sp,o);if(sp.moto&&!o.model)return avMoto(sp,o);const r=g0.apply(this,arguments);try{avDecor(r,sp,o);avBody(r,sp,o);avAcc(r,sp,o);avFace(r,sp,o);avCrush(r,sp,o)}catch(e){if(!avDecor.w){avDecor.w=1;console.warn("avdecor",e)}}return r}}
+{const g0=g3VehGeo;g3VehGeo=function(sp,o){o=o||{};if(o.lod&&sp.body)return avLow(sp,o);if(sp===SPECS.fire||/Hasiči/.test(o.mk||""))return avFire(sp,o);if(sp.moto&&!o.model)return avMoto(sp,o);const r=g0.apply(this,arguments);try{avDecor(r,sp,o);avBody(r,sp,o);avAcc(r,sp,o);avFace(r,sp,o);avInt(r,sp,o);avCrush(r,sp,o)}catch(e){if(!avDecor.w){avDecor.w=1;console.warn("avdecor",e)}}return r}}
 /* krok 3 grafiky: detaily karoserie, nova motorka, vlastna karoseria sportoveho kombi */
 SPECS.combis={len:4.99,h:1.42,body:[[0,.36,.06],[0,.94,.08],[.12,1.22,.14],[.6,1.4,.3],[3.15,1.42,.45],[3.92,.96,.3],[4.72,.82,.3],[4.99,.6,.14],[4.97,.34,.05]],win:[[.42,.99],[.72,1.33,.1],[3.08,1.34,.12],[3.72,.99]],pil:[1.35,2.4],wh:[1.02,4.02],r:.36,top:280,fy:.78,ty:1};
 {const k=COPS.find(c=>c.name==="Aurex Víchor Kombi");if(k)k.type="combis"}
@@ -194,3 +194,20 @@ function avWheel(kind){G3.avWh=G3.avWh||new Map;let m=G3.avWh.get(kind);if(m)ret
  for(const x of[-.2,0,.2])ring(x-.028,1.004,x+.028,1.004,tyre,0);for(const s of[-1,1])for(const a of[0,3.14]){G.quad(P(s*.52,a-.16,.79),P(s*.52,a+.16,.79),P(s*.513,a+.16,.87),P(s*.513,a-.16,.87),g3L("#34363a"),0)}
  m=g3Up(G);m.tris=G.a.length/36;G3.avWh.set(kind,m);return m}
 {const w0=g3WheelM;g3WheelM=function(kind,cal){if(kind==="truck"||kind==="tractor"||kind==="moto"||G3.avWf)return w0.apply(this,arguments);try{return avWheel(kind||"5")}catch(e){if(!avWheel.w){avWheel.w=1;console.warn("avwheel",e)}return w0.apply(this,arguments)}}}
+
+/* krok 17: skla a interier - opierky hlavy, zadne sedadla, stredova konzola, pristroje, displej, vnutorne zrkadlo, lem celneho skla, vyhrievanie zadneho skla */
+function avSy(A,N0,gk,x,z){let best=null;for(let i=0;i+36<=N0;i+=36){if(A[i+9]!==3||A[i+6]!==gk[0]||A[i+7]!==gk[1])continue;const x0=A[i],z0=A[i+2],x1=A[i+12],z1=A[i+14],x2=A[i+24],z2=A[i+26],d=(z1-z2)*(x0-x2)+(x2-x1)*(z0-z2);if(Math.abs(d)<1e-9)continue;const u=((z1-z2)*(x-x2)+(x2-x1)*(z-z2))/d,v=((z2-z0)*(x-x2)+(x0-x2)*(z-z2))/d,w=1-u-v;if(u<-.001||v<-.001||w<-.001)continue;const y=u*A[i+1]+v*A[i+13]+w*A[i+25];if(best==null||y>best)best=y}return best}
+function avInt(r,sp,o){const W3=sp.win;if(!W3||!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const G=r.geo,A=G.a,N0=A.length,L=sp.len,Z=x=>L/2-x,st=carStyle(o,sp),pil=sp.pil||[],bot=sp.body[0][1],belt=W3[0][1],w0=r.wheels&&r.wheels[0],hw=(w0?Math.abs(w0.lat):.8)+.13,dark=g3L("#141517"),gk=PCOL.glassK,Q=[];
+ /* skla */
+ const strip=(za,zb,xw,n,c,dy)=>{for(let i=0;i<n;i++){const xa=-xw+2*xw*i/n,xb=-xw+2*xw*(i+1)/n,P=[[xa,za],[xb,za],[xb,zb],[xa,zb]].map(p=>{const y=avSy(A,N0,gk,p[0],p[1]);return y==null?null:[p[0],y+(dy||.007),p[1]]});if(P.every(p=>p))Q.push([P[0],P[1],P[2],P[3],c])}};
+ const zfb=Z(W3[3][0]),zft=Z(W3[2][0]),zrt=Z(W3[1][0]),zrb=Z(W3[0][0]);
+ if(zft-zfb>.25){strip(zfb+.015,zfb+.085,hw*.82,8,dark);strip(zft-.075,zft-.012,hw*.6,6,[.02,.03,.05])}
+ if(zrb-zrt>.3&&!sp.van&&!sp.bed){for(let k=1;k<=5;k++){const z=zrt+(zrb-zrt)*(.15+k*.13);strip(z-.006,z+.006,hw*.5,6,[.09,.045,.025],.006)}strip(zrb-.07,zrb-.012,hw*.72,8,dark)}
+ if(!o.empty){const ix0=W3[0][0]+.1,ix1=W3[3][0]-.05,iy2=bot+.25,sx=(pil.length?pil[0]:(ix0+ix1)/2)-.1,seatC=g3L(st.lux?"#5a4636":"#232428"),trim=g3L("#1c1d20"),top=Math.min(belt+.42,sp.h-.14),hrT=Math.min(top+.19,sp.h-.06);
+  if(hrT-top>.08)for(const s of[-1,1]){G.bbox(s*.38-.115,s*.38+.115,top+.015,hrT,Z(sx-.06),Z(sx-.17),.04,seatC,0,{smooth:true});G.box(s*.38-.015,s*.38+.015,top-.02,top+.03,Z(sx-.1),Z(sx-.13),g3L("#8a9098"),9)}
+  if(ix0<sx-.6){G.bbox(-hw*.74,hw*.74,iy2,iy2+.34,Z(ix0+.9),Z(ix0+.4),.06,seatC,0,{smooth:true});const rt=Math.min(belt+.3,sp.h-.2),rh=Math.min(rt+.16,sp.h-.07);if(rh-rt>.07)for(const s of[-1,1])G.bbox(s*.36-.11,s*.36+.11,rt+.01,rh,Z(ix0+.4),Z(ix0+.28),.04,seatC,0,{smooth:true})}
+  G.bbox(-.1,.1,iy2,iy2+.3,Z(ix1-.36),Z(sx-.15),.03,trim,0);G.limb([0,iy2+.3,Z(ix1-.62)],[0,iy2+.42,Z(ix1-.66)],.014,.02,5,g3L("#0c0d0f"),0);
+  const dt=belt+.02;G.bbox(-.38-.2,-.38+.2,dt-.02,dt+.06,Z(ix1-.22),Z(ix1-.39),.03,trim,0,{smooth:true});G.quad([-.38-.15,dt-.015,Z(ix1-.392)],[-.38+.15,dt-.015,Z(ix1-.392)],[-.38+.15,dt+.04,Z(ix1-.392)],[-.38-.15,dt+.04,Z(ix1-.392)],[.25,.5,.75],12);
+  G.box(-.13,.13,belt-.13,dt+.02,Z(ix1-.385),Z(ix1-.4),g3L("#0c0d0f"),0);G.quad([-.115,belt-.115,Z(ix1-.402)],[.115,belt-.115,Z(ix1-.402)],[.115,dt+.005,Z(ix1-.402)],[-.115,dt+.005,Z(ix1-.402)],[.12,.3,.5],12);
+  const mx=W3[2][0]-.2,my=W3[2][1]-.09;G.box(-.1,.1,my-.035,my+.03,Z(mx)-.012,Z(mx)+.012,g3L("#0c0d0f"),0);G.box(-.012,.012,my+.03,my+.09,Z(mx)-.01,Z(mx)+.02,g3L("#0c0d0f"),0)}
+ for(const q of Q){G.quad(q[0],q[1],q[2],q[3],q[4],0);G.quad(q[3],q[2],q[1],q[0],q[4],0)}}
