@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Dorobené detaily áut:** čelné sklo, kapota a strecha sú zakrivené naprieč, volant je veniec s ramenami namiesto plného valca, spätné zrkadlá sú oblejšie, svetlomety majú dva chrómové projektory a zadné svetlá rám s rebrami.
 - **Povrch a tieňovanie áut:** spodok karosérie je smerom k prahu tmavší, lak má silnejší odlesk pri pohľade pod ostrým uhlom a tieň pod autom má tmavšie jadro.
 - **Sklá a interiér:** predné sedadlá majú opierky hlavy, vzadu je sedák s opierkami, medzi sedadlami stredová konzola s radiacou pákou, pred vodičom prístrojový štít so svietiacimi prístrojmi a v strede displej. Na čelnom skle je vnútorné spätné zrkadlo, tmavý lem dole a tónovaný pás hore, zadné sklo má vlákna vyhrievania a tmavý lem.
 - **Kolesá:** pneumatiky sú zaoblené, majú dezén s drážkami a značku na bočnici, disky sú hlbšie, lúče majú hrúbku, za nimi je brzdový kotúč a v strede matice. Štyri štýly diskov: päťlúčový, hustý, tmavý s dvojitými lúčmi a oceľový s krytom. Autá ďalej než 50 m používajú pôvodné úsporné kolesá.
