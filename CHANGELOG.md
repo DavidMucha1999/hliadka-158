@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Svetlá a počasie na autách:** v noci, v daždi, hmle a snežení majú autá žiaru okolo svetlometov a zadných svetiel, rozbité svetlo nežiari. Na mokrej ceste sa za rýchlejšími autami dvíha vodná triešť. Staré autá pri rozjazde vypúšťajú tmavý dym z výfuku. Špina na karosérii je výraznejšia a siaha vyššie.
 - **Hodnotenie zadržania:** keď vodiča oprávnene zadržíš, napríklad po pokuse o úplatok, reputácia už neklesne za jeho ďalšie priestupky, ktoré si nezapísal do záznamu. Vo vyhodnotení sú uvedené ako doriešené na útvare. Bonus za odmietnutý úplatok dostaneš vždy, keď vodiča zadržíš.
 - **Nápisy na čele autobusu a kamióna:** číslo linky na autobuse a značka na kabíne kamióna boli zrkadlovo obrátené. Opravené.
 
