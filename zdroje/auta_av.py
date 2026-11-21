@@ -39,6 +39,8 @@ patch("hlasenie vrtulnika so znackou",'`Potvrdzujem, vozidlo ${o.col[0]} ${o.kin
 patch("lak nastavenie v programe",'uniform float uGrade;uniform sampler2D uLit;','uniform float uGrade;uniform vec4 uPaint,uPaintP;uniform float uTint;uniform sampler2D uLit;')
 patch("lak v programe",'vec3 base=vC.rgb;vec3 n=normalize(vN);','vec3 base=vC.rgb;if(uPaint.a>.5){float pw=min(base.r,base.b)-base.g;if(pw>.004&&abs(base.r-base.b)<.012)base=uPaint.rgb*pw+vec3(base.g);}vec3 n=normalize(vN);')
 patch("deformacia kluc modelu",'o.mk||"",o.kn||"",o.model?','o.mk||"",(o.dmF|0)+"d"+(o.dmR|0)+(o.dmA|0)+(o.dmB|0)+(o.acc||"")+(o.firm||""),o.kn||"",o.model?')
+patch("autobus napis linky",'[0,0,0],15,[[dd[0],dd[3]],[dd[2],dd[3]],[dd[2],dd[1]],[dd[0],dd[1]]]','[0,0,0],15,[[dd[2],dd[3]],[dd[0],dd[3]],[dd[0],dd[1]],[dd[2],dd[1]]]')
+patch("kamion napis znacky",'dark,14,[[ld[0],ld[3]],[ld[2],ld[3]],[ld[2],ld[1]],[ld[0],ld[1]]]','dark,14,[[ld[2],ld[3]],[ld[0],ld[3]],[ld[0],ld[1]],[ld[2],ld[1]]]')
 patch("stopy material",'else if(m==4.){emis=.06+3.*uFlash.x;}','else if(m==44.){spec=0.;env=0.;alpha=.72;}  else if(m==4.){emis=.06+3.*uFlash.x;}')
 patch("stopy hlbka",'mb==35.?4.:0.','mb==35.?4.:mb==44.?5.:0.')
 patch("naklon matica",'const vm=g3Veh(v.sp,v.o),M=M4.trs(v.x,v.y||0,-v.d,v.yaw);if(vm.tex)','const vm=g3Veh(v.sp,v.o),M0=M4.trs(v.x,v.y||0,-v.d,v.yaw),M=v.tilt?avTiltM(M0,v.tilt):M0;if(vm.tex)')

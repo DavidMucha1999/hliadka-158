@@ -2,6 +2,10 @@
 
 Najnovšie zmeny sú hore.
 
+## 21. 11. 2026
+
+- **Nápisy na čele autobusu a kamióna:** číslo linky na autobuse a značka na kabíne kamióna boli zrkadlovo obrátené. Opravené.
+
 ## 20. 11. 2026
 
 - **Rozmanitosť premávky:** časť kombi, SUV a hatchbackov vozí strešný box alebo bicykel na streche, dodávky majú firemné nápisy na bokoch a niektoré rebrík a rúry na streche, pickupy vozia náklad na korbe. Kamióny a autobusy sa po náraze vpredu a vzadu preliačia a môžu pariť.
