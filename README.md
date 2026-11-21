@@ -4,7 +4,7 @@ Hra o službe dopravnej polície, ktorá beží priamo v prehliadači na počít
 
 **▶ [Spustiť hru](https://davidmucha1999.github.io/hliadka-158/)**
 
-Netreba nič inštalovať. Hra je určená pre počítač s klávesnicou a myšou (Chrome, Edge alebo Firefox). Prvé načítanie trvá pár sekúnd.
+Netreba nič inštalovať. Hra je určená pre počítač s klávesnicou a myšou (Chrome, Edge alebo Firefox). Prvé načítanie trvá pár sekúnd. Pri prvom otvorení sa spustí testovací profil, v ktorom sú všetky režimy, autá a vylepšenia odomknuté, takže si hru možno hneď pozrieť celú.
 
 ## Čo v hre je
 
@@ -12,6 +12,7 @@ Netreba nič inštalovať. Hra je určená pre počítač s klávesnicou a myšo
 - **Interaktívna 3D scéna kontroly** – pohľad do auta s miestami na preskúmanie, v noci s baterkou.
 - **Hliadka za volantom** – jazda policajným autom po mape okresu 6 × 6 km, radar v aute, navigácia po cestách, výjazdy od vysielačky a naháňačky so zátarasom.
 - **Letecký útvar** – vrtuľník s misiami nad tou istou mapou.
+- **Ďalšie druhy služby** – diaľničná motorka, hraničná, mestská a vodná polícia, kriminálka, služba v civile, operačné stredisko, výjazdová jednotka a akadémia. Spolu 12 druhov služby.
 - **Vyhodnotenie zmeny** – známka, štatistiky a rozbor chýb po každej službe.
 
 ## Ovládanie v skratke
@@ -30,5 +31,5 @@ Netreba nič inštalovať. Hra je určená pre počítač s klávesnicou a myšo
 ## Zdrojový kód
 
 - [`index.html`](index.html) – zostavená hra.
-- [`zdroje/`](zdroje) – skripty a moduly, ktorými sa do hry vkladajú jednotlivé úpravy (cestná kontrola, 3D scéna, Hliadka za volantom, obrazovka O hre). Popis je v [`zdroje/README.md`](zdroje/README.md). Základná záloha hry, od ktorej sa zostavuje, v repozitári nie je.
+- [`zdroje/`](zdroje) – skripty a moduly, ktorými sa do hry vkladajú jednotlivé úpravy (cestná kontrola, 3D scéna, Hliadka za volantom, vozidlá, mapa, obrazovka O hre). Popis je v [`zdroje/README.md`](zdroje/README.md). Základná záloha hry, od ktorej sa zostavuje, v repozitári nie je.
 - [`CHANGELOG.md`](CHANGELOG.md) – zoznam zmien.

@@ -9,7 +9,7 @@ Hru sa dá kedykoľvek zostaviť znova od zálohy.
 sh postav.sh
 ```
 
-Postup: `zalohy/pred-grafika.html` → `grafika.py` → `stop_f1.py` … `stop_f5.py` → `stop_f7.py` → `stop_f8.py` → `stop_f9.py` → `chase_sipka.py` → `drive_fd.py` → `info_o.py` → `menu_pv.py` → `../Hliadka 158.html`.
+Postup: `zalohy/pred-grafika.html` → `grafika.py` → `stop_f1.py` … `stop_f5.py` → `stop_f7.py` → `stop_f8.py` → `stop_f9.py` → `chase_sipka.py` → `drive_fd.py` → `info_o.py` → `menu_pv.py` → `auta_av.py` → `mapa_mo.py` → `cv_uprava.py` → `../Hliadka 158.html`.
 
 
 ## Obsah
@@ -29,9 +29,12 @@ Postup: `zalohy/pred-grafika.html` → `grafika.py` → `stop_f1.py` … `stop_f
 | `drive_fd.py` + `drive/fd.*` | Nový režim Hliadka za volantom: jazda policajným autom po mape, radar a zastavovanie vozidiel, navigácia s minimapou a mapou (M), výjazdy od vysielačky, naháňačky so zátarasom a vytlačením (kroky 1 – 4) |
 | `info_o.py` + `info/o.*` | Obrazovka „O hre“ v hlavnom menu |
 | `menu_pv.py` + `menu/pv.*` | Vzhľad hlavnej obrazovky: päť rozložení a pôvodné, voľba v Nastaveniach |
-| `nahlad/` | Ukážková kópia hry s prepínačom návrhov menu (pomôcka pri výbere, nie je súčasťou hry) |
+| `auta_av.py` + `auta/` | Vozidlá: vlastný generátor karosérií namiesto vložených modelov, značky a typy áut v premávke, poškodenie, pohyb karosérie, stopy, svetlá, kolesá, interiér |
+| `mapa_mo.py` | Opravy mapy hliadky: rieka mimo ulíc, štadión mimo ciest, budovy mimo vody a ciest, cesta na základňu |
+| `cv_uprava.py` | Hlavička stránky (jazyk, popis, ikona), oprava oznamu testovacieho profilu, údaj o modeloch áut |
+| `nahlad/` | Ukážková kópia hry s prepínačom návrhov menu (pomôcka pri výbere, nie je súčasťou hry ani repozitára) |
 | `zverejni.sh` | Skopíruje hru a zdroje do priečinka `github` a nahrá ich na GitHub |
-| `zalohy/pred-grafika.html` | Základ pre `postav.sh` (hra pred grafikou leteckého režimu) |
+| `zalohy/pred-grafika.html` | Základ pre `postav.sh` (hra pred grafikou leteckého režimu); zálohy nie sú v repozitári |
 | `zalohy/pred-f1.html` | Hra s grafikou, pred prestavbou kontroly |
 | `hlas_zvuk.py`, `hx/` | Staršie úpravy (hlas a zvuky, režim Posádka). Sú už obsiahnuté v zálohách, slúžia len ako referencia |
 

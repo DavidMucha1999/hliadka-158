@@ -9,7 +9,7 @@ function ohOpen(){const nC=new Set(LOCS.map(x=>x.ct)).size,st=[[MODES.length,"dr
  <h4>Ako vznikla</h4>
  <p>Osobný projekt. Autor: <b>David Mucha</b> – návrh hry, herné mechaniky a testovanie. Kód vznikal s pomocou AI nástrojov.</p>
  <h4>Technické údaje</h4>
- <p>Celá hra je jeden HTML súbor: čistý JavaScript, vlastné 3D vykresľovanie cez WebGL, zvuky generované v prehliadači. Nepoužíva server ani externé knižnice a postup ukladá len v prehliadači hráča. 3D modely áut: Kenney Car Kit (CC0).</p>
+ <p>Celá hra je jeden HTML súbor: čistý JavaScript, vlastné 3D vykresľovanie cez WebGL, zvuky generované v prehliadači. Nepoužíva server ani externé knižnice a postup ukladá len v prehliadači hráča. Autá kreslí vlastný generátor karosérií.</p>
  <div class="oh-b"><a class="btn" href="${OH_REPO}" target="_blank" rel="noopener">Zdrojový kód na GitHube ↗</a><button class="btn primary" id="oh-x">Zavrieť</button></div></div>`);
  const x=$("#oh-x");if(x){x.onclick=closeModal;x.focus()}}
 function ohBtn(){const b=document.querySelector("#scr-menu .mm-brand");if(!b||b.querySelector("#oh-o"))return;b.insertAdjacentHTML("beforeend",`<button class="btn ghost oh-o" id="oh-o" title="Čo je to za hru, čo obsahuje a ako vznikla">ℹ O hre</button>`);$("#oh-o").onclick=()=>{try{SFX.play("click")}catch(e){}ohOpen()}}

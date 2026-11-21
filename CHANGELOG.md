@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Kontrola pred zverejnením:** stránka má popis, jazyk a ikonu na karte prehliadača. Nový návštevník pri prvom otvorení uvidí oznam, že hrá v testovacom profile so všetkým odomknutým (oznam sa pre chybu nezobrazoval). Z obrazovky O hre a z Nastavení zmizla zmienka o cudzích modeloch áut, ktoré v hre už nie sú. Všetkých 12 druhov služby bolo spustených a prejdených bez chyby.
 - **Opravy mapy hliadky:** rieka v meste už netečie po ulici, vedie stredom radu blokov a každá ulica ju prechádza kolmým mostom. Štadión dostal dva bloky a ulica, ktorá viedla cez tribúny, je zrušená; tribúny sú pevná prekážka. Domy, kostoly a majere už nestoja vo vode ani na ceste, lesné cesty majú cez rieku mostík. Cesta na záložnú základňu už nevedie uhlopriečne cez celé mesto a cesta na hlavnú základňu nesplýva s cestou II/503.
 - **Dorobené detaily áut:** čelné sklo, kapota a strecha sú zakrivené naprieč, volant je veniec s ramenami namiesto plného valca, spätné zrkadlá sú oblejšie, svetlomety majú dva chrómové projektory a zadné svetlá rám s rebrami.
 - **Povrch a tieňovanie áut:** spodok karosérie je smerom k prahu tmavší, lak má silnejší odlesk pri pohľade pod ostrým uhlom a tieň pod autom má tmavšie jadro.
