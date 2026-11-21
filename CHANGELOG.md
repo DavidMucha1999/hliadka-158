@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Hodnotenie zadržania:** keď vodiča oprávnene zadržíš, napríklad po pokuse o úplatok, reputácia už neklesne za jeho ďalšie priestupky, ktoré si nezapísal do záznamu. Vo vyhodnotení sú uvedené ako doriešené na útvare. Bonus za odmietnutý úplatok dostaneš vždy, keď vodiča zadržíš.
 - **Nápisy na čele autobusu a kamióna:** číslo linky na autobuse a značka na kabíne kamióna boli zrkadlovo obrátené. Opravené.
 
 ## 20. 11. 2026
