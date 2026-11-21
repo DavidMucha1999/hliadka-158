@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Kolesá:** pneumatiky sú zaoblené, majú dezén s drážkami a značku na bočnici, disky sú hlbšie, lúče majú hrúbku, za nimi je brzdový kotúč a v strede matice. Štyri štýly diskov: päťlúčový, hustý, tmavý s dvojitými lúčmi a oceľový s krytom. Autá ďalej než 50 m používajú pôvodné úsporné kolesá.
 - **Predok a zadok áut:** autá majú vystúpený predný nárazník so spodným nasávaním a hmlovkami, rámy okolo svetlometov, rám masky, zadný nárazník s priehlbňou pre evidenčné číslo, odrazkami a koncovkami výfuku a hranu kufra nad zadnými svetlami. Evidenčné čísla sedia na nárazníkoch a pri náraze sa posunú s nimi. Spätné zrkadlá sú menšie a majú nožičku.
 - **Tvar karosérie:** všetky osobné autá majú zaoblenejšie rohy vpredu a vzadu, vypuklejšie boky, kabínu zúženú smerom k streche, vystúpené blatníky nad kolesami a klenutejšiu kapotu a strechu. Nápisy na bokoch sledujú zakrivený povrch. Policajná dodávka má nápis POLÍCIA na boku nákladného priestoru.
 - **Svetlá a počasie na autách:** v noci, v daždi, hmle a snežení majú autá žiaru okolo svetlometov a zadných svetiel, rozbité svetlo nežiari. Na mokrej ceste sa za rýchlejšími autami dvíha vodná triešť. Staré autá pri rozjazde vypúšťajú tmavý dym z výfuku. Špina na karosérii je výraznejšia a siaha vyššie.
