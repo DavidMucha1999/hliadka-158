@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 21. 11. 2026
 
+- **Predok a zadok áut:** autá majú vystúpený predný nárazník so spodným nasávaním a hmlovkami, rámy okolo svetlometov, rám masky, zadný nárazník s priehlbňou pre evidenčné číslo, odrazkami a koncovkami výfuku a hranu kufra nad zadnými svetlami. Evidenčné čísla sedia na nárazníkoch a pri náraze sa posunú s nimi. Spätné zrkadlá sú menšie a majú nožičku.
 - **Tvar karosérie:** všetky osobné autá majú zaoblenejšie rohy vpredu a vzadu, vypuklejšie boky, kabínu zúženú smerom k streche, vystúpené blatníky nad kolesami a klenutejšiu kapotu a strechu. Nápisy na bokoch sledujú zakrivený povrch. Policajná dodávka má nápis POLÍCIA na boku nákladného priestoru.
 - **Svetlá a počasie na autách:** v noci, v daždi, hmle a snežení majú autá žiaru okolo svetlometov a zadných svetiel, rozbité svetlo nežiari. Na mokrej ceste sa za rýchlejšími autami dvíha vodná triešť. Staré autá pri rozjazde vypúšťajú tmavý dym z výfuku. Špina na karosérii je výraznejšia a siaha vyššie.
 - **Hodnotenie zadržania:** keď vodiča oprávnene zadržíš, napríklad po pokuse o úplatok, reputácia už neklesne za jeho ďalšie priestupky, ktoré si nezapísal do záznamu. Vo vyhodnotení sú uvedené ako doriešené na útvare. Bonus za odmietnutý úplatok dostaneš vždy, keď vodiča zadržíš.
