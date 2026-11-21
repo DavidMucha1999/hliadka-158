@@ -162,3 +162,6 @@ function avSpray(sh,gl2,now){if(!gl2)return;const hp=sh.hp,T=hTer(),D=sh.dv,wx=s
  const tail=(x,z,a,sp,y,v,id,kind)=>{const ca=Math.cos(a),sa=Math.sin(a),hl=sp.len/2,n=3;for(let k=0;k<n;k++){const u=(now*(kind?.8:1.5)+k/n+id*.37)%1,b=hl+.2+u*(kind?1.6:Math.min(5,v*.22)),sc=kind?.3+u*.9:.45+u*1.3,l=kind?.45:(k%2?.55:-.55);gl2.push({m:avPuff(kind?(u<.4?0:u<.7?1:2):(u<.3?0:u<.6?1:2),kind?2:3),M:M4.trs(x-ca*b-sa*l,y+(kind?.32+u*.9:.25+u*.55),z-sa*b+ca*l,u*3+k,sc,sc*.7,sc)})}};
  for(const c of sh.cars){if(c.park||c.kind==="traktor")continue;const dx=c.x-hp.x,dy=c.y-hp.y,d=dx*dx+dy*dy;if(d>8100)continue;const v=c.v||0,sp=avSp(c),y=T(c.x,c.y)+(c.e3||0);if(wet&&v>8)tail(c.x,c.y,c.a,sp,y,v,c.id||1,0);else if(d<3600&&v>.4&&v<7&&c.avo&&avPP(c.avo)[1]>0&&(c.avAc||0)>.3)tail(c.x,c.y,c.a,sp,y,v,c.id||1,1)}
  if(wet&&sh.drv&&D&&D.v>8&&!D.off){const sp=SPECS[copCar().type];if(sp)tail(hp.x,hp.y,sh.fl.hd,sp,T(hp.x,hp.y)+(D.el||0),D.v,0,0)}}
+
+/* krok 14: tvar karoserie - vystupene blatniky */
+function avFl(sp,x,y,arR,wy){let f=0;for(const w of sp.wh){const d=Math.abs(x-w),R=arR+.22;if(d<R){const a=Math.cos(d/R*Math.PI/2),top=wy+arR+.08,yy=y<=top?1:Math.max(0,1-(y-top)/.3);f=Math.max(f,.048*a*a*yy)}}return f}
