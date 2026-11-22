@@ -52,7 +52,7 @@ function avDecor(r,sp,o){const mk=o.mk||"",G=r.geo,L=sp.len,Z=x=>L/2-x;if(!G||!s
   B(.12,cb-.05,1,1.2,hw,or,1);B(.12,cb-.05,1.2,1.26,hw+.002,red,1);
   const cx=Math.min(cb-1,L*.38),cy=1.62;B(cx-.3,cx+.3,cy-.09,cy+.09,hw+.004,red,1);B(cx-.09,cx+.09,cy-.3,cy+.3,hw+.004,red,1);
   G.box(-.62,-.04,sp.h,sp.h+.15,Z(cb+.45),Z(cb+.15),bl,4);G.box(.04,.62,sp.h,sp.h+.15,Z(cb+.45),Z(cb+.15),bl,5);G.box(-.5,.5,sp.h,sp.h+.1,Z(.5),Z(.3),bl,4)}}
-{const g0=g3VehGeo;g3VehGeo=function(sp,o){o=o||{};if(o.lod&&sp.body)return avLow(sp,o);if(sp===SPECS.fire||/Hasiči/.test(o.mk||""))return avFire(sp,o);if(sp.moto&&!o.model)return avMoto(sp,o);const r=g0.apply(this,arguments);try{avDecor(r,sp,o);avBody(r,sp,o);avAcc(r,sp,o);avFace(r,sp,o);avInt(r,sp,o);avCrush(r,sp,o);avBow(r,sp,o)}catch(e){if(!avDecor.w){avDecor.w=1;console.warn("avdecor",e)}}return r}}
+{const g0=g3VehGeo;g3VehGeo=function(sp,o){o=o||{};const V=avVar(sp,o);if(!V)return avGen.apply(this,arguments);const sv={body:sp.body,win:sp.win,pil:sp.pil,h:sp.h,fy:sp.fy,_rr:sp._rr};Object.assign(sp,V);try{return avGen.apply(this,arguments)}finally{Object.assign(sp,sv)}};const avGen=function(sp,o){o=o||{};if(o.lod&&sp.body)return avLow(sp,o);if(sp===SPECS.fire||/Hasiči/.test(o.mk||""))return avFire(sp,o);if(sp.moto&&!o.model)return avMoto(sp,o);const r=g0.apply(this,arguments);try{avDecor(r,sp,o);avBody(r,sp,o);avAcc(r,sp,o);avFace(r,sp,o);avInt(r,sp,o);avCrush(r,sp,o);avBow(r,sp,o)}catch(e){if(!avDecor.w){avDecor.w=1;console.warn("avdecor",e)}}return r}}
 /* krok 3 grafiky: detaily karoserie, nova motorka, vlastna karoseria sportoveho kombi */
 SPECS.combis={len:4.99,h:1.42,body:[[0,.36,.06],[0,.94,.08],[.12,1.22,.14],[.6,1.4,.3],[3.15,1.42,.45],[3.92,.96,.3],[4.72,.82,.3],[4.99,.6,.14],[4.97,.34,.05]],win:[[.42,.99],[.72,1.33,.1],[3.08,1.34,.12],[3.72,.99]],pil:[1.35,2.4],wh:[1.02,4.02],r:.36,top:280,fy:.78,ty:1};
 {const k=COPS.find(c=>c.name==="Aurex Víchor Kombi");if(k)k.type="combis"}
@@ -225,14 +225,14 @@ function avSh(sp,st,x,y,x0,x1,bot,belt){const B=belt-bot,yc=belt-B*.3,ss=(a,b,v)
  const yl=bot+B*.32;if(y<=yc+1e-4)d+=(sp.van?.008:.014)*fade*Math.max(0,Math.min(1,(y-yl)/(yc-yl)));
  if(sp.van||!sp.wh||sp.wh.length<2)return d;
  const wr=sp.wh[0],wf=sp.wh[sp.wh.length-1],hy=ss(bot+B*.22,yc,y)*(1-.45*ss(yc,belt,y)),gr=Math.exp(-Math.pow((x-wr)/.52,2)),gf=Math.exp(-Math.pow((x-wf)/.5,2));
- d+=((st.sport?.04:.028)*gr+.02*gf)*hy;
- const mid=(wr+wf)/2,half=(wf-wr)/2,u=(x-mid)/half;if(Math.abs(u)<1){const q=1-u*u,hy2=ss(bot+.1,bot+B*.45,y)*(1-ss(bot+B*.5,yc,y));d-=(st.sport?.026:.02)*q*q*hy2}
+ const hf=.65+(st.h>>>17)%8*.11,wsk=.5+(st.h>>>20)%6*.2;d+=((st.sport?.04:.028)*gr+.02*gf)*hy*hf;
+ const mid=(wr+wf)/2,half=(wf-wr)/2,u=(x-mid)/half;if(Math.abs(u)<1){const q=1-u*u,hy2=ss(bot+.1,bot+B*.45,y)*(1-ss(bot+B*.5,yc,y));d-=(st.sport?.026:.02)*q*q*hy2*wsk}
  return d}
 /* kabina sa v podoryse zuzuje dopredu aj dozadu */
 function avCab(sp,x){const W=sp.win;if(!W)return 1;const c=(W[0][0]+W[3][0])/2,h=(W[3][0]-W[0][0])/2,u=Math.max(-1.25,Math.min(1.25,(x-c)/h));return sp.van?1-.02*u*u:1-.055*u*u-(u<0?.035*u*u:0)}
 /* predok a zadok su v podoryse oble: rohy sa stiahnu dozadu, siroke plochy sa predtym rozdelia */
-function avBow(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const G=r.geo,w0=r.wheels&&r.wheels[0];if(!G||!w0)return;const hl=sp.len/2,hw=Math.abs(w0.lat)+.13,hwE=hw*.86,zone=sp.van?.4:.5,bF=sp.van?.08:.15,bR=sp.van?.05:.11,thr=.2,nz=.3;
- const near=z=>hl-Math.abs(z)<nz;
+function avBow(r,sp,o){let bFk=1,bRk=1;if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const G=r.geo,w0=r.wheels&&r.wheels[0];if(!G||!w0)return;const hl=sp.len/2,hw=Math.abs(w0.lat)+.13,hwE=hw*.86,zone=sp.van?.4:.5,bF=sp.van?.08:.15,bR=sp.van?.05:.11,thr=.2,nz=.3;
+ {const hm=avH(o.mk||"x"),k=.72+hm%7*.09;bFk=k;bRk=.8+(hm>>>4)%5*.1}const near=z=>hl-Math.abs(z)<nz;
  const sub=A0=>{let A=A0;for(let pass=0;pass<4;pass++){const O=[];let ch=0;for(let i=0;i+36<=A.length;i+=36){const P=[A.slice(i,i+12),A.slice(i+12,i+24),A.slice(i+24,i+36)];const sp2=[0,1,2].map(k=>{const a=P[k],b=P[(k+1)%3];return Math.abs(a[0]-b[0])>thr&&(near(a[2])||near(b[2]))});
     if(!sp2[0]&&!sp2[1]&&!sp2[2]){for(let k=0;k<36;k++)O.push(A[i+k]);continue}ch=1;
     const M=[0,1,2].map(k=>{if(!sp2[k])return null;const a=P[k],b=P[(k+1)%3],m=[];for(let q=0;q<12;q++)m[q]=(a[q]+b[q])/2;const l=Math.hypot(m[3],m[4],m[5])||1;m[3]/=l;m[4]/=l;m[5]/=l;m[9]=a[9];return m});
@@ -241,7 +241,22 @@ function avBow(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===
     else if(n===1){const k=sp2.indexOf(true),a=P[k],b=P[(k+1)%3],c=P[(k+2)%3];T(a,M[k],c);T(M[k],b,c)}
     else{const k=sp2.indexOf(false),a=P[k],b=P[(k+1)%3],c=P[(k+2)%3],mb=M[(k+1)%3],mc=M[(k+2)%3];T(a,b,mb);T(a,mb,mc);T(mc,mb,c)}}
    A=O;if(!ch)break}return A};
- const warp=A=>{for(let i=0;i+12<=A.length;i+=12){const x=A[i],z=A[i+2],d=hl-Math.abs(z);if(d>=zone)continue;const s=z<0?-1:1,bow=z<0?bF:bR,t=1-Math.max(0,d)/zone,w=t*t*(3-2*t),rr=Math.min(1.1,Math.abs(x)/hwE),g=bow*Math.pow(rr,2.6),gp=rr<1.1?2.6*bow*Math.pow(rr,1.6)/hwE*(x<0?-1:1):0,b=1-g*6*t*(1-t)/zone,a=-s*gp*w;
+ const warp=A=>{for(let i=0;i+12<=A.length;i+=12){const x=A[i],z=A[i+2],d=hl-Math.abs(z);if(d>=zone)continue;const s=z<0?-1:1,bow=z<0?bF*bFk:bR*bRk,t=1-Math.max(0,d)/zone,w=t*t*(3-2*t),rr=Math.min(1.1,Math.abs(x)/hwE),g=bow*Math.pow(rr,2.6),gp=rr<1.1?2.6*bow*Math.pow(rr,1.6)/hwE*(x<0?-1:1):0,b=1-g*6*t*(1-t)/zone,a=-s*gp*w;
    A[i+2]=z-s*g*w;const nx=A[i+3]-a/b*A[i+5],ny=A[i+4],nz=A[i+5]/b,l=Math.hypot(nx,ny,nz)||1;A[i+3]=nx/l;A[i+4]=ny/l;A[i+5]=nz/l}};
  const A=sub(G.a);if(A!==G.a){G.a.length=0;for(let i=0;i<A.length;i++)G.a.push(A[i])}warp(G.a);
  if(G.gl&&G.gl.a&&G.gl.a.length){const B=sub(G.gl.a);if(B!==G.gl.a){G.gl.a.length=0;for(let i=0;i<B.length;i++)G.gl.a.push(B[i])}warp(G.gl.a)}}
+
+/* krok 20: vlastna silueta pre kazdy model - profil typu karoserie sa pre model jemne pretvori */
+function avH(s){let h=7;for(let i=0;i<s.length;i++)h=h*31+s.charCodeAt(i)>>>0;return h}
+const AVVC=new Map;
+function avVar(sp,o){if(!sp||!sp.body||!sp.win||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||!o||!o.mk)return null;const key=Object.keys(SPECS).find(k=>SPECS[k]===sp)+"|"+o.mk+(o.police?"|p":"");if(AVVC.has(key))return AVVC.get(key);
+ const hm=avH(o.mk),hb=avH(o.mk.split(" ")[0]),rn=(h,i)=>(Math.imul(h^Math.imul(i+1,0x9E3779B1),2654435761)>>>0)/4294967296*2-1,R=i=>{const v=.65*rn(hm,i)+.35*rn(hb,i);return Math.sign(v)*Math.pow(Math.abs(v),.55)};
+ const W=sp.win,B=sp.body,bot=B[0][1],belt=W[0][1],h=sp.h,x0=B[1][0],x1=B[B.length-2][0],ss=(a,b,v)=>{if(b-a<1e-6)return v>=b?1:0;const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t)};
+ const van=!!sp.van,bed=!!sp.bed,low=sp===SPECS.coupe||sp===SPECS.sport,trunk=W[0][0]-x0>.6;
+ let dc=R(0)*.1,dr=R(1)*.2,dw=R(2)*.1,dh=R(3)*.05,db=R(4)*.045,dn=R(5)*.05,dt=R(6)*.06;
+ if(van){dc=dr=dw=db=dt=0;dn*=.5;dh*=.8}if(bed){dc=dr=dt=db=0}if(!trunk){dc*=.6;dt=0}if(low)dh*=.6;if(o.police)dh=0;
+ const cabC=(W[0][0]+W[3][0])/2,wp=p=>{const x=p[0],y=p[1],rf=ss(belt+.05,h-.06,y),rear=1-ss(W[1][0]+.05,cabC,x),front=ss(cabC,W[2][0]-.05,x),cab=ss(Math.max(x0,W[0][0]-.5),W[0][0],x)*(1-ss(W[3][0],Math.min(x1,W[3][0]+.5),x)),mid=ss(bot+.3,belt-.06,y)*(1-ss(belt+.04,h-.08,y)),m2=ss(bot+.15,bot+.4,y)*(1-rf),fr=ss(W[3][0]+.1,x1-.1,x),rr=trunk?1-ss(x0+.1,W[0][0]-.1,x):0;
+  const q=p.slice();q[0]=x+dc*cab-dr*rf*rear+dw*rf*front;q[1]=y+dh*rf+db*mid+dn*fr*m2+dt*rr*m2;return q};
+ const body=B.map((p,i)=>i===0||i===B.length-1?p.slice():wp(p));for(let i=1;i<body.length-1;i++){body[i][0]=Math.min(x1,Math.max(x0,body[i][0]));if(i>1)body[i][0]=Math.max(body[i][0],body[i-1][0])}
+ const win=W.map(wp);win[0][1]=win[3][1]=belt+db;for(let i=1;i<4;i++)win[i][0]=Math.max(win[i][0],win[i-1][0]+.1);
+ const V={body,win,pil:(sp.pil||[]).map(x=>x+dc),h:h+dh,fy:(sp.fy||.8)+dn,_rr:undefined};AVVC.set(key,V);return V}

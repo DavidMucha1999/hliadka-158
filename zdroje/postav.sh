@@ -16,4 +16,5 @@ PYTHONIOENCODING=utf8 python menu_pv.py "$G" >/dev/null || { echo "menu_pv.py zl
 PYTHONIOENCODING=utf8 python auta_av.py "$G" >/dev/null || { echo "auta_av.py zlyhal"; exit 1; }
 PYTHONIOENCODING=utf8 python mapa_mo.py "$G" >/dev/null || { echo "mapa_mo.py zlyhal"; exit 1; }
 PYTHONIOENCODING=utf8 python cv_uprava.py "$G" >/dev/null || { echo "cv_uprava.py zlyhal"; exit 1; }
+PYTHONIOENCODING=utf8 python syntax.py "$G" >/dev/null || { echo "CHYBA syntaxe v zostavenej hre"; exit 1; }
 echo "Hotovo: $G"
