@@ -100,7 +100,7 @@ patch('zapustena maska big','[cw*.48,bot+.13,fz-.004],[-cw*.48,bot+.13,fz-.004],
 patch('zapustena maska big body','for(let x=-cw*.42;x<cw*.42;x+=.06)fq(x,x+.03,y,y+.02,grC,9,.008)','for(let x=-cw*.36;x<cw*.34;x+=.06)fq(x,x+.03,y,y+.02,grC,9,.008)')
 patch('cire sklo material','else if(m==44.){spec=0.;env=0.;alpha=.72;}','else if(m==44.){spec=0.;env=0.;alpha=.72;}  else if(m==45.){spec=1.5;shin=170.;env=.6;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.1+.5*fr5;base=vec3(.5,.56,.62);}')
 patch('cire sklo vrstva','(t[9]===3?gl:op).push(...t)','(t[9]===3||t[9]===45?gl:op).push(...t)')
-patch('zapustene bocny diel svetlometu','sideQ(x1-(HL==="swept"?.45:.3),x1-.05,yA+.02,yB-.01,wht,13,null,.006,s)});','sideQ(x1-(HL==="swept"?.36:.24),x1-.1,yA+.03,yB-.02,[.78,.8,.82],9,null,.006,s)});')
+patch('zapustene bocny diel svetlometu','sideQ(x1-(HL==="swept"?.45:.3),x1-.05,yA+.02,yB-.01,wht,13,null,.006,s)});','});')
 # krok 22: skary a diely karoserie
 patch('skary a diely','const Rf=ring(x1),fz=Z(x1)-.006,','avPanel(G,sp,st,o,{ring,latAt,sideQ,seam,Z,x0,x1,bot,belt,W3,pil,arR,archY,NU,xs});const Rf=ring(x1),fz=Z(x1)-.006,')
 patch('skara dveri sirsia','const seam=(x,ya,yb,s)=>{const n=6;','const seam=(x,ya,yb,s)=>{const n=8;')
