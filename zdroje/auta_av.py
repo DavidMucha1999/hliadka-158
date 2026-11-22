@@ -106,4 +106,8 @@ patch('skary a diely','const Rf=ring(x1),fz=Z(x1)-.006,','avPanel(G,sp,st,o,{rin
 patch('skara dveri sirsia','const seam=(x,ya,yb,s)=>{const n=6;','const seam=(x,ya,yb,s)=>{const n=8;')
 # krok 23: kabriolet - nad otvorenou kabinou sa nekresli horna plocha
 patch('kabriolet otvorena kabina','if(gt){const f=.8,ia=','if(sp.cab&&xm>sp.cab[0]&&xm<sp.cab[1]){}else if(gt){const f=.8,ia=')
+# krok 24: opravy po velkom update - rozostup za privesom, uzsia listova maska
+patch('rozostup za privesom','const gap=ld.t-c.t-9;','const gap=ld.t-c.t-9-(ld.avTL||0);')
+patch('maska slim uzsia','fq(-cw*.42,cw*.42,fy-.06,fy+.02,dark,3);fq(-cw*.42,cw*.42,fy-.03,fy-.015,chrome,9,.007)','fq(-cw*.38,cw*.38,fy-.06,fy+.02,dark,3);fq(-cw*.38,cw*.38,fy-.03,fy-.015,chrome,9,.007)')
+patch('premavka pozera na dalsi usek','const rem=e.len-c.t,ni=c.dir>0?e.b:e.a,n=N[ni];','const rem=e.len-c.t,ni=c.dir>0?e.b:e.a,n=N[ni];if(!ld&&c.nx!=null&&rem<40&&!c.flee&&!c.emer){const l2=lanes.get(c.nx*2+(E[c.nx].a===ni?1:0));if(l2&&l2.length&&l2[0]!==c){const o2=l2[0],gap=rem+o2.t-9-(o2.avTL||0);vT=Math.min(vT,Math.max(0,gap*.7),o2.v+Math.max(0,gap)*.35)}}')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))
