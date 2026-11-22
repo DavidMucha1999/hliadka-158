@@ -110,4 +110,13 @@ patch('kabriolet otvorena kabina','if(gt){const f=.8,ia=','if(sp.cab&&xm>sp.cab[
 patch('rozostup za privesom','const gap=ld.t-c.t-9;','const gap=ld.t-c.t-9-(ld.avTL||0);')
 patch('maska slim uzsia','fq(-cw*.42,cw*.42,fy-.06,fy+.02,dark,3);fq(-cw*.42,cw*.42,fy-.03,fy-.015,chrome,9,.007)','fq(-cw*.38,cw*.38,fy-.06,fy+.02,dark,3);fq(-cw*.38,cw*.38,fy-.03,fy-.015,chrome,9,.007)')
 patch('premavka pozera na dalsi usek','const rem=e.len-c.t,ni=c.dir>0?e.b:e.a,n=N[ni];','const rem=e.len-c.t,ni=c.dir>0?e.b:e.a,n=N[ni];if(!ld&&c.nx!=null&&rem<40&&!c.flee&&!c.emer){const l2=lanes.get(c.nx*2+(E[c.nx].a===ni?1:0));if(l2&&l2.length&&l2[0]!==c){const o2=l2[0],gap=rem+o2.t-9-(o2.avTL||0);vT=Math.min(vT,Math.max(0,gap*.7),o2.v+Math.max(0,gap)*.35)}}')
+# krok 26: mäkky tien - 16 vzoriek s plynulym prechodom medzi bodmi tienovej mapy namiesto 9 ostrych
+OLD_SH=' float s=0.;for(int i=-1;i<=1;i++)for(int j=-1;j<=1;j++){float d=unpackD(texture2D(uShd,q.xy+vec2(float(i),float(j))*uShTx));s+=step(q.z-bb,d);}s/=9.;'
+NEW_SH=' float s=0.;vec2 st=q.xy/uShTx-.5,sb=floor(st),sf=st-sb;for(int i=-1;i<=2;i++)for(int j=-1;j<=2;j++){if(uShQ<.5&&(i<0||i>1||j<0||j>1))continue;float d=unpackD(texture2D(uShd,(sb+vec2(float(i),float(j))+.5)*uShTx));float wx,wy;if(uShQ<.5){wx=i==0?1.-sf.x:sf.x;wy=j==0?1.-sf.y:sf.y;}else{wx=i==-1?1.-sf.x:(i==2?sf.x:1.);wy=j==-1?1.-sf.y:(j==2?sf.y:1.);}s+=step(q.z-bb,d)*wx*wy;}if(uShQ>.5)s/=9.;'
+if NEW_SH in d: print("makky tien: uz")
+elif d.count(OLD_SH)<1: print("makky tien: VZOR");sys.exit(1)
+else:
+    print("makky tien: ok",d.count(OLD_SH));d=d.replace(OLD_SH,NEW_SH)
+patch('makky tien uniform','float shadowF(vec3 w,vec3 n,float bb){','uniform float uShQ;float shadowF(vec3 w,vec3 n,float bb){')
+patch('makky tien kvalita','gl.uniform1f(U2.uShTx,1/(G3.shSz||2048));','gl.uniform1f(U2.uShTx,1/(G3.shSz||2048));if(U2.uShQ)gl.uniform1f(U2.uShQ,G3.shQ!=null?G3.shQ:S.save.gfxq==="low"?0:1);')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

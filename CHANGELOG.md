@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 22. 11. 2026
 
+- **Mäkké tiene:** tieň pod autom a tiene budov už nemajú viditeľné kocky. Okraj tieňa sa počíta zo 16 vzoriek s plynulým prechodom namiesto 9 ostrých a v jazde tieň pokrýva menšie okolie, takže je o štvrtinu jemnejší. Platí pre strednú aj vysokú kvalitu vo všetkých 3D scénach.
+- **Menej kreslenia v jazde:** autá za kamerou a ďalej než 550 m sa už nekreslia (v testovacej scéne 72 vozidiel namiesto 160).
 - **Tvar svetlometov podľa značky a oprava zapustenia:** svetlomety už nie sú len obdĺžniky. Podľa značky majú šikmý, zužujúci sa alebo skosený obrys (šesť tvarov popri hranatých, okrúhlych a dvojitých). Zároveň je opravená chyba z kroku 3: priehlbiny svetiel a masky sa v skutočnosti nevytvárali, lebo čelo auta sa k špici zvažovalo a svetlá viseli na rovine pred kapotou. Čelo je teraz zvislé až po hornú hranu svetiel, svetlomety sedia o niekoľko centimetrov nižšie a svetlá aj maska sú naozaj zapustené na všetkých typoch, vpredu aj vzadu.
 - **Opravy po veľkom update áut:** do prívesu sa dá naraziť (hlásenie, poškodenie, −2 reputácie), autá za prívesom držia väčší odstup a príves vidno už z 300 m. Kabriolety majú vlastnú siluetu podľa modelu. Hatchbacky, kombi, SUV a dodávky majú na zadnom čele obrys piatych dverí s kľučkou, stierače majú rameno a lištu a zvyšné tri druhy masiek dostali hĺbku.
 - **Oprava premávky:** autá sa pred koncom úseku cesty pozerajú, či na ďalšom úseku niekto nestojí. Predtým do stojacej kolóny vošli a asi desatina stojacich áut sa prekrývala; teraz stoja s odstupom.
