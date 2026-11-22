@@ -104,4 +104,6 @@ patch('zapustene bocny diel svetlometu','sideQ(x1-(HL==="swept"?.45:.3),x1-.05,y
 # krok 22: skary a diely karoserie
 patch('skary a diely','const Rf=ring(x1),fz=Z(x1)-.006,','avPanel(G,sp,st,o,{ring,latAt,sideQ,seam,Z,x0,x1,bot,belt,W3,pil,arR,archY,NU,xs});const Rf=ring(x1),fz=Z(x1)-.006,')
 patch('skara dveri sirsia','const seam=(x,ya,yb,s)=>{const n=6;','const seam=(x,ya,yb,s)=>{const n=8;')
+# krok 23: kabriolet - nad otvorenou kabinou sa nekresli horna plocha
+patch('kabriolet otvorena kabina','if(gt){const f=.8,ia=','if(sp.cab&&xm>sp.cab[0]&&xm<sp.cab[1]){}else if(gt){const f=.8,ia=')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))
