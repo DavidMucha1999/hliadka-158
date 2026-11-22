@@ -12,11 +12,11 @@ function avLights(sh,extra,ga,now){if(!sh.W||!sh.W.net)return;const hp=sh.hp,T=h
  const rear=(x,z,a,sp,y,brk)=>{const ca=Math.cos(a),sa=Math.sin(a),hl=sp.len/2,yaw=Math.atan2(-ca,-sa);for(const s of brk?[1]:[-1,1])extra.push({m:avLens("r"),M:M4.trs(x-ca*(hl+.01)-sa*.64*s,y+(sp.ty||1)-.02,z-sa*(hl+.01)+ca*.64*s,yaw,.26,.1,.06)})};
  for(const c of sh.cars){if(c.kind==="traktor")continue;const dx=c.x-hp.x,dy=c.y-hp.y;if(dx*dx+dy*dy>28900)continue;const sp=avSp(c);if(sp.moto)continue;if(c.park){if((c.avDf||c.avDr)&&!avCr(sp))avDent(extra,c.x,c.y,c.a,sp,T(c.x,c.y)+(c.e3||0),c.avDf||0,c.avDr||0);continue}
   const pv=c._avv==null?c.v:c._avv;if(c.v<pv-.004)c._avb=now;c._avv=c.v;const brake=now-(c._avb||-9)<.35||c.v<.3,big=!!(sp.truck||sp.bus),y=T(c.x,c.y)+(c.e3||0);
-  let turn=0;const D0=sh.dv,hz=c.avDf>0||c.avDr>0||D0&&D0.st2===c&&!c.flee&&c.v<1;if(hz)turn=2;else if(D0&&D0.st2===c&&!c.flee)turn=1;else if(c.nx!=null&&E[c.nx]&&E[c.e]){const e=E[c.e],rem=e.len-c.t;if(rem<32){const ni=c.dir>0?e.b:e.a,ne=E[c.nx],P0=ne.a===ni?ne.pts:[...ne.pts].reverse(),da=hAng(Math.atan2(P0[1][1]-P0[0][1],P0[1][0]-P0[0][0])-c.a);if(Math.abs(da)>.55&&Math.abs(da)<2.8)turn=da>0?1:-1}}
+  let turn=0;const D0=sh.dv,hz=c.avDf>0||c.avDr>0||D0&&D0.st2===c&&!c.flee&&c.v<1;if(hz)turn=2;else if(D0&&D0.st2===c&&!c.flee)turn=1;else if(c.avTs)turn=c.avTs;
   if(brake&&!big)rear(c.x,c.y,c.a,sp,y-(c.avTl?c.avTl[0]:0)*sp.len/2,avDL(c.avDr)>1);
   if(turn&&bl){const ca=Math.cos(c.a),sa=Math.sin(c.a),hl=sp.len/2,lat=(big?1.02:.64)+.1,yaw=Math.atan2(-ca,-sa);for(const tn of turn===2?[-1,1]:[turn])for(const f of[-1,1]){if(big&&f<0)continue;const x=c.x+ca*(hl-.06)*f-sa*lat*tn,z=c.y+sa*(hl-.06)*f+ca*lat*tn,yy=y+(f>0?sp.fy||.8:(sp.ty||1)-.02);extra.push({m:avLens("a"),M:M4.trs(x,yy,z,yaw,.12,.1,.14)});ga.push(x,yy,z,1,.6,.1,.8,.5)}}if((c.avDf||c.avDr)&&!avCr(sp))avDent(extra,c.x,c.y,c.a,sp,y,c.avDf||0,c.avDr||0)}
  if(sh.drv&&sh.dv){const D=sh.dv,v=Math.abs(D.v),pv=D._avv==null?v:D._avv;if(v<pv-.004)D._avb=now;D._avv=v;const sp=SPECS[copCar().type];const py=T(hp.x,hp.y)+(D.el||0);if(sp&&!sp.moto&&now-(D._avb||-9)<.35)rear(hp.x,hp.y,sh.fl.hd,sp,py-(D.avTl?D.avTl[0]:0)*sp.len/2,avDL(D.dmR)>1);if(sp&&!sp.moto&&D.v<-.25){const a=sh.fl.hd,ca=Math.cos(a),sa=Math.sin(a),hl=sp.len/2+.012,yaw=Math.atan2(-ca,-sa),yy=py+(sp.ty||1)-.13;for(const s of[-1,1]){const x=hp.x-ca*hl-sa*.4*s,z=hp.y-sa*hl+ca*.4*s;extra.push({m:avLens("w"),M:M4.trs(x,yy,z,yaw,.13,.07,.05)});ga.push(x,yy,z,1,1,.95,.55,.45)}}if(sp&&!sp.moto&&!avCr(sp)&&(D.dmF||D.dmR))avDent(extra,hp.x,hp.y,sh.fl.hd,sp,py,D.dmF||0,D.dmR||0)}}
-{const x0=hX3D;hX3D=function(sh,C,extra,list,persons,ga,glass2,now){x0.apply(this,arguments);try{avCull(sh,C,list);avTow(sh,list);avMotion(sh,now);avLights(sh,extra,ga,now);avSteam(sh,glass2,now);avTrail(sh,glass2,now);avNight(sh,ga,now);avSpray(sh,glass2,now)}catch(e){if(!avLights.w){avLights.w=1;console.warn("avl",e)}}}}
+{const x0=hX3D;hX3D=function(sh,C,extra,list,persons,ga,glass2,now){x0.apply(this,arguments);try{avWorldCull(sh,C,extra);avCull(sh,C,list);avTow(sh,list);avMotion(sh,now);avLights(sh,extra,ga,now);avSteam(sh,glass2,now);avTrail(sh,glass2,now);avNight(sh,ga,now);avSpray(sh,glass2,now)}catch(e){if(!avLights.w){avLights.w=1;console.warn("avl",e)}}}}
 /* skupina 3: znacka a model v radare a hlaseniach */
 function avName(c){const m=c.pc&&c.pc.mk||avMk(c);if(m)return m.m+" "+m.mo;const t={"kamión":"truck","autobus":"bus","traktor":"tractor"}[c.kind];if(t){if(!c.avN){const x=pickMake(t);c.avN=x?x.m+" "+x.mo:c.kind}return c.avN}return c.kind}
 /* skupina 4: karta sluzobneho auta v menu – nazov, vykon, vyber auta */
@@ -369,3 +369,25 @@ function avLampShape(G,F,HL){const sh={swept:[.5,0,0,0],slim:[0,0,.35,0],C:[.15,
 /* krok 26: v jazde sa nekreslia auta za kamerou a velmi vzdialene; tien pokryva mensie okolie, takze je jemnejsi */
 function avCull(sh,C,list){if(!sh.drv||!C||!C.eye||!C.tgt)return;const ex=C.eye[0],ez=C.eye[2],fx=C.tgt[0]-ex,fz=C.tgt[2]-ez,fl=Math.hypot(fx,fz)||1;for(let i=list.length-1;i>=0;i--){const v=list[i],dx=v.x-ex,dz=-v.d-ez,al=(dx*fx+dz*fz)/fl;if(al<-45||dx*dx+dz*dz>302500)list.splice(i,1)}}
 {const r1=g3Render;g3Render=function(R){try{if(R&&R.custom&&R.shr>70&&S.shift&&S.shift.drv)R.shr=70}catch(e){}return r1.apply(this,arguments)}}
+
+/* krok 27: svet je rozdeleny na dlazdice 400 m. V jazde sa do tienovej mapy kreslia len dlazdice blizko auta
+   (tien pokryva 70 m, predtym sa kreslilo vsetko do 1 km) a na obrazovku len dlazdice v zabere kamery. */
+function avWorldCull(sh,C,extra){if(!sh.drv||!sh.g3w||!C||!C.eye||!C.tgt||G3.avNoCull)return;const g=sh.g3w,nw=performance.now();let mp=g.avMp;if(!mp||nw-g.avMpT>2000){mp=g.avMp=new Map;g.avMpT=nw;const add=o=>{if(!o)return;for(const k in o){const m=o[k];if(m){const q=k.split(",");mp.set(m,[+q[0],+q[1]])}}};add(g.ch);add(g.x&&g.x.ch);add(g.lo)}
+ const ex=C.eye[0],ez=C.eye[2];let fx=C.tgt[0]-ex,fz=C.tgt[2]-ez;const fl=Math.hypot(fx,fz)||1;fx/=fl;fz/=fl;const hp=sh.hp,sx=hp.x+fx*33,sz=hp.y+fz*33,SR=190,tn=1.6,CS=400;
+ for(const e of extra){const q=mp.get(e.m);if(!q)continue;const x0=q[0]*CS,z0=q[1]*CS,x1=x0+CS,z1=z0+CS;
+  if(!e.noSh){const dx=Math.max(x0-sx,0,sx-x1),dz=Math.max(z0-sz,0,sz-z1);if(dx>SR||dz>SR)e.noSh=true}
+  let bh=0,rt=0,lf=0;for(const cx of[x0,x1])for(const cz of[z0,z1]){const dx=cx-ex,dz=cz-ez,al=dx*fx+dz*fz,lt=-dx*fz+dz*fx;if(al<-25)bh++;if(lt-al*tn>40)rt++;if(-lt-al*tn>40)lf++}
+  if(bh===4||rt===4||lf===4)e.avHide=true}}
+
+/* krok 28: odbocovanie oblukom. Auto uz na krizovatke neskoci z jedneho useku na druhy s okamzitou zmenou smeru:
+   poslednych a prvych par metrov ide po obluku medzi svojim pruhom na starom a novom useku. */
+function avLaneP(E,ei,dir,t,c){const e=E[ei],s=dir>0?t:e.len-t,p=hPtAt(e.pts,e.cum,clamp(s,0,e.len)),a=p.a+(dir<0?Math.PI:0);let off=HROAD[e.type].off;if(e.type==="hwy")off=c.kind==="kamión"||c.kind==="autobus"||c.v<26?7.6:3.8;if(e.ow)off=0;return{x:p.x-Math.sin(a)*off,y:p.y+Math.cos(a)*off,a}}
+function avArc(sh,c){c.aE=c.a;if(c.park||!sh.W||!sh.W.net)return;const E=sh.W.net.E,e=E[c.e];if(!e)return;const rem=e.len-c.t;let A=null,B=null,u=0,R=0;
+ if(c.nx!=null&&c.nx!==c.e&&E[c.nx]){const ne=E[c.nx],ni=c.dir>0?e.b:e.a,nd=ne.a===ni?1:-1;
+  if(rem<32){const b0=avLaneP(E,c.nx,nd,Math.min(3,ne.len*.3),c),da=hAng(b0.a-c.aE);c.avTs=Math.abs(da)>.55&&Math.abs(da)<2.8?(da>0?1:-1):0;c.avTsE=c.nx}
+  R=Math.min(7,e.len*.45,ne.len*.45);if(rem<R&&R>1.5){A=avLaneP(E,c.e,c.dir,e.len-R,c);B=avLaneP(E,c.nx,nd,R,c);u=(R-rem)/(2*R)}}
+ if(!A&&c.prevE!=null&&c.prevE!==c.e&&E[c.prevE]){const pe=E[c.prevE],n0=c.dir>0?e.a:e.b;if(pe.a===n0||pe.b===n0){const pd=pe.b===n0?1:-1;R=Math.min(7,e.len*.45,pe.len*.45);if(c.t<R&&R>1.5){A=avLaneP(E,c.prevE,pd,pe.len-R,c);B=avLaneP(E,c.e,c.dir,R,c);u=.5+c.t/(2*R)}else if(c.avTsE===c.e){c.avTs=0;c.avTsE=null}}}
+ if(!A){const s0=Math.max(0,c.t-3),s1=Math.min(e.len,c.t+3);if(s1-s0>1){const p=avLaneP(E,c.e,c.dir,s0,c),q=avLaneP(E,c.e,c.dir,s1,c);if(Math.abs(hAng(q.a-p.a))>.02)c.a=Math.atan2(q.y-p.y,q.x-p.x)}return}const ax=Math.cos(A.a),ay=Math.sin(A.a),bx=Math.cos(B.a),by=Math.sin(B.a),cr=ax*by-ay*bx;let cx=(A.x+B.x)/2,cy=(A.y+B.y)/2;
+ if(Math.abs(cr)>.2){const s=((B.x-A.x)*by-(B.y-A.y)*bx)/cr;if(s>0&&s<3*R+6){cx=A.x+ax*s;cy=A.y+ay*s}}
+ const v=1-u,tx=2*v*(cx-A.x)+2*u*(B.x-cx),ty=2*v*(cy-A.y)+2*u*(B.y-cy);c.x=v*v*A.x+2*u*v*cx+u*u*B.x;c.y=v*v*A.y+2*u*v*cy+u*u*B.y;if(tx*tx+ty*ty>1e-6)c.a=Math.atan2(ty,tx)}
+{const p0=hCarPos;hCarPos=function(sh,c){p0(sh,c);try{avArc(sh,c)}catch(e){}}}

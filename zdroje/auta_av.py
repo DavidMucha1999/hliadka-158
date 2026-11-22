@@ -119,4 +119,10 @@ else:
     print("makky tien: ok",d.count(OLD_SH));d=d.replace(OLD_SH,NEW_SH)
 patch('makky tien uniform','float shadowF(vec3 w,vec3 n,float bb){','uniform float uShQ;float shadowF(vec3 w,vec3 n,float bb){')
 patch('makky tien kvalita','gl.uniform1f(U2.uShTx,1/(G3.shSz||2048));','gl.uniform1f(U2.uShTx,1/(G3.shSz||2048));if(U2.uShQ)gl.uniform1f(U2.uShQ,G3.shQ!=null?G3.shQ:S.save.gfxq==="low"?0:1);')
+# krok 27: casti sveta mimo zaberu sa nekreslia
+patch('svet mimo zaberu','for(const e of R.extra||[])draw2(e.m,e.M,true,e.fl,e.uo);','for(const e of R.extra||[]){if(e.avHide)continue;draw2(e.m,e.M,true,e.fl,e.uo)}')
+# krok 28: krizovatky - auta odbacaju oblukom a pred odbocenim spomalia
+patch('odbocenie smer pre hlasenie','hNext(sh,c,ni),a0=c.a;','hNext(sh,c,ni),a0=c.aE!=null?c.aE:c.a;')
+patch('odbocenie smer pre hlasenie 2','hMisTurn(c,ni,hAng(c.a-a0),n.e.length)','hMisTurn(c,ni,hAng((c.aE!=null?c.aE:c.a)-a0),n.e.length)')
+patch('odbocenie spomalenie','if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)','if(c.avTs&&rem<22&&!c.flee&&!c.emer&&!(c.unit&&c.goal))vT=Math.min(vT,Math.max(4.2,rem*.55));if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 22. 11. 2026
 
+- **Križovatky:** autá odbočujú oblúkom namiesto skoku s okamžitou zmenou smeru, pred odbočením spomalia na približne 15 km/h a smerovka svieti až do dokončenia odbočenia. Na ohyboch ciest a na kruhových objazdoch sa auto natáča plynulo.
+- **Menej kreslenia v jazde:** časti sveta mimo záberu kamery sa nekreslia a do tieňovej mapy idú len časti blízko auta. Počet kreslených trojuholníkov klesol z 1,95 na 1,35 milióna na snímku.
 - **Mäkké tiene:** tieň pod autom a tiene budov už nemajú viditeľné kocky. Okraj tieňa sa počíta zo 16 vzoriek s plynulým prechodom namiesto 9 ostrých a v jazde tieň pokrýva menšie okolie, takže je o štvrtinu jemnejší. Platí pre strednú aj vysokú kvalitu vo všetkých 3D scénach.
 - **Menej kreslenia v jazde:** autá za kamerou a ďalej než 550 m sa už nekreslia (v testovacej scéne 72 vozidiel namiesto 160).
 - **Tvar svetlometov podľa značky a oprava zapustenia:** svetlomety už nie sú len obdĺžniky. Podľa značky majú šikmý, zužujúci sa alebo skosený obrys (šesť tvarov popri hranatých, okrúhlych a dvojitých). Zároveň je opravená chyba z kroku 3: priehlbiny svetiel a masky sa v skutočnosti nevytvárali, lebo čelo auta sa k špici zvažovalo a svetlá viseli na rovine pred kapotou. Čelo je teraz zvislé až po hornú hranu svetiel, svetlomety sedia o niekoľko centimetrov nižšie a svetlá aj maska sú naozaj zapustené na všetkých typoch, vpredu aj vzadu.
