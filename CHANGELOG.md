@@ -2,6 +2,10 @@
 
 Najnovšie zmeny sú hore.
 
+## 22. 11. 2026
+
+- **Nový tvar karosérií (veľký update áut, krok 1):** predok a zadok sú široké a v pôdoryse oblé namiesto úzkej špice, bočný profil má zaoblené prechody kapota – sklo – strecha – kufor, pod oknami vedie ostrá hrana, nad kolesami sú ramená blatníkov, dvere majú prelis a kabína sa dopredu aj dozadu zužuje. Svetlá, maska a nárazníky sledujú oblé rohy. Zmizlo zdvojené spätné zrkadlo.
+
 ## 21. 11. 2026
 
 - **Kontrola pred zverejnením:** stránka má popis, jazyk a ikonu na karte prehliadača. Nový návštevník pri prvom otvorení uvidí oznam, že hrá v testovacom profile so všetkým odomknutým (oznam sa pre chybu nezobrazoval). Z obrazovky O hre a z Nastavení zmizla zmienka o cudzích modeloch áut, ktoré v hre už nie sú. Všetkých 12 druhov služby bolo spustených a prejdených bez chyby.
