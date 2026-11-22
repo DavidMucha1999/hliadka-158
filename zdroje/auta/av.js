@@ -284,3 +284,24 @@ function avFascia(G,sp,st,Rr,P,z,ci,col,ys,bot,belt){if(sp.truck||sp.bus||sp.mot
 function avPocket(G,F,sg){const A=G.a,z=F.z,dk=PCOL.dark;for(let i=0;i+36<=A.length;i+=36){const zs=[A[i+2],A[i+14],A[i+26]];if(zs.some(v=>sg>0?v>z+.0005||v<z-.07:v<z-.0005||v>z+.07))continue;const cx=(A[i]+A[i+12]+A[i+24])/3,cy=(A[i+1]+A[i+13]+A[i+25])/3;
   for(const k of F.pk){if(cx<=k.x0+.001||cx>=k.x1-.001||cy<=k.y0+.001||cy>=k.y1-.001)continue;let ok=true;for(let v=0;v<3;v++){const x=A[i+v*12],y=A[i+v*12+1];if(x<k.x0-1e-4||x>k.x1+1e-4||y<k.y0-1e-4||y>k.y1+1e-4)ok=false}if(!ok)continue;
    if(k.k==="lamp"&&A[i+9]===3&&Math.abs(A[i+6]-dk[0])<1e-4&&Math.abs(A[i+7]-dk[1])<1e-4){for(let v=1;v<3;v++){A[i+v*12]=A[i];A[i+v*12+1]=A[i+1];A[i+v*12+2]=A[i+2]}}else for(let v=0;v<3;v++)A[i+v*12+2]+=sg*k.D;break}}}
+
+/* krok 22: skary a diely karoserie - kapota, kufor, zlaby strechy, spodok dveri, svy naraznikov, lozka klucok, trysky */
+function avPanel(G,sp,st,o,E){if(sp.truck||sp.bus||sp.moto||sp.tractor||!E.W3)return;const{ring,latAt,sideQ,seam,Z,x0,x1,bot,belt,W3,pil,arR,archY,NU,xs}=E,bk=[.012,.012,.014],R=new Map,rg=x=>{let r=R.get(x);if(!r){r=ring(x);R.set(x,r)}return r};
+ /* bod na hornej ploche v stanici x: f = podiel polsirky hrany (0 stred, 1 hrana) */
+ const at=(x,f,s)=>{const r=rg(x),e=r.up[NU][0],ye=r.up[NU][1],c=r.crown,a=Math.abs(f),y=a>=.5?ye+(c-ye)*.75*(1-a)/.5:ye+(c-ye)*(.75+.25*(.5-a)/.5);return[s*a*e,y+.006,Z(x)]};
+ const lerp=(p,q,t)=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,p[2]+(q[2]-p[2])*t];
+ const pt=(x,f,s)=>{let i=0;while(i<xs.length-2&&xs[i+1]<x)i++;const a=xs[i],b=xs[i+1];if(b-a<1e-6)return at(a,f,s);return lerp(at(a,f,s),at(b,f,s),Math.max(0,Math.min(1,(x-a)/(b-a))))};
+ /* pozdlzna skara na hornej ploche od xa po xb */
+ const lon=(xa,xb,f,w)=>{const S=[xa,...xs.filter(x=>x>xa+.01&&x<xb-.01),xb];for(const s of[-1,1])for(let i=0;i<S.length-1;i++){const p=pt(S[i],f,s),q=pt(S[i+1],f,s);G.quad([p[0]-w/2,p[1],p[2]],[p[0]+w/2,p[1],p[2]],[q[0]+w/2,q[1],q[2]],[q[0]-w/2,q[1],q[2]],bk,0)}};
+ /* priecna skara v stanici x medzi -f a f */
+ const tra=(x,f,w)=>{const F=[-f,-.5,0,.5,f];for(let i=0;i<F.length-1;i++){const s0=F[i]<0?-1:1,s1=F[i+1]<0?-1:1,p=pt(x,F[i],s0),q=pt(x,F[i+1],s1);G.quad([p[0],p[1],p[2]-w/2],[q[0],q[1],q[2]-w/2],[q[0],q[1],q[2]+w/2],[p[0],p[1],p[2]+w/2],bk,0)}};
+ const hoodA=W3[3][0]+.07,hoodB=x1-.17;if(hoodB-hoodA>.35){lon(hoodA,hoodB,.86,.012);tra(hoodB,.86,.012);tra(hoodA-.02,.9,.02);
+  for(const s of[-1,1]){const p=pt(hoodA+.12,.42,s);G.box(p[0]-.03,p[0]+.03,p[1]-.004,p[1]+.012,p[2]-.012,p[2]+.012,bk,0)}
+  if(st.sport)for(const s of[-1,1]){const xa=hoodA+(hoodB-hoodA)*.35,xb=hoodA+(hoodB-hoodA)*.6;for(let k=0;k<3;k++){const p=pt(xa+(xb-xa)*k/3,.5,s),q=pt(xa+(xb-xa)*(k+.5)/3,.5,s);G.quad([p[0]-.07,p[1]+.002,p[2]],[p[0]+.07,p[1]+.002,p[2]],[q[0]+.07,q[1]+.002,q[2]],[q[0]-.07,q[1]+.002,q[2]],bk,0)}}}
+ if(!sp.bed&&W3[0][0]-x0>.6){const ta=x0+.12,tb=W3[0][0]-.06;if(tb-ta>.25){lon(ta,tb,.86,.012);tra(tb,.88,.014);tra(ta,.86,.012)}}
+ if(!sp.bed){const ra=W3[1][0]+.06,rb=W3[2][0]-.06;if(rb-ra>.5)lon(ra,rb,.82,.016)}
+ /* bok: spodna hrana dveri, svy naraznikov, lozka klucok */
+ const fF=Math.min(x1-.9,W3[3][0]+.08),bP=pil.length?pil[0]:null,rE=pil.length>1?pil[1]-.05:sp.van?null:W3[0][0]+.35,dA=rE!=null&&rE<(bP||fF)-.4?rE:bP||W3[0][0]+.4,yd=bot+.115;
+ for(const s of[-1,1]){if(fF-dA>.5){const a=Math.max(dA,sp.wh[0]+arR+.06),b=Math.min(fF,sp.wh[sp.wh.length-1]-arR-.06);if(b-a>.3)sideQ(a,b,yd,yd+.01,bk,0,null,.005,s)}
+  const fx=x1-.4,rx=x0+.4,fy=sp.fy||.8;if(fx>sp.wh[sp.wh.length-1]+arR*.5)seam(fx,Math.max(bot+.1,archY(fx)+.02),fy-.13,s);if(rx<sp.wh[0]-arR*.5)seam(rx,Math.max(bot+.1,archY(rx)+.02),Math.min(belt-.32,rg(x0).yt-.28),s);
+  [[bP||rE||W3[0][0]+.4,fF],[rE,bP]].forEach(([r,f])=>{if(r==null||f==null||f-r<.5||st.ev)return;const hx=r+.2,hy=belt-.13;sideQ(hx-.025,hx+.165,hy-.034,hy+.03,[.03,.03,.035],0,null,.0045,s)})}}
