@@ -94,4 +94,11 @@ css=os.path.join(here,"auta","av.css")
 if os.path.exists(css):
     d=re.sub(r'<style id="av-css">.*?</style>',"",d,flags=re.S)
     i=d.find("</head>");d=d[:i]+'<style id="av-css">'+chr(10)+open(css,encoding="utf8").read()+'</style>'+d[i:]
+# krok 21: zapustene svetla a maska - celo a zad auta su mriezka s priehlbinami, cire krycie sklo svetlometov
+patch('zapustene celo','[R[0],R[R.length-1]].forEach(Rr2=>{const z=Z(Rr2.x),P=capP(Rr2),cy=(bot+Rr2.yt)/2;for(let i=0;i<P.length-1;i++)G.tri([0,cy,z],[P[i][0],P[i][1],z],[P[i+1][0],P[i+1][1],z],col,1)});','[R[0],R[R.length-1]].forEach((Rr2,ci)=>{const z=Z(Rr2.x),P=capP(Rr2),cy=(bot+Rr2.yt)/2;if(avFascia(G,sp,st,Rr2,P,z,ci,col,ys,bot,belt))return;for(let i=0;i<P.length-1;i++)G.tri([0,cy,z],[P[i][0],P[i][1],z],[P[i+1][0],P[i+1][1],z],col,1)});')
+patch('zapustena maska big','[cw*.48,bot+.13,fz-.004],[-cw*.48,bot+.13,fz-.004],dark,3);','[cw*.38,bot+.13,fz-.004],[-cw*.38,bot+.13,fz-.004],dark,3);')
+patch('zapustena maska big body','for(let x=-cw*.42;x<cw*.42;x+=.06)fq(x,x+.03,y,y+.02,grC,9,.008)','for(let x=-cw*.36;x<cw*.34;x+=.06)fq(x,x+.03,y,y+.02,grC,9,.008)')
+patch('cire sklo material','else if(m==44.){spec=0.;env=0.;alpha=.72;}','else if(m==44.){spec=0.;env=0.;alpha=.72;}  else if(m==45.){spec=1.5;shin=170.;env=.6;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.1+.5*fr5;base=vec3(.5,.56,.62);}')
+patch('cire sklo vrstva','(t[9]===3?gl:op).push(...t)','(t[9]===3||t[9]===45?gl:op).push(...t)')
+patch('zapustene bocny diel svetlometu','sideQ(x1-(HL==="swept"?.45:.3),x1-.05,yA+.02,yB-.01,wht,13,null,.006,s)});','sideQ(x1-(HL==="swept"?.36:.24),x1-.1,yA+.03,yB-.02,[.78,.8,.82],9,null,.006,s)});')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

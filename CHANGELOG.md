@@ -4,6 +4,7 @@ Najnovšie zmeny sú hore.
 
 ## 22. 11. 2026
 
+- **Zapustené svetlá a maska (veľký update áut, krok 3):** svetlomety už nie sú nalepené na plochom čele. Čelo auta má pre ne priehlbinu so stenami, na jej dne je strieborný reflektor s projektormi a navrchu číre krycie sklo. Maska chladiča má skutočnú hĺbku, mriežka a znak sú v nej zapustené a chrómový rám ostal na povrchu. Zadné svetlá sú plytko zapustené do karosérie. Zmizla výfuková rúrka, ktorá visela pod zadným nárazníkom.
 - **Vlastná silueta pre každý model (veľký update áut, krok 2):** autá jednej karosérie už nemajú rovnaký obrys. Každý model má vlastný sklon zadného a čelného skla, výšku strechy a pása okien, polohu kabíny (dlhšia alebo kratšia kapota), výšku predku a kufra, výraznosť blatníkov a oblosť rohov. Modely jednej značky majú podobné črty.
 - **Nový tvar karosérií (veľký update áut, krok 1):** predok a zadok sú široké a v pôdoryse oblé namiesto úzkej špice, bočný profil má zaoblené prechody kapota – sklo – strecha – kufor, pod oknami vedie ostrá hrana, nad kolesami sú ramená blatníkov, dvere majú prelis a kabína sa dopredu aj dozadu zužuje. Svetlá, maska a nárazníky sledujú oblé rohy. Zmizlo zdvojené spätné zrkadlo.
 

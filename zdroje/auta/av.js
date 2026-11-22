@@ -62,7 +62,7 @@ function avBody(r,sp,o){const G=r.geo,W=sp.win,w0=r.wheels&&r.wheels[0];if(!G||!
   bx(s,hw-.05,hw+.022,belt-.075,belt-.04,p0+.08,p0+.28,hc,lux?9:1);if(!two&&sp.pil&&sp.pil.length&&W[0][0]+.8<sp.pil[0])bx(s,hw-.05,hw+.022,belt-.075,belt-.04,W[0][0]+.38,W[0][0]+.58,hc,lux?9:1);
   bx(s,.05,hw*.62,belt+.022,belt+.045,xa+.11,xa+.15,dark,0)}
  try{const rr=roofRange(sp),x=rr[0]+.2;G.box(-.025,.025,sp.h,sp.h+.1,Z(x+.17),Z(x),dark,0)}catch(e){}
- if(!sport&&!ev)G.cylZ(hw*.55,.3,L/2-.12,L/2+.04,.036,8,chrome,9,PCOL.dark)}
+}
 function avMoto(sp,o){const G=new Geo,L=sp.len,Z=x=>L/2-x,pol=!!o.police,c=pol?g3L("#f3f5f7"):g3L(o.color||"#2b2f36"),dark=PCOL.dark,plast=PCOL.plast,chrome=PCOL.chrome,met=g3L("#4a4e55"),wheels=[],plates=[],xr=sp.wh[0],xf=sp.wh[1],r=sp.r,tour=pol||/Tulák|Búrka|Jazdec/.test(o.mk||"");
  G.bbox(-.13,.13,.3,.64,Z(1.36),Z(.78),.05,met,9,{smooth:true});for(let y=.36;y<.6;y+=.07)G.box(-.15,.15,y,y+.025,Z(1.3),Z(1.02),chrome,9);
  G.bbox(-.17,.17,.72,.97,Z(1.56),Z(1.02),.08,c,1,{smooth:true});G.bbox(-.15,.15,.78,.89,Z(1.04),Z(.42),.04,plast,0);G.bbox(-.11,.11,.72,.85,Z(.46),Z(.06),.04,c,1,{smooth:true});
@@ -167,7 +167,7 @@ function avSpray(sh,gl2,now){if(!gl2)return;const hp=sh.hp,T=hTer(),D=sh.dv,wx=s
 function avFl(sp,x,y,arR,wy){let f=0;for(const w of sp.wh){const d=Math.abs(x-w),R=arR+.22;if(d<R){const a=Math.cos(d/R*Math.PI/2),top=wy+arR+.08,yy=y<=top?1:Math.max(0,1-(y-top)/.3);f=Math.max(f,.048*a*a*yy)}}return f}
 
 /* krok 15: predok a zadok ako modelovane diely - narazniky, hmlovky, ramy svetiel a masky, hrana kufra */
-function avFace(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const G=r.geo,L=sp.len,Z=x=>L/2-x,st=carStyle(o,sp),ch=sp.body.slice(1,-1),bot=sp.body[0][1],x0=ch[0][0],x1=ch[ch.length-1][0],W3=sp.win,belt=W3?W3[0][1]:1,hw0=(sp.van?2:sp.clad||sp.bed?1.95:1.84)*(o.police?1:st.wk)/2,cw=hw0*.78,rw=hw0*.83,fz=Z(x1)-.006,rz=Z(x0)+.006,fy=sp.fy||.8,gy0=fy-.3,gy1=fy-.04,col=g3L(o.color||"#9aa3ad"),dark=PCOL.dark,plast=PCOL.plast,chrome=PCOL.chrome,wht=PCOL.white,red=PCOL.red,bc=sp.clad?plast:col,bm=sp.clad?0:1,grC=st.lux||st.sport?chrome:g3L("#2a2d33");
+function avFace(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const FF=r.geo.avF,FR=r.geo.avR,LD=FF?FF.D:0;if(FF)avPocket(r.geo,FF,1);if(FR)avPocket(r.geo,FR,-1);const G=r.geo,L=sp.len,Z=x=>L/2-x,st=carStyle(o,sp),ch=sp.body.slice(1,-1),bot=sp.body[0][1],x0=ch[0][0],x1=ch[ch.length-1][0],W3=sp.win,belt=W3?W3[0][1]:1,hw0=(sp.van?2:sp.clad||sp.bed?1.95:1.84)*(o.police?1:st.wk)/2,cw=FF?FF.cw:hw0*.78,rw=hw0*.83,fz=Z(x1)-.006,rz=Z(x0)+.006,fy=sp.fy||.8,gy0=fy-.3,gy1=fy-.04,col=g3L(o.color||"#9aa3ad"),dark=PCOL.dark,plast=PCOL.plast,chrome=PCOL.chrome,wht=PCOL.white,red=PCOL.red,bc=sp.clad?plast:col,bm=sp.clad?0:1,grC=st.lux||st.sport?chrome:g3L("#2a2d33");
  /* predny naraznik */
  const ft=Math.max(bot+.13,gy0-.035),zf=fz-.075;if(ft-bot>.1){G.bbox(-cw*1.05,cw*1.05,bot-.005,ft,zf,fz+.14,.055,bc,bm,{smooth:true});const q=(xa,xb,ya,yb,c,m,d)=>G.quad([xa,ya,zf-(d||.004)],[xb,ya,zf-(d||.004)],[xb,yb,zf-(d||.004)],[xa,yb,zf-(d||.004)],c,m),it=ft-.055,ib=bot+.035;if(it-ib>.04){q(-cw*.56,cw*.56,ib,it,dark,3);const n=Math.max(1,Math.round((it-ib)/.045));for(let k=1;k<n;k++){const y=ib+(it-ib)*k/n;G.box(-cw*.54,cw*.54,y-.006,y+.006,zf-.012,zf,st.gr==="mesh"||st.gr==="big"?grC:plast,st.gr==="mesh"||st.gr==="big"?9:0)}}
   [-1,1].forEach(s=>{const fx=s*cw*.8,fyy=(ib+it)/2;G.box(fx-.085,fx+.085,fyy-.04,fyy+.04,zf-.006,zf,dark,0);q(fx-.06,fx+.06,fyy-.022,fyy+.022,wht,2,.009);G.box(fx-.07,fx+.07,fyy+.026,fyy+.034,zf-.014,zf,st.lux?chrome:plast,st.lux?9:0)});
@@ -175,7 +175,7 @@ function avFace(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp==
   for(const p of r.plates||[])if(p.front)p.z=zf-.009}
  /* ramy svetlometov a masky */
  const HL=st.hl,yA=fy-(HL==="slim"?.05:HL==="round"||HL==="twin"?.1:.11),yB=fy+(HL==="slim"?.04:.06);[-1,1].forEach(s=>{const a=s*cw*.4,b=s*cw*.985,lo=Math.min(a,b),hi=Math.max(a,b);G.box(lo,hi,yB,yB+.022,fz-.045,fz+.04,col,1);G.box(lo,hi,yA-.016,yA,fz-.03,fz+.03,dark,0);G.box(s>0?lo-.014:hi,s>0?lo:hi+.014,yA,yB,fz-.03,fz+.03,dark,0)});
- if(HL!=="round"&&HL!=="twin")[-1,1].forEach(s=>{const yc=(yA+yB)/2,rr=Math.min(.042,(yB-yA)*.36);for(const k of[.58,.8]){const x=s*cw*k;G.cylZ(x,yc,fz-.03,fz-.005,rr,12,chrome,9,chrome);G.cylZ(x,yc,fz-.032,fz-.03,rr*.72,10,wht,13,wht)}});
+ if(HL!=="round"&&HL!=="twin")[-1,1].forEach(s=>{const yc=(yA+yB)/2,rr=Math.min(.042,(yB-yA)*.36);for(const k of[.58,.8]){const x=s*cw*k;G.cylZ(x,yc,fz-.03+LD,fz-.005+LD,rr,12,chrome,9,chrome);G.cylZ(x,yc,fz-.032+LD,fz-.03+LD,rr*.72,10,wht,13,wht)}});if(FF)for(const k of FF.pk)if(k.k==="lamp"){const z=FF.z-.003;G.quad([k.x0,k.y0,z],[k.x1,k.y0,z],[k.x1,k.y1,z],[k.x0,k.y1,z],[.5,.56,.62],45)}
  {const yt2=sp.body[1]?sp.body[1][1]:belt,a0=Math.min(belt-.3,yt2-.25),a1=Math.min(belt-.1,yt2-.06);if(a1-a0>.06)[-1,1].forEach(s=>{const lo=Math.min(s*rw*.5,s*rw*.985),hi=Math.max(s*rw*.5,s*rw*.985),fc=g3L("#1a1b1e");G.box(lo,hi,a1-.012,a1,rz-.01,rz+.022,fc,0);G.box(lo,hi,a0,a0+.012,rz-.01,rz+.022,fc,0);G.box(s>0?lo:hi-.012,s>0?lo+.012:hi,a0,a1,rz-.01,rz+.022,fc,0);for(let k=1;k<3;k++){const y=a0+(a1-a0)*k/3;G.box(lo+.012,hi-.012,y-.003,y+.003,rz,rz+.012,[.25,.02,.02],0)}})}
  if(st.gr==="wide"||st.gr==="mesh"||!["blank","slim","shield","big","split","slots","wide","mesh"].includes(st.gr)){G.box(-cw*.39,cw*.39,gy1,gy1+.014,fz-.035,fz+.02,chrome,9);G.box(-cw*.39,cw*.39,gy0-.014,gy0,fz-.035,fz+.02,chrome,9);for(const s of[-1,1])G.box(s*cw*.39-.007,s*cw*.39+.007,gy0,gy1,fz-.035,fz+.02,chrome,9)}
  /* zadny naraznik */
@@ -260,3 +260,27 @@ function avVar(sp,o){if(!sp||!sp.body||!sp.win||sp.truck||sp.bus||sp.moto||sp.tr
  const body=B.map((p,i)=>i===0||i===B.length-1?p.slice():wp(p));for(let i=1;i<body.length-1;i++){body[i][0]=Math.min(x1,Math.max(x0,body[i][0]));if(i>1)body[i][0]=Math.max(body[i][0],body[i-1][0])}
  const win=W.map(wp);win[0][1]=win[3][1]=belt+db;for(let i=1;i<4;i++)win[i][0]=Math.max(win[i][0],win[i-1][0]+.1);
  const V={body,win,pil:(sp.pil||[]).map(x=>x+dc),h:h+dh,fy:(sp.fy||.8)+dn,_rr:undefined};AVVC.set(key,V);return V}
+
+/* krok 21: zapustene svetla a maska */
+/* celo (ci=1) alebo zad (ci=0) auta ako mriezka: v obdlznikoch svetiel a masky je plocha zatlacena dovnutra */
+function avFascia(G,sp,st,Rr,P,z,ci,col,ys,bot,belt){if(sp.truck||sp.bus||sp.moto||sp.tractor)return false;const pk=[],e=.012,front=ci===1;let cw=0;
+ if(front){const fy=sp.fy||.8,cwI=Math.max(0,ys.findIndex(y=>y>=fy-.05)),HL=st.hl,yA=fy-(HL==="slim"?.05:HL==="round"||HL==="twin"?.1:.11),yB=fy+(HL==="slim"?.04:.06),gy0=fy-.3,gy1=fy-.04,GR=st.gr;cw=(Rr.lw[cwI]||Rr.lw[2])*.93;
+  for(const s of[-1,1])pk.push({k:"lamp",x0:Math.min(s*cw*.4,s*cw*.985),x1:Math.max(s*cw*.4,s*cw*.985),y0:yA,y1:yB,D:.045});
+  if(GR==="big")pk.push({k:"gr",x0:-cw*.385,x1:cw*.385,y0:bot+.13,y1:gy1+.02,D:.04});else if(GR==="shield")pk.push({k:"gr",x0:-cw*.345,x1:cw*.345,y0:gy0,y1:gy1,D:.04});else if(GR==="split")for(const s of[-1,1])pk.push({k:"gr",x0:Math.min(s*cw*.045,s*cw*.305),x1:Math.max(s*cw*.045,s*cw*.305),y0:gy0+.03,y1:gy1,D:.04});else if(GR!=="slim"&&GR!=="blank"&&GR!=="slots")pk.push({k:"gr",x0:-cw*.385,x1:cw*.385,y0:gy0,y1:gy1,D:.04})}
+ else{const rw=Rr.lw[Math.max(1,ys.length-3)]||Rr.lw[1],ty0=Math.min(belt-.3,Rr.yt-.25),ty1=Math.min(belt-.1,Rr.yt-.06);if(ty1-ty0<.06)return false;cw=rw;for(const s of[-1,1])pk.push({k:"tail",x0:Math.min(s*rw*.48,s*rw*.99),x1:Math.max(s*rw*.48,s*rw*.99),y0:ty0,y1:ty1,D:.022})}
+ const n=(P.length+1)/2,C=P.slice(0,n).map(p=>[Math.abs(p[0]),p[1]]),yT=C[n-1][1],yBt=C[0][1];
+ const wAt=y=>{if(y>=yT)return 0;for(let i=0;i<n-1;i++){const a=C[i],b=C[i+1];if(y<=b[1]+1e-9){const d=b[1]-a[1];return d<1e-6?Math.max(a[0],b[0]):a[0]+(b[0]-a[0])*Math.max(0,(y-a[1])/d)}}return 0};
+ const wMax=Math.max(...C.map(p=>p[0]));for(const k of pk){if(k.y1>yT-.02||k.y0<yBt+.02||Math.max(-k.x0,k.x1)>Math.min(wAt(k.y0),wAt(k.y1))-.012)k.off=1}
+ const act=pk.filter(k=>!k.off);let Y=C.map(p=>p[1]),X=[0,wMax+.02,-wMax-.02];for(const k of act){Y.push(k.y0,k.y0+e,k.y1-e,k.y1);X.push(k.x0,k.x0+e,k.x1-e,k.x1)}
+ for(let x=.13;x<wMax;x+=.13)X.push(x,-x);const uq=A=>{A.sort((a,b)=>a-b);const o=[];for(const v of A)if(!o.length||v-o[o.length-1]>.004)o.push(v);return o};Y=uq(Y);{const Y2=[];for(let i=0;i<Y.length;i++){Y2.push(Y[i]);if(i<Y.length-1){const g=Y[i+1]-Y[i],m=Math.ceil(g/.07);for(let q=1;q<m;q++)Y2.push(Y[i]+g*q/m)}}Y=Y2}X=uq(X);
+ const dep=(x,y)=>{let d=0;for(const k of act){const fx=Math.min((x-k.x0)/e,(k.x1-x)/e),fy2=Math.min((y-k.y0)/e,(k.y1-y)/e),f=Math.max(0,Math.min(1,Math.min(fx,fy2)));if(f>0)d=Math.max(d,k.D*f)}return d},sg=front?1:-1;
+ const V=Y.map(y=>{const w=wAt(y);return X.map(x=>{const xc=Math.max(-w,Math.min(w,x));return[xc,y,z+sg*dep(xc,y)]})});
+ const refl=[.42,.44,.47],wall=[.05,.05,.06],grf=[.015,.015,.018],tlf=[.1,.01,.01];
+ for(let j=0;j<Y.length-1;j++)for(let i=0;i<X.length-1;i++){const a=V[j][i],b=V[j][i+1],c=V[j+1][i+1],d=V[j+1][i];if(Math.abs(a[0]-b[0])<1e-5&&Math.abs(c[0]-d[0])<1e-5)continue;const mx=(a[0]+b[0]+c[0]+d[0])/4,my=(Y[j]+Y[j+1])/2;let cc=col,m=1;
+   for(const k of act){if(mx>k.x0&&mx<k.x1&&my>k.y0&&my<k.y1){const inner=mx>k.x0+e&&mx<k.x1-e&&my>k.y0+e&&my<k.y1-e;if(!inner){cc=wall;m=0}else if(k.k==="lamp"){cc=refl;m=9}else if(k.k==="gr"){cc=grf;m=0}else{cc=tlf;m=0}}}
+   if(front)G.quad(a,b,c,d,cc,m);else G.quad(b,a,d,c,cc,m)}
+ G[front?"avF":"avR"]={pk:act,cw,z,D:act.length&&act[0].k==="lamp"?act[0].D:0};return true}
+/* detaily nakreslene na povodnej rovine cela sa zatlacia na dno priehlbin; tmave sklo svetlometu sa odstrani */
+function avPocket(G,F,sg){const A=G.a,z=F.z,dk=PCOL.dark;for(let i=0;i+36<=A.length;i+=36){const zs=[A[i+2],A[i+14],A[i+26]];if(zs.some(v=>sg>0?v>z+.0005||v<z-.07:v<z-.0005||v>z+.07))continue;const cx=(A[i]+A[i+12]+A[i+24])/3,cy=(A[i+1]+A[i+13]+A[i+25])/3;
+  for(const k of F.pk){if(cx<=k.x0+.001||cx>=k.x1-.001||cy<=k.y0+.001||cy>=k.y1-.001)continue;let ok=true;for(let v=0;v<3;v++){const x=A[i+v*12],y=A[i+v*12+1];if(x<k.x0-1e-4||x>k.x1+1e-4||y<k.y0-1e-4||y>k.y1+1e-4)ok=false}if(!ok)continue;
+   if(k.k==="lamp"&&A[i+9]===3&&Math.abs(A[i+6]-dk[0])<1e-4&&Math.abs(A[i+7]-dk[1])<1e-4){for(let v=1;v<3;v++){A[i+v*12]=A[i];A[i+v*12+1]=A[i+1];A[i+v*12+2]=A[i+2]}}else for(let v=0;v<3;v++)A[i+v*12+2]+=sg*k.D;break}}}
