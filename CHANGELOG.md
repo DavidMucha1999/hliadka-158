@@ -4,6 +4,10 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Rýchlejšie načítanie hliadky:** prevod geometrie sveta pre grafickú kartu trval 6,2 s, teraz 0,6 s. Prvý snímok režimu sa v teste skrátil z 15–17 s na 9 s.
+- **Plynulejšia jazda:** zaparkovaných áut je menej (najviac 75, do 160 m) a ďalej než 40 m sa kreslia v nízkom detaile; predošlá úprava parkovania ich pridala toľko, že snímok v centre trval 80–115 ms, teraz okolo 35–50 ms. Model nového typu auta sa tvorí 99 ms namiesto 254 ms a najviac raz za 1,5 s, dovtedy sa použije hotový model rovnakej karosérie. Celé postavy sa kreslia pre 10 najbližších chodcov namiesto 14.
+- **Štart hliadky:** auto už nezačína v strede hlavnej triedy v živom plote, ale v pravom pruhu bočnej ulice pri centre.
+
 - **Jazdné pruhy a predbiehanie:** diaľnica má dva skutočné pruhy. Rýchlejšie auto prejde do ľavého pruhu, predbehne pomalšie vozidlo a zaradí sa späť; kamióny a autobusy ostávajú vpravo. Zmena pruhu je plynulá, doteraz auto preskočilo podľa rýchlosti. Na cestách mimo mesta autá predbiehajú traktory a pomalé vozidlá cez protismer, ak je voľný, a pri protiidúcom aute sa vrátia. Priemerná rýchlosť na diaľnici v teste stúpla zo 102–109 na 112–114 km/h.
 
 - **Parkovanie:** ulice v meste majú parkovací pás s vyznačenými miestami. Obsadenosť závisí od štvrte a hodiny: v centre je cez deň plnšie, v obytných štvrtiach v noci. Zaparkované autá občas vyrazia do premávky a idúce autá občas spomalia a zaparkujú na voľné miesto. Pri obchodnom dome je parkovisko s dvoma radmi áut a pri stojanoch čerpacích staníc stoja autá.

@@ -237,18 +237,18 @@ function avCab(sp,x){const W=sp.win;if(!W)return 1;const c=(W[0][0]+W[3][0])/2,h
 /* predok a zadok su v podoryse oble: rohy sa stiahnu dozadu, siroke plochy sa predtym rozdelia */
 function avBow(r,sp,o){let bFk=1,bRk=1;if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp===SPECS.fire||o.lod)return;const G=r.geo,w0=r.wheels&&r.wheels[0];if(!G||!w0)return;const hl=sp.len/2,hw=Math.abs(w0.lat)+.13,hwE=hw*.86,zone=sp.van?.4:.5,bF=sp.van?.08:.15,bR=sp.van?.05:.11,thr=.2,nz=.3;
  {const hm=avH(o.mk||"x"),k=.72+hm%7*.09;bFk=k;bRk=.8+(hm>>>4)%5*.1}const near=z=>hl-Math.abs(z)<nz;
- const sub=A0=>{let A=A0;for(let pass=0;pass<4;pass++){const O=[];let ch=0;for(let i=0;i+36<=A.length;i+=36){const P=[A.slice(i,i+12),A.slice(i+12,i+24),A.slice(i+24,i+36)];const sp2=[0,1,2].map(k=>{const a=P[k],b=P[(k+1)%3];return Math.abs(a[0]-b[0])>thr&&(near(a[2])||near(b[2]))});
-    if(!sp2[0]&&!sp2[1]&&!sp2[2]){for(let k=0;k<36;k++)O.push(A[i+k]);continue}ch=1;
+ const sub=A0=>{const R=[];let A=[];for(let i=0;i+36<=A0.length;i+=36){const D=near(A0[i+2])||near(A0[i+14])||near(A0[i+26])?A:R;for(let k=0;k<36;k++)D.push(A0[i+k])}if(!A.length)return A0;for(let pass=0;pass<4;pass++){const O=[];let ch=0;for(let i=0;i+36<=A.length;i+=36){const x0=A[i],x1=A[i+12],x2=A[i+24],n0=near(A[i+2]),n1=near(A[i+14]),n2=near(A[i+26]),s0=Math.abs(x0-x1)>thr&&(n0||n1),s1=Math.abs(x1-x2)>thr&&(n1||n2),s2=Math.abs(x2-x0)>thr&&(n2||n0);
+    if(!s0&&!s1&&!s2){for(let k=0;k<36;k++)O.push(A[i+k]);continue}ch=1;const P=[A.slice(i,i+12),A.slice(i+12,i+24),A.slice(i+24,i+36)],sp2=[s0,s1,s2];
     const M=[0,1,2].map(k=>{if(!sp2[k])return null;const a=P[k],b=P[(k+1)%3],m=[];for(let q=0;q<12;q++)m[q]=(a[q]+b[q])/2;const l=Math.hypot(m[3],m[4],m[5])||1;m[3]/=l;m[4]/=l;m[5]/=l;m[9]=a[9];return m});
     const T=(a,b,c)=>{for(const v of[a,b,c])for(let q=0;q<12;q++)O.push(v[q])},n=sp2.filter(Boolean).length;
     if(n===3){T(P[0],M[0],M[2]);T(M[0],P[1],M[1]);T(M[2],M[1],P[2]);T(M[0],M[1],M[2])}
     else if(n===1){const k=sp2.indexOf(true),a=P[k],b=P[(k+1)%3],c=P[(k+2)%3];T(a,M[k],c);T(M[k],b,c)}
     else{const k=sp2.indexOf(false),a=P[k],b=P[(k+1)%3],c=P[(k+2)%3],mb=M[(k+1)%3],mc=M[(k+2)%3];T(a,b,mb);T(a,mb,mc);T(mc,mb,c)}}
-   A=O;if(!ch)break}return A};
+   A=O;if(!ch)break}for(let i=0;i<A.length;i++)R.push(A[i]);return R};
  const warp=A=>{for(let i=0;i+12<=A.length;i+=12){const x=A[i],z=A[i+2],d=hl-Math.abs(z);if(d>=zone)continue;const s=z<0?-1:1,bow=z<0?bF*bFk:bR*bRk,t=1-Math.max(0,d)/zone,w=t*t*(3-2*t),rr=Math.min(1.1,Math.abs(x)/hwE),g=bow*Math.pow(rr,2.6),gp=rr<1.1?2.6*bow*Math.pow(rr,1.6)/hwE*(x<0?-1:1):0,b=1-g*6*t*(1-t)/zone,a=-s*gp*w;
    A[i+2]=z-s*g*w;const nx=A[i+3]-a/b*A[i+5],ny=A[i+4],nz=A[i+5]/b,l=Math.hypot(nx,ny,nz)||1;A[i+3]=nx/l;A[i+4]=ny/l;A[i+5]=nz/l}};
- const A=sub(G.a);if(A!==G.a){G.a.length=0;for(let i=0;i<A.length;i++)G.a.push(A[i])}warp(G.a);
- if(G.gl&&G.gl.a&&G.gl.a.length){const B=sub(G.gl.a);if(B!==G.gl.a){G.gl.a.length=0;for(let i=0;i<B.length;i++)G.gl.a.push(B[i])}warp(G.gl.a)}}
+ const A=sub(G.a);if(A!==G.a)G.a=A;warp(G.a);
+ if(G.gl&&G.gl.a&&G.gl.a.length){const B=sub(G.gl.a);if(B!==G.gl.a)G.gl.a=B;warp(G.gl.a)}}
 
 /* krok 20: vlastna silueta pre kazdy model - profil typu karoserie sa pre model jemne pretvori */
 function avH(s){let h=7;for(let i=0;i<s.length;i++)h=h*31+s.charCodeAt(i)>>>0;return h}
@@ -367,7 +367,7 @@ function avLampShape(G,F,HL){const sh={swept:[.5,0,0,0],slim:[0,0,.35,0],C:[.15,
    A[i+1]=y<k.y0?ya+(y-ya)*(yL-ya)/(k.y0-ya):y<=k.y1?yL+(y-k.y0)*(yU-yL)/h:yU+(y-k.y1)*(yb-yU)/(yb-k.y1)}}}
 
 /* krok 26: v jazde sa nekreslia auta za kamerou a velmi vzdialene; tien pokryva mensie okolie, takze je jemnejsi */
-function avCull(sh,C,list){if(!sh.drv||!C||!C.eye||!C.tgt)return;const ex=C.eye[0],ez=C.eye[2],fx=C.tgt[0]-ex,fz=C.tgt[2]-ez,fl=Math.hypot(fx,fz)||1;for(let i=list.length-1;i>=0;i--){const v=list[i],dx=v.x-ex,dz=-v.d-ez,al=(dx*fx+dz*fz)/fl;if(al<-45||dx*dx+dz*dz>302500)list.splice(i,1)}}
+function avCull(sh,C,list){if(!sh.drv||!C||!C.eye||!C.tgt)return;const ex=C.eye[0],ez=C.eye[2],fx=C.tgt[0]-ex,fz=C.tgt[2]-ez,fl=Math.hypot(fx,fz)||1;for(let i=list.length-1;i>=0;i--){const v=list[i],dx=v.x-ex,dz=-v.d-ez,al=(dx*fx+dz*fz)/fl;if(al<-45||dx*dx+dz*dz>302500||v.pk&&(dx*dx+dz*dz>19600||al<-12))list.splice(i,1)}}
 {const r1=g3Render;g3Render=function(R){try{if(R&&R.custom&&R.shr>70&&S.shift&&S.shift.drv)R.shr=70}catch(e){}return r1.apply(this,arguments)}}
 
 /* krok 27: svet je rozdeleny na dlazdice 400 m. V jazde sa do tienovej mapy kreslia len dlazdice blizko auta
@@ -425,3 +425,7 @@ function avLanes(sh,lanes,dt,E){if(G3.avNoLane)return;for(const[k,l]of lanes){co
     if(ok)for(const o of l){if(o===c||o===ld)continue;if(o.avOv&&Math.abs(o.t-c.t)<110){ok=false;break}if(o.t>ld.t&&o.t<ld.t+26){ok=false;break}}
     if(ok){c.avOv=1;c.avOvT=ld;sh.avOvN=(sh.avOvN||0)+1}}}
   if(c.avOv||c.avLo!=null){if(c.avLo==null)c.avLo=base;const tg=c.avOv?-base:base;c.avLo+=clamp(tg-c.avLo,-2.3*dt,2.3*dt);if(!c.avOv&&Math.abs(c.avLo-base)<.01)c.avLo=null}}}}
+/* plynulost: nove modely aut sa tvoria najviac raz za sekundu, dovtedy sa pouzije uz hotovy model rovnakeho typu */
+function avSubK(sp,o){return(Object.keys(SPECS).find(k=>SPECS[k]===sp)||"")+"|"+(o.lod?1:0)+(avPaint(o)?1:0)+(o.police?1:0)+(o.trailer?"t":"")+(o.tow||"")+(o.bus?"b":"")}
+function avVehSub(sp,o){const sh=S.shift;if(!sh||!sh.drv||S.screen!=="heli"||G3.avNoSub)return null;if(performance.now()-(G3.avGenT||0)>1500)return null;const M=G3.avSub,s=M&&M.get(avSubK(sp,o));return s&&G3.vcache.get(s.key)===s.v?s.v:null}
+function avVehKeep(sp,o,v,key){try{G3.avGenT=performance.now();(G3.avSub||(G3.avSub=new Map)).set(avSubK(sp,o),{v,key})}catch(e){}}
