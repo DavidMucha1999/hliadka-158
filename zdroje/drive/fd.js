@@ -314,7 +314,7 @@ function fdMedian(W3,G,T,e,a,b){const p=hPtAt(e.pts,e.cum,a),q=hPtAt(e.pts,e.cum
   if((i+Math.round(a/10))%3===1){const s=3.3+((Math.round(mx+mz)%7)+7)%7*.1;g.cyl(mx,mz,y+.2,y+.2+s*.6,.12,.09,5,g3L("#4a3a2a"),0);g.sblob(mx,y+.2+s*.98,mz,s*.3,s*.46,s*.3,hTreeCol(Math.round(mx*.1+mz*.1)),28,Math.abs(Math.round(mx+mz)));(W3.fdSg||(W3.fdSg=[])).push([mx,mz])}}}
 {const s2=hStreetFx;hStreetFx=function(W3,G,T){try{fdStCls(W3)}catch(e){}return s2(W3,G,T)}}
 /* krok 16: detaily budov – kominy, vikiere, balkony, vchody so strieskou, dvory v blokoch stareho mesta */
-function hBldFx(g,W3,b,X0,X1,Z0,Z1,Y,rot){const k=b.k;if(G3.fdNoBld||k!=="old"&&k!=="mid"&&k!=="panel"&&k!=="res")return;
+function hBldFx(g,W3,b,X0,X1,Z0,Z1,Y,rot){const k=b.k;if(k==="ware"||k==="fuel"){hBldInd(g,W3,b,X0,X1,Z0,Z1,Y,rot);return}if(G3.fdNoBld||k!=="old"&&k!=="mid"&&k!=="panel"&&k!=="res")return;
  const h0=Math.abs(Math.sin(b.x0*12.9898+b.z0*78.233)*43758.5453)%1,hk=i=>Math.abs(Math.sin((h0+i)*91.17)*4375.85)%1,L=g3L,dx=X1-X0,dz=Z1-Z0,lx=dx>=dz,top=Y+b.h,A0=lx?X0:Z0,A1=lx?X1:Z1,
   FB=(a0,a1,o0,o1,y0,y1,sg,c,m)=>{if(lx)g.box(a0,a1,y0,y1,sg>0?Z1+o0:Z0-o1,sg>0?Z1+o1:Z0-o0,c,m);else g.box(sg>0?X1+o0:X0-o1,sg>0?X1+o1:X0-o0,y0,y1,a0,a1,c,m)};
  if(b.roof==="gable"){const hw=Math.min(dx,dz)/2+.4,rh=Math.min(dx,dz)*.42,mid=lx?(Z0+Z1)/2:(X0+X1)/2,yr=o=>top+rh*(1-Math.abs(o)/hw),
@@ -358,3 +358,11 @@ function hFurn(W3,G,T){const{N,E}=W3.net,sg=W3.fdSg||(W3.fdSg=[]),L=g3L,free=(x,
   ["#d9b21c","#2f5aa8","#3a8a5a"].forEach((c,i)=>{const x=cx+(lx?0:(i-1)*1.45),z=cz+(lx?(i-1)*1.45:0),hx=lx?.45:.55,hz=lx?.55:.45;g.box(x-hx,x+hx,y+.06,y+1.15,z-hz,z+hz,L(c),0);g.box(x-hx-.04,x+hx+.04,y+1.15,y+1.24,z-hz-.04,z+hz+.04,L("#2a2d31"),0)})}
  N.forEach((n,ni)=>{if(n.e.length<3||n.rbc||n.rbn!=null||n.e.some(ei=>E[ei].type!=="city")||!n.e.some(ei=>E[ei].fdSt==="old"||E[ei].fdSt==="av"))return;const hw=HROAD.city.w/2;for(const ei of n.e){const a=hTlAng(W3,ni,ei),ux=Math.cos(a),uz=Math.sin(a);for(const sd of[-1,1])for(const d of[10.2,11.7,13.2]){const x=n.x+ux*d-uz*sd*(hw+.55),z=n.y+uz*d+ux*sd*(hw+.55),y=T(x,z)+.19;G(x,z).cyl(x,z,y,y+.75,.07,.06,5,L("#3a3d42"),9)}}})}
 {const s4=hStreetFx;hStreetFx=function(W3,G,T){s4(W3,G,T);if(G3.fdNoFurn)return;try{hFurn(W3,G,T)}catch(e){console.warn("furn",e)}}}
+/* krok 18: sklady a cerpacie stanice na predmesti */
+function hBldInd(g,W3,b,X0,X1,Z0,Z1,Y,rot){const L=g3L,rs=b.rs||1,xf=rs>0?X1:X0,cz=(Z0+Z1)/2,F=(o0,o1,y0,y1,z0,z1,c,m)=>g.box(rs>0?xf+o0:xf-o1,rs>0?xf+o1:xf-o0,Y+y0,Y+y1,z0,z1,c,m),P=[];
+ if(b.k==="ware"){F(0,13,0,.05,Z0-2,Z1+2,L("#55595f"),0);F(0,2.2,.05,1.1,Z0+1,Z1-1,L("#9a9a96"),0);for(let z=Z0+4;z<Z1-3;z+=7){F(0,.1,1.1,4.6,z-2,z+2,L("#5d646c"),9);F(.1,.14,2.2,2.3,z-2,z+2,L("#3a3d42"),9);F(.1,.14,3.4,3.5,z-2,z+2,L("#3a3d42"),9)}}
+ else{const gl=L("#1c2530"),rd=L("#c8322a"),wh=L("#f4f1ea");F(0,19,0,.05,cz-11,cz+11,L("#55595f"),0);F(0,.08,.05,2.3,cz-1,cz+1,gl,9);F(0,.08,.9,2.6,Z0+.6,cz-1.5,gl,9);F(0,.08,.9,2.6,cz+1.5,Z1-.6,gl,9);g.box(X0-.15,X1+.15,Y+b.h-.9,Y+b.h,Z0-.15,Z1+.15,rd,1);
+  F(4,15,5,5.6,cz-8,cz+8,wh,0);F(3.92,15.08,5.15,5.45,cz-8.08,cz+8.08,rd,1);
+  for(const o of[6.5,12.5]){for(const z of[cz-5,cz+5]){F(o-.2,o+.2,.05,5,z-.2,z+.2,L("#d9d4c8"),0);P.push([o,z])}F(o-.5,o+.5,.05,.2,cz-3,cz+3,L("#c4c1b8"),0);F(o-.3,o+.3,.2,1.75,cz-1.7,cz-1,rd,1);F(o-.3,o+.3,.2,1.75,cz+1,cz+1.7,wh,1)}
+  F(17.4,17.9,0,6.5,cz-11.6,cz-10.2,L("#2f5aa8"),12);F(17.38,17.92,3,5.6,cz-11.45,cz-10.35,wh,12);P.push([17.65,cz-10.9])}
+ if(rot&&P.length){const a=b.ang,c=-Math.sin(a),s=-Math.cos(a),cx=(b.x0+b.x1)/2,czw=(b.z0+b.z1)/2,sg=W3.fdSg||(W3.fdSg=[]);for(const q of P){const lx=rs>0?xf+q[0]:xf-q[0],lz=q[1];sg.push([cx+c*lx+s*lz,czw-s*lx+c*lz])}}}

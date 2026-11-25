@@ -50,12 +50,25 @@ patch("majer na volnom mieste",
  'if(rdNear(cx,cz,10))continue;const big=k===0;',
  'const big=k===0;if(rdNear(cx,cz,10)||!moFree(cx-(big?15:7),cz-(big?10:6),cx+(big?15:7),cz+(big?10:6)))continue;')
 
+# Predmestie: rodinne domy za okruznou cestou a pri vypadovkach, dalej sklady a cerpacie stanice.
+SUB=('try{if(!mtn&&W3.city){const C2=W3.city,RR2=C2.r,PL=["#e9dfc8","#efe6d2","#d9cfb8","#e6d8c0","#dfe3d6","#f0e0c8"],RF=["#a33a2e","#8e3b2e","#7a3a2a","#6e7884","#9a4a32"],WC=["#b9bdc2","#c9c2b0","#9fb0c0","#c4c9bd"],ST=["#c8322a","#2f5aa8","#3a8a5a","#e0a030"],FU=new Set,'
+ 'clr=(x0,z0,x1,z1,m)=>!B.some(b=>{const q=m+(b.pad||0);return x1>b.x0-q&&x0<b.x1+q&&z1>b.z0-q&&z0<b.z1+q}),'
+ 'put=(cx,cz,hx,hz,h,o,m)=>{const r=Math.max(hx,hz);if(!moFree(cx-r,cz-r,cx+r,cz+r)||!clr(cx-r,cz-r,cx+r,cz+r,m))return false;B.push(L22([cx-hx,cz-hz],[cx+hx,cz+hz],h,o));return true},'
+ 'house=(x,z,a)=>put(x,z,5+R(),4.5,5.5+R()*1.8,{k:"res",col:pick2(R,PL),roof:"gable",rc:pick2(R,RF),gard:1,ang:a},5);'
+ 'E.forEach(e=>{const ring=e.name==="Okružná";if(!ring&&e.type!=="main"&&e.type!=="sec")return;'
+ 'for(let s=ring?12:30;s<e.len-(ring?12:20);s+=ring?24:46){const p=hPtAt(e.pts,e.cum,s),r=Math.hypot(p.x-C2.x,p.y-C2.y),nx=-Math.sin(p.a),nz=Math.cos(p.a),hw=HROAD[e.type].w/2;'
+ 'if(ring){const sd=(p.x-C2.x)*nx+(p.y-C2.y)*nz>0?1:-1;for(const q of[[hw+15,.9],[hw+41,.6]]){if(R()>q[1])continue;house(p.x+nx*q[0]*sd,p.y+nz*q[0]*sd,p.a)}continue}'
+ 'if(r<RR2+45||r>RR2+440)continue;for(const sd of[1,-1]){const h=R();'
+ 'if(e.type==="main"&&sd===1&&r>RR2+110&&r<RR2+300&&!FU.has(e.name)&&FU.size<2){if(put(p.x+nx*(hw+23),p.y+nz*(hw+23),4.5,5,4.2,{k:"fuel",col:"#eef1f3",roof:"flat",ang:p.a,rs:-1,pad:16},19)){FU.add(e.name);continue}}'
+ 'if(r<RR2+240){if(h<.8)house(p.x+nx*(hw+13)*sd,p.y+nz*(hw+13)*sd,p.a);if(R()<.7){const p2=hPtAt(e.pts,e.cum,s+23);house(p2.x-Math.sin(p2.a)*(hw+13)*sd,p2.y+Math.cos(p2.a)*(hw+13)*sd,p2.a)}}else if(h<.55)put(p.x+nx*(hw+26)*sd,p.y+nz*(hw+26)*sd,11,11,7.5+R()*3,{k:"ware",col:pick2(R,WC),roof:"flat",stripe:pick2(R,ST),ang:p.a,rs:-sd},10)}}})}}catch(x){console.warn("predmestie",x)}')
+
 # Na konci (aj po lesnych cestach) vyhodi vsetky budovy, ktore este stoja na ceste alebo vo vode.
 patch("budovy mimo ciest a vody",
  'W3.town=[];return W3}function pick2',
- '{const keep=B.filter(b=>b.nodraw||b.k==="hangar"||b.k==="tower2"||(b.ang!=null?moFree((b.x0+b.x1)/2-6,(b.z0+b.z1)/2-6,(b.x0+b.x1)/2+6,(b.z0+b.z1)/2+6):moFree(b.x0,b.z0,b.x1,b.z1)));'
- 'if(keep.length!==B.length){B.length=0;keep.forEach(b=>B.push(b));W3.bg=new Map;B.forEach((b,i)=>{for(let gx=Math.floor(b.x0/50);gx<=Math.floor(b.x1/50);gx++)for(let gz=Math.floor(b.z0/50);gz<=Math.floor(b.z1/50);gz++){const k=gx+","+gz;(W3.bg.get(k)||W3.bg.set(k,[]).get(k)).push(i)}})}}'
+ SUB+'{const keep=B.filter(b=>b.nodraw||b.k==="hangar"||b.k==="tower2"||(b.ang!=null?moFree((b.x0+b.x1)/2-6,(b.z0+b.z1)/2-6,(b.x0+b.x1)/2+6,(b.z0+b.z1)/2+6):moFree(b.x0,b.z0,b.x1,b.z1)));'
+ '{B.length=0;keep.forEach(b=>B.push(b));W3.bg=new Map;B.forEach((b,i)=>{for(let gx=Math.floor(b.x0/50);gx<=Math.floor(b.x1/50);gx++)for(let gz=Math.floor(b.z0/50);gz<=Math.floor(b.z1/50);gz++){const k=gx+","+gz;(W3.bg.get(k)||W3.bg.set(k,[]).get(k)).push(i)}})}}'
  'E.forEach((e,i)=>{if(e.type!=="dirt")return;for(let si=1;si<e.pts.length;si++)for(let k=1;k<W3.river.length;k++){const x=hSegX(e.pts[si-1],e.pts[si],W3.river[k-1],W3.river[k]);if(x)W3.bridges.push({e:i,x:x.x,y:x.y,a:Math.atan2(e.pts[si][1]-e.pts[si-1][1],e.pts[si][0]-e.pts[si-1][0]),w:HROAD.dirt.w})}});'
  'W3.town=[];return W3}function pick2')
 
+patch("sklady bez okien",'wl,b.k==="barn"||b.k==="hangar"?0:8,','wl,b.k==="barn"||b.k==="hangar"||b.k==="ware"||b.k==="fuel"?0:8,')
 open(p,"w",encoding="utf8",newline="").write(d)

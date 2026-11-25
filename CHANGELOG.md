@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Predmestie:** mesto už nekončí okružnou cestou v poli. Za okružnou stoja dva rady rodinných domov, pri výpadovkách ďalšie domy a ďalej od mesta sklady s rampou, vrátami a spevnenou plochou. Na dvoch hlavných výpadovkách je čerpacia stanica s prístreškom, stojanmi, predajňou a cenovým stĺpom. Spolu 299 domov, 32 skladov a 2 čerpacie stanice.
+
 - **Vybavenie ulíc:** zastávky majú lavičku, reklamný panel, kôš a žlté značenie zastávky na ceste. Na hlavných triedach stoja reklamné panely a pri križovatkách ostrovčeky so značkou obchádzania. V starom meste a na triedach pribudli stojany s bicyklami a stĺpiky na rohoch križovatiek. Pri panelákoch stoja kontajnery na triedený odpad. Spolu 37 000 trojuholníkov na celé mesto.
 
 - **Detaily budov:** domy so sedlovou strechou majú komíny a domy v starom meste a bytovky aj vikiere. Paneláky a bytovky majú vystupujúce balkóny (na panelákoch vo farbe pásu domu) a vchody s dverami, strieškou a schodíkom. Rodinné domy majú komín a vchod so strieškou. Vnútri blokov starého mesta sú dláždené dvory so stromami, lavičkami a prístavbou. Spolu 107 000 trojuholníkov na celé mesto.
