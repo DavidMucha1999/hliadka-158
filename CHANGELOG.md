@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Reakcie chodcov na hliadku:** chodci do 45 m sa zastavia a otočia za autom so zapnutým majákom, pred majákom nevkročia na priechod a tí, čo už prechádzajú, pobehnú. Ak ide auto po chodníku priamo na chodca, chodec uhne nabok. Pri zastavenom vozidle, pri výjazde s rekvizitami a po náraze hliadky sa okoloidúci zastavia a chvíľu sa pozerajú. Štvrtina chodcov si nič nevšíma a ide ďalej.
+
 - **Priestupky v premávke:** časť áut v jazde pácha priestupky, ktoré hliadka vidí ešte pred zastavením. Niektoré prejdú križovatku na červenú (hra to ohlási, ak je hliadka do 140 m), opitý vodič kľučkuje v pruhu, auto bez svetiel v noci naozaj nesvieti a pri sledovaní zblízka vidno mobil v ruke alebo nezapnutý pás. Postrehy sa zobrazia pri údajoch radaru a prenesú sa do zápisníka kontroly. Jazda na červenú je nový priestupok v zázname (skupina „Mobil v ruke, jazda bez svetiel alebo na červenú“).
 
 - **Predmestie:** mesto už nekončí okružnou cestou v poli. Za okružnou stoja dva rady rodinných domov, pri výpadovkách ďalšie domy a ďalej od mesta sklady s rampou, vrátami a spevnenou plochou. Na dvoch hlavných výpadovkách je čerpacia stanica s prístreškom, stojanmi, predajňou a cenovým stĺpom. Spolu 299 domov, 32 skladov a 2 čerpacie stanice.

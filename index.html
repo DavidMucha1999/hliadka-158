@@ -4622,6 +4622,23 @@ function fdOffStep(dt){const sh=S.shift,D=sh.dv,hp=sh.hp,{N,E}=sh.W.net,now=sh.f
  const t=D.tg;if(t&&fdCarOk(t)){const d=Math.hypot(t.x-hp.x,t.y-hp.y),lt=D.lockT||0;if(t.fdNoL&&(night?d<90:d<35&&lt>1))fdSeen(t,"nesvieti");if(t.fdWv&&d<70&&lt>1.5&&t.v>3)fdSeen(t,"kľučkuje");if(t.fdF&&d<28&&lt>1.2){if(t.fdF.includes("phone"))fdSeen(t,"mobil v ruke");if(t.fdF.includes("belt"))fdSeen(t,"bez pásu")}}}
 {const s6=fdStep6;fdStep6=function(dt){s6(dt);try{fdOffStep(dt)}catch(e){if(!fdOffStep.w){fdOffStep.w=1;console.warn("fdoff",e)}}}}
 {const cp0=hCarPos;hCarPos=function(sh,c){cp0(sh,c);if(c.fdWv&&c.v>3&&!c.hold&&!c.park){const e=sh.W.net.E[c.e],k=e?clamp((Math.min(c.t,e.len-c.t)-8)/15,0,1):0;if(k>0){const ph=c.t*.11+(c.id||0),w=(Math.sin(ph)*.8+Math.sin(c.t*.031)*.35)*k;c.x+=-Math.sin(c.a)*w;c.y+=Math.cos(c.a)*w;c.a+=Math.cos(ph)*.07*k}}}}
+/* krok 20: reakcie chodcov na hliadku – obzeraju sa za majakom, uhybaju autu, nevkrocia pred majak, pri zasahu a nehode stoja a pozeraju */
+function fdPedReact(dt){const sh=S.shift,D=sh.dv,hp=sh.hp,sp=Math.abs(D.v),P=[];
+ if(D.siren&&sp>2)P.push([hp.x,hp.y,45,4]);
+ if(D.bumpT>0){D.gwT=9;D.gw=[hp.x,hp.y]}if(D.gwT>0){D.gwT-=dt;P.push([D.gw[0],D.gw[1],34,12])}
+ const c=D.st2;if(c&&c.hold&&c.v<.6)P.push([c.x,c.y,30,14]);
+ const C=D.call;if(C&&C.x!=null&&C.props&&C.props.length&&C.st!=="offer")P.push([C.x,C.y,38,16]);
+ const hx=Math.cos(sh.fl.hd),hy=Math.sin(sh.fl.hd);D.pedLook=0;
+ for(const e of sh.ents){if(!e.fdPed)continue;if(e.gzC>0)e.gzC-=dt;const dx=e.x-hp.x,dy=e.y-hp.y,d=Math.hypot(dx,dy);
+  if(e.st==="walk"){const f=dx*hx+dy*hy,l=Math.abs(-dx*hy+dy*hx),want=sp>4&&f>0&&f<4+sp*1.1&&l<2.6?1.7:0;e.dg=(e.dg||0)+clamp(want-(e.dg||0),-1.2*dt,5*dt);if(e.dg>.01){e.off=e.side*(e.sw+e.dg);fdPedPos(sh,e)}else if(e.dg){e.dg=0;e.off=e.side*e.sw}}
+  if(e.st==="xwait"&&D.siren&&sp>3&&d<70)e.wT=Math.min(e.wT,.3);
+  if(e.st==="xgo"&&e.q&&e.q.xe!=null&&D.siren&&sp>5&&d<45){if(!e.sp0){e.sp0=e.sp;e.sp=Math.max(e.sp,3.4)}}else if(e.sp0){e.sp=e.sp0;e.sp0=0}
+  if(e.st!=="walk"&&e.st!=="stand")continue;
+  let poi=null;for(const p of P)if(Math.hypot(e.x-p[0],e.y-p[1])<p[2]){poi=p;break}
+  if(!poi){e.gz=0;continue}if(e.gzC>0||(e.fdC===3&&e.st==="walk"))continue;
+  e.gz=(e.gz||0)+dt;if(e.st==="walk"){if(e.gz>poi[3]*(.6+.4*((e.fdC||0)+1)/3)){e.gz=0;e.gzC=10;continue}e.s-=e.dir*e.sp*dt;fdPedPos(sh,e)}
+  const tx=poi[0]-e.x,ty=poi[1]-e.y,tl=Math.hypot(tx,ty)||1;e.vx=tx/tl*.3;e.vy=ty/tl*.3;D.pedLook++}}
+{const pr0=fdPeds;fdPeds=function(dt){pr0(dt);try{fdPedReact(dt)}catch(x){if(!fdPedReact.w){fdPedReact.w=1;console.warn("react",x)}}}}
 /*</drive-fd>*//*<info-o>*//* Obrazovka "O hre": tlacidlo v hlavnom menu a karta s popisom projektu */
 const OH_REPO="https://github.com/DavidMucha1999/hliadka-158";
 function ohOpen(){const nC=new Set(LOCS.map(x=>x.ct)).size,st=[[MODES.length,"druhov služby"],[LOCS.length,"úsekov v "+nC+" krajinách"],[COPS.length,"služobných vozidiel"],[RANKS.length,"hodností"],["6 × 6 km","mapa okresu"],["1 súbor","bez inštalácie"]];
