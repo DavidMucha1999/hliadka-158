@@ -125,4 +125,5 @@ patch('svet mimo zaberu','for(const e of R.extra||[])draw2(e.m,e.M,true,e.fl,e.u
 patch('odbocenie smer pre hlasenie','hNext(sh,c,ni),a0=c.a;','hNext(sh,c,ni),a0=c.aE!=null?c.aE:c.a;')
 patch('odbocenie smer pre hlasenie 2','hMisTurn(c,ni,hAng(c.a-a0),n.e.length)','hMisTurn(c,ni,hAng((c.aE!=null?c.aE:c.a)-a0),n.e.length)')
 patch('odbocenie spomalenie','if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)','if(c.avTs&&rem<22&&!c.flee&&!c.emer&&!(c.unit&&c.goal))vT=Math.min(vT,Math.max(4.2,rem*.55));if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)')
+patch('prednost v jazde','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))','if(!ld&&rem<36&&!c.flee&&!c.emer&&!(c.unit&&c.goal)&&avYield(sh,c,ni,rem,lanes,dt,now))vT=Math.min(vT,Math.max(0,(rem-12)*.6));if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

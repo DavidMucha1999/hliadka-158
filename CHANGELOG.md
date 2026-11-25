@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Prednosť v jazde:** na križovatkách bez semaforu si autá dávajú prednosť. Z vedľajšej cesty čakajú na autá na hlavnej, pred kruhovým objazdom na autá na objazde, na rovnocenných uliciach platí pravidlo pravej ruky a pri odbočení vľavo dajú prednosť protiidúcim. Vozidlám s majákmi dajú prednosť vždy a rovnako sa správajú aj k autu hráča. Na vedľajších cestách pribudla značka „Daj prednosť v jazde“ (100 značiek na mape).
+
 - **Chodci na priechodoch:** chodci v jazde už neprechádzajú cestu kdekoľvek a na križovatke nepreskakujú z ulice na ulicu. Cestu prechádzajú na priechode pri križovatke, na svetelnej križovatke čakajú, kým majú autá červenú, a okolo rohu idú po chodníku. Autá im zastavia. Prechádzanie mimo priechodu v meste zostalo len výnimočne.
 - **Zastávky:** keď na zastávke zastaví autobus, čakajúci nastúpia a niekoľko ľudí vystúpi a rozíde sa po chodníku. Čakajúci stoja tvárou k ceste.
 - **Vzhľad chodcov:** každý chodec má vlastné oblečenie namiesto štyroch spoločných, vzdialené postavy už počas chôdze nemenia farbu a zblízka sa kreslí 14 celých postáv namiesto 8.

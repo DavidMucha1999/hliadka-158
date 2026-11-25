@@ -391,3 +391,15 @@ function avArc(sh,c){c.aE=c.a;if(c.park||!sh.W||!sh.W.net)return;const E=sh.W.ne
  if(Math.abs(cr)>.2){const s=((B.x-A.x)*by-(B.y-A.y)*bx)/cr;if(s>0&&s<3*R+6){cx=A.x+ax*s;cy=A.y+ay*s}}
  const v=1-u,tx=2*v*(cx-A.x)+2*u*(B.x-cx),ty=2*v*(cy-A.y)+2*u*(B.y-cy);c.x=v*v*A.x+2*u*v*cx+u*u*B.x;c.y=v*v*A.y+2*u*v*cy+u*u*B.y;if(tx*tx+ty*ty>1e-6)c.a=Math.atan2(ty,tx)}
 {const p0=hCarPos;hCarPos=function(sh,c){p0(sh,c);try{avArc(sh,c)}catch(e){}}}
+/* prednost v jazde: hlavna cesta, kruhovy objazd, pravidlo pravej ruky, odbocenie vlavo, vozidla s majakom */
+const AVPR={hwy:5,ring:4.5,main:4,sec:3,local:2,city:2,dirt:1};
+function avYield(sh,c,ni,rem,lanes,dt,now){const W3=sh.W,{N,E}=W3.net,n=N[ni];if(G3.avNoYield||n.tl||n.portal||n.e.length<3||rem<9){c.avYw=0;return false}
+ const rk=AVPR[E[c.e].type]||2,h=hTlAng(W3,ni,c.e)+Math.PI,left=c.nx!=null&&hAng(hTlAng(W3,ni,c.nx)-h)<-.6,go=c.avGo>now;let y=false;
+ for(const ej of n.e){if(ej===c.e)continue;const oe=E[ej],l=lanes.get(ej*2+(oe.b===ni?1:0));if(!l||!l.length)continue;const o=l[l.length-1];if(o.id===-2||o===c)continue;const orem=oe.len-o.t;
+  if(o.v>=1.5?orem>8+o.v*3.2:orem>16||go)continue;
+  let pri=!!(o.emer||o.unit&&o.goal);const ork=AVPR[oe.type]||2;
+  if(!pri){if(ork>rk)pri=true;else if(ork===rk){const r=hAng(hTlAng(W3,ni,ej)-h);if(r>.6&&r<2.5)pri=true;else if(left&&Math.abs(r)<.6)pri=o.nx==null||hAng(hTlAng(W3,ni,o.nx)-hTlAng(W3,ni,ej)-Math.PI)>-.6}}
+  if(pri){y=true;break}}
+ if(!y){c.avYw=0;return false}
+ if(c.v<.6){c.avYw=(c.avYw||0)+dt;if(c.avYw>2.5+(Math.abs(c.id||0)%7)*.7){c.avYw=0;c.avGo=now+4}}
+ return true}
