@@ -33,7 +33,7 @@ patch("lampy tlmenejsie na svetlych plochach",'col+=lt*uNight*(base*3.4+.03)*','
 patch("lampy mensia ziara pri zemi",'ga.push(l[0],l[1]-7.2,l[2],1,.72,.42,.16*k,12)','ga.push(l[0],l[1]-7.2,l[2],1,.72,.42,.07*k,12)')
 OLDR='<div class="rrow"><span>Pomoc pri kontrole vodiča</span>'
 patch("nastavenia dlzka sluzby",OLDR,'<div class="rrow"><span>Dĺžka služby za volantom</span><select id="fdl-pick"><option value="s" ${s.drvLen==="s"?"selected":""}>Krátka – 16 minút</option><option value="n" ${s.drvLen!=="s"&&s.drvLen!=="l"?"selected":""}>Štandardná – 32 minút</option><option value="l" ${s.drvLen==="l"?"selected":""}>Dlhá – 64 minút</option></select></div>'+chr(10)+'    '+OLDR)
-patch("chodci vlastny vzhlad",'lk=sh._cLooks[Math.abs((e.x*3+e.y)|0)%4]}','lk=e.fdPed?e.fdLk||(e.fdLk=g3CivLook(genPerson("sk"))):sh._cLooks[Math.abs((e.x*3+e.y)|0)%4]}')
+patch("chodci vlastny vzhlad",'lk=sh._cLooks[Math.abs((e.x*3+e.y)|0)%4]}','lk=e.fdPed?fdLookOf(e):sh._cLooks[Math.abs((e.x*3+e.y)|0)%4]}')
 patch("chodci stala farba",'extra.push({m:G3.crowdM[Math.abs((e.x*3+e.y)|0)%4],M:','extra.push({m:G3.crowdM[e.fdC!=null?e.fdC:Math.abs((e.x*3+e.y)|0)%4],M:')
 patch("chodci viac postav zblizka",'.slice(0,8);for(const e of sh.ents){if(!vis(','.slice(0,sh.drv?14:8);for(const e of sh.ents){if(!vis(')
 patch("dlazba v starom meste",'strip(g2,sP,H2.w,.09,L2(H2.c),10,sE);','strip(g2,sP,H2.w,.09,L2(e.fdSt==="old"?"#8f897e":H2.c),e.fdSt==="old"?36:10,sE);')

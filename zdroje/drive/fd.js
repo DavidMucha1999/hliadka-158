@@ -292,7 +292,7 @@ function fdPeds2(dt){const sh=S.shift,D=sh.dv,hp=sh.hp,{N,E}=sh.W.net,sp=Math.ab
    if(ok){const dp=Math.hypot(hp.x-(e.px+q.x)/2,hp.y-(e.py+q.y)/2);ok=!(dp<20&&sp>4)&&dp>3.2&&!fdPedBusy(sh,q)}
    if(ok){e.st="xgo";e.u=0}else if(e.wT>(tl?50:14)){e.st="walk";e.q=null;if(q.xn!=null)e.dir=-e.dir}}
   else if(e.st==="xgo"){const q=e.q,dx=q.x-e.px,dy=q.y-e.py,l=Math.hypot(dx,dy)||.01,v=e.sp*(q.xe!=null?1.15:1);e.u+=v*dt/l;
-   if(e.u>=1){if(q.kill){e.dead=1;continue}e.e=q.ej;e.side=q.sj;e.s=q.s;e.dir=q.dir;e.sw=HROAD[E[q.ej].type].w/2+2.1;e.off=e.side*e.sw;e.st="walk";e.q=null;fdPedPos(sh,e)}
+   if(e.u>=1){if(q.kill){e.dead=1;continue}e.e=q.ej;e.side=q.sj;e.s=q.s;e.dir=q.dir;e.sw=e.bk?fdBkLat(E[q.ej].type):HROAD[E[q.ej].type].w/2+2.1;e.off=e.side*e.sw;e.st="walk";e.q=null;fdPedPos(sh,e)}
    else{const u=Math.max(0,e.u),k=e.u>0?v:.3;e.x=e.px+dx*u;e.y=e.py+dy*u;e.vx=dx/l*k;e.vy=dy/l*k}}
   else if(e.st==="stand"){if(e.sx!=null){e.x=e.sx;e.y=e.sy;e.vx=e.fx*.3;e.vy=e.fy*.3}else fdPedPos(sh,e)}
   else{e.st="walk";continue}
@@ -392,12 +392,34 @@ function fdPedReact(dt){const sh=S.shift,D=sh.dv,hp=sh.hp,sp=Math.abs(D.v),P=[];
  const C=D.call;if(C&&C.x!=null&&C.props&&C.props.length&&C.st!=="offer")P.push([C.x,C.y,38,16]);
  const hx=Math.cos(sh.fl.hd),hy=Math.sin(sh.fl.hd);D.pedLook=0;
  for(const e of sh.ents){if(!e.fdPed)continue;if(e.gzC>0)e.gzC-=dt;const dx=e.x-hp.x,dy=e.y-hp.y,d=Math.hypot(dx,dy);
-  if(e.st==="walk"){const f=dx*hx+dy*hy,l=Math.abs(-dx*hy+dy*hx),want=sp>4&&f>0&&f<4+sp*1.1&&l<2.6?1.7:0;e.dg=(e.dg||0)+clamp(want-(e.dg||0),-1.2*dt,5*dt);if(e.dg>.01){e.off=e.side*(e.sw+e.dg);fdPedPos(sh,e)}else if(e.dg){e.dg=0;e.off=e.side*e.sw}}
+  if(e.st==="walk"&&!e.bk){const f=dx*hx+dy*hy,l=Math.abs(-dx*hy+dy*hx),want=sp>4&&f>0&&f<4+sp*1.1&&l<2.6?1.7:0;e.dg=(e.dg||0)+clamp(want-(e.dg||0),-1.2*dt,5*dt);if(e.dg>.01){e.off=e.side*(e.sw+e.dg);fdPedPos(sh,e)}else if(e.dg){e.dg=0;e.off=e.side*e.sw}}
   if(e.st==="xwait"&&D.siren&&sp>3&&d<70)e.wT=Math.min(e.wT,.3);
   if(e.st==="xgo"&&e.q&&e.q.xe!=null&&D.siren&&sp>5&&d<45){if(!e.sp0){e.sp0=e.sp;e.sp=Math.max(e.sp,3.4)}}else if(e.sp0){e.sp=e.sp0;e.sp0=0}
-  if(e.st!=="walk"&&e.st!=="stand")continue;
+  if(e.bk||e.st!=="walk"&&e.st!=="stand")continue;
   let poi=null;for(const p of P)if(Math.hypot(e.x-p[0],e.y-p[1])<p[2]){poi=p;break}
   if(!poi){e.gz=0;continue}if(e.gzC>0||(e.fdC===3&&e.st==="walk"))continue;
   e.gz=(e.gz||0)+dt;if(e.st==="walk"){if(e.gz>poi[3]*(.6+.4*((e.fdC||0)+1)/3)){e.gz=0;e.gzC=10;continue}e.s-=e.dir*e.sp*dt;fdPedPos(sh,e)}
   const tx=poi[0]-e.x,ty=poi[1]-e.y,tl=Math.hypot(tx,ty)||1;e.vx=tx/tl*.3;e.vy=ty/tl*.3;D.pedLook++}}
 {const pr0=fdPeds;fdPeds=function(dt){pr0(dt);try{fdPedReact(dt)}catch(x){if(!fdPedReact.w){fdPedReact.w=1;console.warn("react",x)}}}}
+/* krok 21: postavy – deti, seniori, psy, kociky, bezci, turisti, oblecenie podla pocasia, dazdniky, cyklisti na ceste */
+function fdBkLat(t){return HROAD[t].w/2-(t==="city"?1.25:.7)}
+function fdPickV(mv){const r=Math.random();return r<.1?"kid":r<.22?"senior":r<.32?"dog":r<.38?"pram":r<.43?"worker":r<.47?"courier":r<.55?"tourist":r<.67?"shop":mv&&r<.73?"sport":"n"}
+function fdLookOf(e){const sh=S.shift,rain=sh.wx==="rain"||sh.wx==="storm",cold=coldNow(),hot=!cold&&sh.temp!=null&&sh.temp>24,key=(rain?1:0)+(cold?2:0)+(hot?4:0);if(e.fdLk&&e.fdLkK===key)return e.fdLk;
+ if(!e.fdV)e.fdV=fdPickV(false);if(e.fdH==null)e.fdH=Math.random();const v=e.fdV;let L=e.fdLk0;
+ if(!L){L=g3CivLook(genPerson("sk"));if(v==="kid")Object.assign(L,{sc:.64,hat:"none",bag:"backpack",beard:0});else if(v==="senior")Object.assign(L,{hair:"#cfcac2",cane:true,hairS:L.female?"bun":"bald"});else if(v==="dog")L.dog=pick(["#6b4a2a","#e8e0d0","#1d1d1d","#c8a060"]);else if(v==="worker")Object.assign(L,{topC:"#ff7a1a",top:"jacket",helmet:true,helmetC:"#ffd200",hat:"none",pants:"#2a3a5a"});else if(v==="courier")Object.assign(L,{topC:"#2f9a4f",bag:"backpack",hatC:"#2f9a4f",hat:"cap"});else if(v==="sport")Object.assign(L,{topC:pick(["#ff3a5a","#3ad0ff","#e3c25a"]),top:"tshirt",pants:"#1d1f24",hat:"none",bag:"none"});else if(v==="tourist")Object.assign(L,{hat:"cap",hatC:"#e8e6df",bag:"shoulder"});else if(v==="shop")L.bag="shoulder";e.fdLk0=L}
+ const o={};if(cold&&v!=="worker"){o.top=v==="sport"?"hoodie":"jacket";if(e.fdH<.5&&v!=="sport"&&v!=="kid"){o.hat="cap";o.hatC=o.hatC||"#2c3138"}}else if(hot&&(v==="n"||v==="shop"||v==="tourist"||v==="dog"))o.top="tshirt";if(rain&&v!=="sport"&&v!=="pram"&&v!=="worker"&&e.fdH<.62)o.umb=true;
+ e.fdLkK=key;return e.fdLk=Object.assign({},L,o)}
+function hPramM(i){const M=hPramM.m||(hPramM.m=[]);if(M[i])return M[i];const G=new Geo,c=g3L(["#2f4a6a","#7a2f3a","#3d5a46"][i]),dk=g3L("#1d1f24"),st=g3L("#8d9399");G.box(-.24,.24,.5,.82,-1.25,-.6,c,0);G.box(-.25,.25,.82,1.08,-.98,-.6,g3Mix(c,[0,0,0],.25),0);for(const z of[-1.14,-.7])for(const s of[-1,1])G.cylX(s>0?.26:-.31,s>0?.31:-.26,.16,z,.16,8,dk,0);G.box(-.22,.22,.99,1.03,-.42,-.38,st,9);for(const s of[-1,1])G.box(s*.22-.015,s*.22+.015,.78,1.02,-.6,-.39,st,9);return M[i]=g3Up(G)}
+{const pn1=fdPedNew;fdPedNew=function(sh,mn,mx){const e=pn1(sh,mn,mx);if(!e)return e;e.fdH=Math.random();const ed=sh.W.net.E[e.e];
+ if(Math.random()<.09&&ed.len>60){e.bk=1;e.bike=true;e.fdV="bike";e.sp=4.4+Math.random()*1.6;e.tC=1e9;e.side=e.dir>0?1:-1;e.sw=fdBkLat(ed.type);e.off=e.side*e.sw;e.look=Object.assign(g3CivLook(genPerson("sk")),{helmet:true,helmetC:pick(["#e8e6df","#c8322a","#2f5aa8","#ffd200"]),hat:"none",top:"tshirt"});fdPedPos(sh,e);return e}
+ e.fdV=fdPickV(true);if(e.fdV==="kid")e.sp*=.9;else if(e.fdV==="senior")e.sp*=.62;else if(e.fdV==="pram")e.sp*=.85;else if(e.fdV==="sport")e.sp=3.3+Math.random()*.5;return e}}
+function fdBikeNode(sh,e,ni){const W3=sh.W,{N,E}=W3.net,n=N[ni],ed=E[e.e],now=sh.fl.t;e.bkW=0;
+ if(n.tl&&!hTlGreen(n,e.e,now)){e.s=e.dir<0?FDZ:ed.len-FDZ;e.bkW=1;fdPedPos(sh,e);return true}
+ const h=hTlAng(W3,ni,e.e)+Math.PI,op=n.e.filter(i=>i!==e.e&&!E[i].ow&&E[i].type!=="hwy"&&E[i].type!=="dirt"&&E[i].type!=="ring"&&E[i].len>40&&E[i].a!==E[i].b);
+ if(!op.length||n.rbn!=null||n.rbc){const sj=-e.side,sw=fdBkLat(ed.type),[x,y]=fdPedSide(sh,e.e,e.s,sj*sw);fdPedGoTo(e,{x,y,ej:e.e,sj,s:e.s,dir:-e.dir});return true}
+ let ej=op[Math.floor(Math.random()*op.length)];if(Math.random()<.7){let b=9;for(const i of op){const t=Math.abs(hAng(hTlAng(W3,ni,i)-h));if(t<b){b=t;ej=i}}}
+ const nd=E[ej],atA=nd.a===ni,dir=atA?1:-1,sj=dir>0?1:-1,s=atA?FDZ:nd.len-FDZ,[x,y]=fdPedSide(sh,ej,s,sj*fdBkLat(nd.type));fdPedGoTo(e,{x,y,ej,sj,s,dir});return true}
+{const nd0=fdPedNode;fdPedNode=function(sh,e,ni){return e.bk?fdBikeNode(sh,e,ni):nd0(sh,e,ni)}}
+{const hx0=hX3D;hX3D=function(sh,C,extra,list,persons){hx0.apply(this,arguments);if(!sh.drv)return;try{for(const p of persons){const e=p.ent;if(!e||!e.fdPed)continue;const yaw=Math.atan2(-(e.vx||0),-(e.vy||.01));
+  if(e.bk){p.yaw=yaw;p.walk=null;if(!e.bkW&&e.st!=="xwait"){p.pose="sit";p.y=(p.y||0)+.36}else p.pose=null}
+  else{if(p.walk==null){p.yaw=yaw;p.pose=null}if(e.fdV==="pram")extra.push({m:hPramM(Math.floor((e.fdH||0)*3)%3),M:M4.trs(p.x,p.y||0,p.z,yaw)})}}}catch(x){if(!hPramM.w){hPramM.w=1;console.warn("postavy",x)}}}}

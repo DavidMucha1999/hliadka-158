@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Postavy a cyklisti:** chodci v jazde už nie sú len dospelí v bežnom oblečení. Pribudli deti s batohom, seniori s palicou, ľudia so psom, s kočíkom a s taškou, robotníci, kuriéri, turisti a bežci, každý s vlastnou rýchlosťou chôdze. Oblečenie sa riadi počasím: v zime bundy a čiapky, v horúčave tričká, v daždi dáždniky. Po okraji cesty jazdia cyklisti s prilbou, na červenú zastavia a cez križovatku pokračujú väčšinou rovno. Stojaci chodci sa už neotáčajú vždy za autom hráča, ale tam, kam sa naozaj pozerajú.
+
 - **Reakcie chodcov na hliadku:** chodci do 45 m sa zastavia a otočia za autom so zapnutým majákom, pred majákom nevkročia na priechod a tí, čo už prechádzajú, pobehnú. Ak ide auto po chodníku priamo na chodca, chodec uhne nabok. Pri zastavenom vozidle, pri výjazde s rekvizitami a po náraze hliadky sa okoloidúci zastavia a chvíľu sa pozerajú. Štvrtina chodcov si nič nevšíma a ide ďalej.
 
 - **Priestupky v premávke:** časť áut v jazde pácha priestupky, ktoré hliadka vidí ešte pred zastavením. Niektoré prejdú križovatku na červenú (hra to ohlási, ak je hliadka do 140 m), opitý vodič kľučkuje v pruhu, auto bez svetiel v noci naozaj nesvieti a pri sledovaní zblízka vidno mobil v ruke alebo nezapnutý pás. Postrehy sa zobrazia pri údajoch radaru a prenesú sa do zápisníka kontroly. Jazda na červenú je nový priestupok v zázname (skupina „Mobil v ruke, jazda bez svetiel alebo na červenú“).
