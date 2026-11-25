@@ -129,4 +129,8 @@ patch('prednost v jazde','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(
 patch('auto bez svetiel v zozname',',tilt:c.avTl,steer:c.avSt?-c.avSt:0})}let h158n=null',',tilt:c.avTl,steer:c.avSt?-c.avSt:0,nl:c.fdNoL})}let h158n=null')
 patch('auto bez svetiel neziari','if(N>.5){for(const v of list)g3VGlow(ga,v,N*.5,N*.8)}','if(N>.5){for(const v of list)if(!v.nl)g3VGlow(ga,v,N*.5,N*.8)}')
 patch('jazda na cervenu','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!c.fdRgo&&!hTlGreen(n,c.e,now))')
+patch('pruhy: veduce auto v pruhu','const ld=l[i+1];if(ld){const gap=ld.t-c.t-9-(ld.avTL||0);','const ld=avLead(l,i,c,e);if(ld){const gap=ld.t-c.t-9-(ld.avTL||0);')
+patch('pruhy: veduce auto na dalsom useku','if(l2&&l2.length&&l2[0]!==c){const o2=l2[0],gap=','const o2=l2&&l2.length?avLead2(l2,c,E[c.nx]):null;if(o2&&o2!==c){const gap=')
+patch('pruhy: poloha v pruhu','if(e.ow)off=0;c.x=p.x-Math.sin(a)*off','if(e.ow)off=0;else if(c.avLo!=null)off=c.avLo;c.x=p.x-Math.sin(a)*off')
+patch('pruhy: rozhodovanie','for(const l of lanes.values())l.sort((a,b)=>a.t-b.t);const rm=[];','for(const l of lanes.values())l.sort((a,b)=>a.t-b.t);try{avLanes(sh,lanes,dt,E)}catch(x){if(!avLanes.w){avLanes.w=1;console.warn("pruhy",x)}}const rm=[];')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

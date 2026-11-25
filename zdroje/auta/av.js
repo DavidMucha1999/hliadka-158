@@ -381,7 +381,7 @@ function avWorldCull(sh,C,extra){if(!sh.drv||!sh.g3w||!C||!C.eye||!C.tgt||G3.avN
 
 /* krok 28: odbocovanie oblukom. Auto uz na krizovatke neskoci z jedneho useku na druhy s okamzitou zmenou smeru:
    poslednych a prvych par metrov ide po obluku medzi svojim pruhom na starom a novom useku. */
-function avLaneP(E,ei,dir,t,c){const e=E[ei],s=dir>0?t:e.len-t,p=hPtAt(e.pts,e.cum,clamp(s,0,e.len)),a=p.a+(dir<0?Math.PI:0);let off=HROAD[e.type].off;if(e.type==="hwy")off=c.kind==="kamión"||c.kind==="autobus"||c.v<26?7.6:3.8;if(e.ow)off=0;return{x:p.x-Math.sin(a)*off,y:p.y+Math.cos(a)*off,a}}
+function avLaneP(E,ei,dir,t,c){const e=E[ei],s=dir>0?t:e.len-t,p=hPtAt(e.pts,e.cum,clamp(s,0,e.len)),a=p.a+(dir<0?Math.PI:0);let off=HROAD[e.type].off;if(e.type==="hwy")off=c.kind==="kamión"||c.kind==="autobus"||c.v<26?7.6:3.8;if(e.ow)off=0;else if(c.avLo!=null&&(e.type==="hwy")===(c.avLe==="hwy"))off=c.avLo;return{x:p.x-Math.sin(a)*off,y:p.y+Math.cos(a)*off,a}}
 function avArc(sh,c){c.aE=c.a;if(c.park||!sh.W||!sh.W.net)return;const E=sh.W.net.E,e=E[c.e];if(!e)return;const rem=e.len-c.t;let A=null,B=null,u=0,R=0;
  if(c.nx!=null&&c.nx!==c.e&&E[c.nx]){const ne=E[c.nx],ni=c.dir>0?e.b:e.a,nd=ne.a===ni?1:-1;
   if(rem<32){const b0=avLaneP(E,c.nx,nd,Math.min(3,ne.len*.3),c),da=hAng(b0.a-c.aE);c.avTs=Math.abs(da)>.55&&Math.abs(da)<2.8?(da>0?1:-1):0;c.avTsE=c.nx}
@@ -404,3 +404,24 @@ function avYield(sh,c,ni,rem,lanes,dt,now){const W3=sh.W,{N,E}=W3.net,n=N[ni];if
  if(!y){c.avYw=0;return false}
  if(c.v<.6){c.avYw=(c.avYw||0)+dt;if(c.avYw>2.5+(Math.abs(c.id||0)%7)*.7){c.avYw=0;c.avGo=now+4}}
  return true}
+/* jazdne pruhy: dva pruhy na dialnici s predbiehanim a zaradenim spat, predbiehanie pomalych vozidiel cez protismer mimo mesta */
+function avLead(l,i,c,e){if(G3.avNoLane)return l[i+1];if(c.avOv)return null;const hwy=e.type==="hwy"&&c.avLo!=null;for(let j=i+1;j<l.length;j++){const o=l[j];if(hwy){if(Math.abs((o.avLo!=null?o.avLo:7.6)-c.avLo)<2.4)return o}else if(!o.avOv)return o}return null}
+function avLead2(l2,c,e2){if(G3.avNoLane)return l2[0];const hwy=e2.type==="hwy"&&c.avLo!=null&&c.avLe==="hwy";for(const o of l2){if(hwy){if(Math.abs((o.avLo!=null?o.avLo:7.6)-c.avLo)<2.4)return o}else if(!o.avOv)return o}return null}
+function avLanes(sh,lanes,dt,E){if(G3.avNoLane)return;for(const[k,l]of lanes){const e=E[k>>1];if(!e)continue;const ty=e.type,H=HROAD[ty],hwy=ty==="hwy";
+ if(e.ow||ty==="ring"||ty==="dirt"||ty==="city"){for(const c of l)if(c.avLo!=null||c.avOv){c.avLo=null;c.avOv=0;c.avLe=ty}continue}
+ const opp=hwy?null:lanes.get(k^1);
+ for(let i=0;i<l.length;i++){const c=l[i];if(c.fdPh)continue;const heavy=c.kind==="kamión"||c.kind==="autobus"||c.kind==="traktor",vd=H.sp*(c.vf||1),tick=(c.avLt=(c.avLt||Math.random()*.5)-dt)<=0;if(tick)c.avLt=.45+Math.random()*.3;
+  if(hwy){if(c.avLe!=="hwy"||c.avLo==null){c.avLe="hwy";c.avLn=0;c.avLo=7.6;c.avOv=0}
+   if(tick&&!c.flee&&!c.hold){const free=(ln,back,fwd)=>{const x=ln?3.8:7.6;for(const o of l){if(o===c||o.t<c.t-back||o.t>c.t+fwd)continue;if(Math.abs((o.avLo!=null?o.avLo:7.6)-x)<2.4||(o.avLn||0)===ln)return false}return true};
+    if(!c.avLn){if(!heavy){let ld=null;for(let j=i+1;j<l.length;j++)if(!l[j].avLn){ld=l[j];break}if(ld&&ld.t-c.t<60&&ld.v<vd-3&&free(1,40,32)){c.avLn=1;sh.avOvN=(sh.avOvN||0)+1}}}
+    else{let slow=false;for(let j=i+1;j<l.length;j++){const o=l[j];if(o.t-c.t>75)break;if(!o.avLn&&o.v<vd-3){slow=true;break}}if(!slow&&free(0,24,42))c.avLn=0}}
+   const tg=c.avLn?3.8:7.6;c.avLo+=clamp(tg-c.avLo,-1.7*dt,1.7*dt);continue}
+  if(c.avLe!==ty||c.avEd!==c.e){if(c.avLe==="hwy")c.avLo=null;c.avLe=ty;c.avEd=c.e;if(c.avOv){c.avOv=0}}
+  const base=H.off,rem=e.len-c.t;
+  if(c.avOv){const t=c.avOvT;let on=false;if(opp)for(const o of opp){const p=e.len-o.t;if(p>c.t-8&&p<c.t+95){on=true;break}}
+   if(!t||!l.includes(t)||c.t>t.t+13||rem<55||(on&&c.t<t.t-5))c.avOv=0}
+  else if(tick&&!heavy&&!c.flee&&!c.hold&&!c.emer&&!c.avTL&&!c.fdPkGo&&rem>240&&c.t>25){let ld=null;for(let j=i+1;j<l.length;j++)if(!l[j].avOv){ld=l[j];break}
+   if(ld&&!ld.fdPh&&!ld.flee&&ld.t-c.t<24&&(ld.v>=1.5?ld.v<Math.min(15,vd*.72):!!ld.hold)&&c.v<ld.v+3.5){let ok=true;if(opp)for(const o of opp){const p=e.len-o.t;if(p>c.t-15&&p<c.t+270){ok=false;break}}
+    if(ok)for(const o of l){if(o===c||o===ld)continue;if(o.avOv&&Math.abs(o.t-c.t)<110){ok=false;break}if(o.t>ld.t&&o.t<ld.t+26){ok=false;break}}
+    if(ok){c.avOv=1;c.avOvT=ld;sh.avOvN=(sh.avOvN||0)+1}}}
+  if(c.avOv||c.avLo!=null){if(c.avLo==null)c.avLo=base;const tg=c.avOv?-base:base;c.avLo+=clamp(tg-c.avLo,-2.3*dt,2.3*dt);if(!c.avOv&&Math.abs(c.avLo-base)<.01)c.avLo=null}}}}
