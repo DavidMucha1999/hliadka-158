@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Vybavenie ulíc:** zastávky majú lavičku, reklamný panel, kôš a žlté značenie zastávky na ceste. Na hlavných triedach stoja reklamné panely a pri križovatkách ostrovčeky so značkou obchádzania. V starom meste a na triedach pribudli stojany s bicyklami a stĺpiky na rohoch križovatiek. Pri panelákoch stoja kontajnery na triedený odpad. Spolu 37 000 trojuholníkov na celé mesto.
+
 - **Detaily budov:** domy so sedlovou strechou majú komíny a domy v starom meste a bytovky aj vikiere. Paneláky a bytovky majú vystupujúce balkóny (na panelákoch vo farbe pásu domu) a vchody s dverami, strieškou a schodíkom. Rodinné domy majú komín a vchod so strieškou. Vnútri blokov starého mesta sú dláždené dvory so stromami, lavičkami a prístavbou. Spolu 107 000 trojuholníkov na celé mesto.
 
 - **Druhy ulíc:** ulice v meste už nevyzerajú rovnako. Dve hlavné triedy cez stred mesta majú stredový pás so živým plotom a stromami a širokú promenádu až po domy. Ulice v starom meste sú dláždené. V obytných štvrtiach je medzi cestou a chodníkom zelený pás. Hlavné triedy majú prednosť pred bočnými ulicami, na ktorých stojí značka „Daj prednosť v jazde“ (značiek je teraz 122).

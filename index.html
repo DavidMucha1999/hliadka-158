@@ -4570,6 +4570,32 @@ function hBldFx(g,W3,b,X0,X1,Z0,Z1,Y,rot){const k=b.k;if(G3.fdNoBld||k!=="old"&&
   const a=39,y=T(cx,cz),g=G(cx,cz);g.box(cx-a,cx+a,y,y+.07,cz-a,cz+a,g3L("#b9b2a2"),36);
   [[-15,-14],[16,-12],[-13,15],[14,16]].forEach(([ox,oz],q)=>{const x=cx+ox,z=cz+oz,s=4+((i*3+j*5+q*7+40)%5)*.25;g.cyl(x,z,y,y+s*.6,.13,.1,5,tr,0);g.sblob(x,y+s*.98,z,s*.3,s*.48,s*.3,hTreeCol(i+j+q),28,Math.abs(i*7+j*3+q))});
   hPut(g,hBenchGeo(),cx-4,y+.07,cz,0);hPut(g,hBenchGeo(),cx+4,y+.07,cz,Math.PI);g.box(cx-27,cx-21,y,y+2.5,cz+24,cz+29,g3L("#a89a84"),0);g.box(cx-27.3,cx-20.7,y+2.5,y+2.65,cz+23.7,cz+29.3,g3L("#5d646c"),0)}}catch(e){console.warn("dvory",e)}}}
+/* krok 17: vybavenie ulic – zastavky, stojany na bicykle, reklamne panely, kontajnery, stlpiky, ostrovceky pri priechodoch */
+const FDAD=[["#c8322a","#f4f1ea"],["#2f5aa8","#e0b020"],["#3a8a5a","#f4f1ea"],["#7a3a8a","#e8c0d0"],["#e07a20","#2a2d31"]];
+function hRackGeo(bikes){const k=bikes?1:0;if(hRackGeo.g&&hRackGeo.g[k])return hRackGeo.g[k];const o=new Geo,st=g3L("#8d9399"),dk=g3L("#1a1c1f");
+ for(let i=0;i<4;i++){const x=(i-1.5)*.75;o.box(x-.03,x+.03,0,.8,-.38,-.32,st,9);o.box(x-.03,x+.03,0,.8,.32,.38,st,9);o.box(x-.03,x+.03,.76,.82,-.38,.38,st,9)}
+ if(bikes)[[-.95,"#c8322a"],[.55,"#2f5aa8"]].forEach(([x,c])=>{const f=g3L(c);o.cylX(x-.02,x+.02,.33,-.52,.33,10,dk,0);o.cylX(x-.02,x+.02,.33,.52,.33,10,dk,0);o.box(x-.02,x+.02,.68,.74,-.42,.4,f,1);o.box(x-.02,x+.02,.33,.92,-.44,-.39,f,1);o.box(x-.02,x+.02,.33,.98,.4,.45,f,1);o.box(x-.2,x+.2,.96,1,.4,.44,dk,9);o.box(x-.07,x+.07,.9,.95,-.52,-.3,dk,0)});
+ (hRackGeo.g||(hRackGeo.g=[]))[k]=o;return o}
+function hAdGeo(v){if(hAdGeo.g&&hAdGeo.g[v])return hAdGeo.g[v];const o=new Geo,dk=g3L("#2a2d31"),a=g3L(FDAD[v][0]),b=g3L(FDAD[v][1]);o.box(-.62,.62,.3,2.25,-.07,.07,dk,9);o.box(-.5,-.42,0,.3,-.05,.05,dk,9);o.box(.42,.5,0,.3,-.05,.05,dk,9);
+ for(const s of[-1,1]){const P=(x0,x1,y0,y1,d,c)=>o.box(x0,x1,y0,y1,s>0?.07+d:-.085-d,s>0?.085+d:-.07-d,c,12);P(-.54,.54,.42,2.13,0,a);P(-.38,.38,1.45,1.95,.012,b);P(-.38,.12,.68,.82,.012,b)}
+ (hAdGeo.g||(hAdGeo.g=[]))[v]=o;return o}
+function hKeepGeo(){if(hKeepGeo.g)return hKeepGeo.g;const o=new Geo,wh=g3L("#f4f4f0");o.cyl(0,0,0,1.3,.04,.04,5,g3L("#8d9399"),9);o.cylX(-.03,.03,1.6,0,.32,12,g3L("#1f5fbf"),12);for(const s of[-1,1]){const x0=s>0?.03:-.042,x1=s>0?.042:-.03;o.box(x0,x1,1.42,1.76,-.04,.04,wh,12);o.box(x0,x1,1.42,1.5,-.16,.16,wh,12)}return hKeepGeo.g=o}
+function hFurn(W3,G,T){const{N,E}=W3.net,sg=W3.fdSg||(W3.fdSg=[]),L=g3L,free=(x,z,m)=>!hBldAt(x,z)&&!hIsWaterW(W3,x,z)&&!h8OnRoad(W3,x,z,m),yl=L("#e3b21c");
+ for(const st of W3.stops||[]){const e=E[st.e];if(!e||e.type==="hwy")continue;const p=hPtAt(e.pts,e.cum,st.s),ux=Math.cos(p.a),uz=Math.sin(p.a),nx=-uz,nz=ux,hw=HROAD[e.type].w/2,x=p.x+nx*(hw+3.5),z=p.y+nz*(hw+3.5),o=new Geo,wd=L("#7a5a38"),dk=L("#2a2d31"),v=(st.e*7+Math.round(st.s))%5;
+  o.box(-1.5,1.5,.42,.5,.3,.72,wd,0);o.box(-1.4,-1.32,0,.42,.34,.68,dk,9);o.box(1.32,1.4,0,.42,.34,.68,dk,9);o.box(2.44,2.56,.25,2.35,-.8,.8,dk,9);o.box(2.41,2.44,.4,2.2,-.7,.7,L(FDAD[v][0]),12);o.box(2.395,2.41,1.45,1.95,-.5,.5,L(FDAD[v][1]),12);o.cyl(-1.9,-1.35,0,.85,.2,.23,7,L("#2f4a3a"),0);
+  hPut(G(x,z),o,x,T(x,z),z,Math.atan2(-ux,-uz));
+  const y=T(p.x,p.y)+hElev(e,st.s)+.117,g=G(p.x,p.y),pt=(d,l)=>[p.x+ux*d+nx*l,y,p.y+uz*d+nz*l],q=(d0,d1,l0,l1)=>g.quad(pt(d0,l0),pt(d1,l0),pt(d1,l1),pt(d0,l1),yl,35);
+  q(-10,10,hw-.45,hw-.33);q(-10,10,hw-3.2,hw-3.08);q(-10,-9.88,hw-3.2,hw-.33);q(9.88,10,hw-3.2,hw-.33);for(let d=-8;d<8;d+=4)q(d,d+2,hw-1.82,hw-1.7)}
+ E.forEach((e,ei)=>{if(e.type!=="city"||e.len<70)return;const hw=HROAD.city.w/2,k=e.fdSt;
+  if(k==="old"||k==="av"){const p=hPtAt(e.pts,e.cum,e.len*.38),sd=ei%2?1:-1,lat=hw+(k==="av"?3.9:1.15),x=p.x-Math.sin(p.a)*lat*sd,z=p.y+Math.cos(p.a)*lat*sd;if(free(x,z,.7)){hPut(G(x,z),hRackGeo(ei%3!==0),x,T(x,z)+.19,z,-p.a);sg.push([x,z])}}
+  if(k==="av")for(let s=42,j=0;s<e.len-30;s+=52,j++){const p=hPtAt(e.pts,e.cum,s),sd=(ei+j)%2?1:-1,x=p.x-Math.sin(p.a)*(hw+3.3)*sd,z=p.y+Math.cos(p.a)*(hw+3.3)*sd;if(!free(x,z,3))continue;hPut(G(x,z),hAdGeo((ei+j)%5),x,T(x,z)+.19,z,Math.atan2(-Math.cos(p.a),-Math.sin(p.a)));sg.push([x,z])}
+  if(k==="av")for(const end of[0,1]){if(N[end?e.b:e.a].e.length<3||e.len<50)continue;const s0=end?e.len-17:9.6,s1=end?e.len-9.6:17,p=hPtAt(e.pts,e.cum,s0),q=hPtAt(e.pts,e.cum,s1),alx=Math.abs(Math.cos(p.a))>.99,alz=Math.abs(Math.sin(p.a))>.99;if(!alx&&!alz)continue;
+   const mx=(p.x+q.x)/2,mz=(p.y+q.y)/2,y=T(mx,mz)+hElev(e,(s0+s1)/2),g=G(mx,mz),B=(w,y0,y1,c,t)=>alx?g.box(Math.min(p.x,q.x)+t,Math.max(p.x,q.x)-t,y+y0,y+y1,mz-w,mz+w,c,0):g.box(mx-w,mx+w,y+y0,y+y1,Math.min(p.y,q.y)+t,Math.max(p.y,q.y)-t,c,0);
+   B(.6,.09,.21,L("#c4c1b8"),0);B(.47,.21,.222,L("#b0aa9c"),.13);const t=hPtAt(e.pts,e.cum,end?e.len-10.2:10.2);hPut(G(t.x,t.y),hKeepGeo(),t.x,y+.2,t.y,Math.atan2(-Math.sin(p.a),Math.cos(p.a)));sg.push([t.x,t.y])}});
+ for(const b of W3.bld){if(b.k!=="panel"||b.nodraw)continue;const lx=b.x1-b.x0>=b.z1-b.z0,cx=lx?b.x0-3.2:(b.x0+b.x1)/2,cz=lx?(b.z0+b.z1)/2:b.z0-3.2;if(!free(cx,cz,1.5))continue;const y=T(cx,cz),g=G(cx,cz),ax=lx?1:2.4,az=lx?2.4:1;g.box(cx-ax,cx+ax,y,y+.06,cz-az,cz+az,L("#9a9a96"),0);
+  ["#d9b21c","#2f5aa8","#3a8a5a"].forEach((c,i)=>{const x=cx+(lx?0:(i-1)*1.45),z=cz+(lx?(i-1)*1.45:0),hx=lx?.45:.55,hz=lx?.55:.45;g.box(x-hx,x+hx,y+.06,y+1.15,z-hz,z+hz,L(c),0);g.box(x-hx-.04,x+hx+.04,y+1.15,y+1.24,z-hz-.04,z+hz+.04,L("#2a2d31"),0)})}
+ N.forEach((n,ni)=>{if(n.e.length<3||n.rbc||n.rbn!=null||n.e.some(ei=>E[ei].type!=="city")||!n.e.some(ei=>E[ei].fdSt==="old"||E[ei].fdSt==="av"))return;const hw=HROAD.city.w/2;for(const ei of n.e){const a=hTlAng(W3,ni,ei),ux=Math.cos(a),uz=Math.sin(a);for(const sd of[-1,1])for(const d of[10.2,11.7,13.2]){const x=n.x+ux*d-uz*sd*(hw+.55),z=n.y+uz*d+ux*sd*(hw+.55),y=T(x,z)+.19;G(x,z).cyl(x,z,y,y+.75,.07,.06,5,L("#3a3d42"),9)}}})}
+{const s4=hStreetFx;hStreetFx=function(W3,G,T){s4(W3,G,T);if(G3.fdNoFurn)return;try{hFurn(W3,G,T)}catch(e){console.warn("furn",e)}}}
 /*</drive-fd>*//*<info-o>*//* Obrazovka "O hre": tlacidlo v hlavnom menu a karta s popisom projektu */
 const OH_REPO="https://github.com/DavidMucha1999/hliadka-158";
 function ohOpen(){const nC=new Set(LOCS.map(x=>x.ct)).size,st=[[MODES.length,"druhov služby"],[LOCS.length,"úsekov v "+nC+" krajinách"],[COPS.length,"služobných vozidiel"],[RANKS.length,"hodností"],["6 × 6 km","mapa okresu"],["1 súbor","bez inštalácie"]];
