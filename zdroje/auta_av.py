@@ -138,4 +138,13 @@ patch('model auta s rozpoctom','let v=G3.vcache.get(key);if(!v){const pn=avPaint
 patch('model auta zapamatat','G3.vcache.set(key,v);','G3.vcache.set(key,v);avVehKeep(sp,o,v,key);')
 patch('rychle delenie skla','for(let i=0;i<A.length;i+=36){const t=A.slice(i,i+36);(t[9]===3||t[9]===45?gl:op).push(...t)}','for(let i=0;i<A.length;i+=36){const m=A[i+9],D=m===3||m===45?gl:op;for(let k=0;k<36;k++)D.push(A[i+k])}')
 patch('rychly prevod geometrie','b=gl.createBuffer(),f=new Float32Array(geo2.a);gl.bindBuffer(gl.ARRAY_BUFFER,b);','b=gl.createBuffer(),A0=geo2.a,f=new Float32Array(A0.length);for(let i=0,n=A0.length;i<n;i++)f[i]=A0[i];gl.bindBuffer(gl.ARRAY_BUFFER,b);')
+patch('postavy: pamat modelov podla posledneho pouzitia','let P=G3.pcache.get(key);if(P)return P;const sk=g3L(lk.skin)','let P=G3.pcache.get(key);if(P){G3.pcache.delete(key);G3.pcache.set(key,P);return P}const sk=g3L(lk.skin)')
+patch('postavy: vacsia pamat modelov','G3.pcache.set(key,P);if(G3.pcache.size>40){','G3.pcache.set(key,P);if(G3.pcache.size>110){')
+# Kulisy cestnej kontroly sa pri jazde po mape nezobrazuju: pri zmene svetla sa prepocita len obloha a svetlo, nie geometria.
+if "function g3EnvLite(" not in d:
+    _i=d.index("function g3Env2D(clearR){");_j=d.index("function ",_i+20);_f=d[_i:_j]
+    _t=_f.index('const np=wx==="rain"?620');_tail=_f[_t:]
+    _head='function g3EnvLite(clearR){const loc=curLoc(),wx=S.shift.wx,W0=WEATHER[wx],LS=lightState(),N=LS.night,snow=wx==="snow",bg2=loc.bg,key=[loc.id,wx,S.shift.startH,clearR?1:0,lsKey(LS),SEASON].join("|");if(G3.envKey===key)return;G3.envKey=key;const gl=G3.gl,hw=bg2.type==="highway",city=bg2.type==="city",town=bg2.type==="town",rural=bg2.type==="rural";'
+    _new=_f.replace("function g3Env2D(clearR){",'function g3Env2D(clearR){if(S.shift&&S.shift.heli&&S.screen==="heli"&&G3.road&&G3.envLoc===curLoc().id+"|"+S.shift.wx&&!G3.avNoLite){try{return g3EnvLite(clearR)}catch(x){G3.avNoLite=1;G3.envKey=null}}',1).replace("if(G3.envKey===key)return;G3.envKey=key;","if(G3.envKey===key)return;G3.envKey=key;G3.envLoc=loc.id+\"|\"+wx;",1)
+    d=d[:_i]+_new+_head+_tail+d[_j:];print("kulisy bez prestavby: ok")
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

@@ -4,6 +4,10 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Sekanie v jazde – skutočná príčina:** pamäť na modely postáv mala miesto len pre 40 vzhľadov a odkedy má každý chodec vlastný vzhľad, hra pri každom snímku niektoré postavy zahodila a vyrobila znova (20 až 80 nahraní geometrie za snímok, snímok až 98 ms). Pamäť je väčšia a drží naposledy použité vzhľady; snímok je späť na 34–38 ms.
+- **Záseky pri novom type auta:** model pre každý typ karosérie sa pripraví už pri načítaní. Počas jazdy sa nový model tvorí najviac raz za 12 s, pri státí častejšie.
+- **Zásek pri zmene denného svetla:** hra pri ňom pol sekundy prestavovala kulisy cestnej kontroly, ktoré jazda po mape nezobrazuje. Teraz sa prepočíta len obloha a svetlo (32–40 ms).
+
 - **Rýchlejšie načítanie hliadky:** prevod geometrie sveta pre grafickú kartu trval 6,2 s, teraz 0,6 s. Prvý snímok režimu sa v teste skrátil z 15–17 s na 9 s.
 - **Plynulejšia jazda:** zaparkovaných áut je menej (najviac 75, do 160 m) a ďalej než 40 m sa kreslia v nízkom detaile; predošlá úprava parkovania ich pridala toľko, že snímok v centre trval 80–115 ms, teraz okolo 35–50 ms. Model nového typu auta sa tvorí 99 ms namiesto 254 ms a najviac raz za 1,5 s, dovtedy sa použije hotový model rovnakej karosérie. Celé postavy sa kreslia pre 10 najbližších chodcov namiesto 14.
 - **Štart hliadky:** auto už nezačína v strede hlavnej triedy v živom plote, ale v pravom pruhu bočnej ulice pri centre.
