@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Parkovanie:** ulice v meste majú parkovací pás s vyznačenými miestami. Obsadenosť závisí od štvrte a hodiny: v centre je cez deň plnšie, v obytných štvrtiach v noci. Zaparkované autá občas vyrazia do premávky a idúce autá občas spomalia a zaparkujú na voľné miesto. Pri obchodnom dome je parkovisko s dvoma radmi áut a pri stojanoch čerpacích staníc stoja autá.
+
 - **Postavy a cyklisti:** chodci v jazde už nie sú len dospelí v bežnom oblečení. Pribudli deti s batohom, seniori s palicou, ľudia so psom, s kočíkom a s taškou, robotníci, kuriéri, turisti a bežci, každý s vlastnou rýchlosťou chôdze. Oblečenie sa riadi počasím: v zime bundy a čiapky, v horúčave tričká, v daždi dáždniky. Po okraji cesty jazdia cyklisti s prilbou, na červenú zastavia a cez križovatku pokračujú väčšinou rovno. Stojaci chodci sa už neotáčajú vždy za autom hráča, ale tam, kam sa naozaj pozerajú.
 
 - **Reakcie chodcov na hliadku:** chodci do 45 m sa zastavia a otočia za autom so zapnutým majákom, pred majákom nevkročia na priechod a tí, čo už prechádzajú, pobehnú. Ak ide auto po chodníku priamo na chodca, chodec uhne nabok. Pri zastavenom vozidle, pri výjazde s rekvizitami a po náraze hliadky sa okoloidúci zastavia a chvíľu sa pozerajú. Štvrtina chodcov si nič nevšíma a ide ďalej.
