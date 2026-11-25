@@ -251,3 +251,53 @@ function fdWaiters(sh){const hp=sh.hp,D=sh.dv,W3=sh.W,E=W3.net.E,M=sh.fdStW||(sh
 {const fp0=fdPeds;fdPeds=function(dt){const sh=S.shift,D=sh.dv;D.wtT=(D.wtT||0)-dt;if(D.wtT<=0){D.wtT=1.3;try{fdWaiters(sh)}catch(e){console.warn("fdw",e)}}return fp0.apply(this,arguments)}}
 /* krok 12: svetlomety auta v noci */
 function fdHeadL(L2,sh,T,N){const hp=sh.hp,D=sh.dv||{},hd=sh.fl.hd,cx=Math.cos(hd),cz=Math.sin(hd);let u=0;try{u=fdUrban(hp.x,hp.y)}catch(e){}const m=u===2?.4:u===1?.7:1,dk=typeof avDL==="function"&&avDL(D.dmF||0)>1?.55:1;for(const[d,rng,k0]of[[10,19,1.7],[28,29,1.45]]){const k=k0*m*dk;const x=hp.x+cx*d,z=hp.y+cz*d;L2.push({d:-z,x,y:T(x,z)+(D.el||0)+4,rng,c:[1.5*k*N,1.42*k*N,1.2*k*N]})}try{avCarL(L2,sh,T,N,m)}catch(e){}}
+/* krok 13: chodci – priechody na krizovatkach, chodza okolo rohov, nastup a vystup na zastavkach */
+const FDZ=7.1;
+function fdPedSide(sh,ei,s,off){const ed=sh.W.net.E[ei],p=hPtAt(ed.pts,ed.cum,clamp(s,0,ed.len));return[p.x-Math.sin(p.a)*off,p.y+Math.cos(p.a)*off,p.a]}
+function fdPedGoTo(e,q){e.st=q.xe!=null?"xwait":"xgo";e.q=q;e.px=e.x;e.py=e.y;e.u=0;e.wT=0;e.warn=0}
+function fdPedNode(sh,e,ni){const W3=sh.W,{N,E}=W3.net,n=N[ni];if(n.rbn!=null||n.rbc||n.e.length<2)return false;
+ const arms=[];for(const i of n.e){const t=E[i].type;if(t==="ring"||t==="hwy")return false;const a=hTlAng(W3,ni,i);arms.push([i,[n.x+Math.cos(a)*18,n.y+Math.sin(a)*18]])}
+ const P=[e.x,e.y],O=[n.x,n.y],F=[],X=[];
+ for(const ej of n.e){const nd=E[ej];if(nd.a===nd.b)continue;if(ej!==e.e&&(nd.ow||nd.type==="dirt"||nd.len<30))continue;const atA=nd.a===ni,s=atA?FDZ:nd.len-FDZ,sw=HROAD[nd.type].w/2+2.1;
+  for(const sj of[1,-1]){if(ej===e.e&&sj===e.side)continue;const[x,y]=fdPedSide(sh,ej,s,sj*sw),d=Math.hypot(x-P[0],y-P[1]);if(d>24||hBldAt(x,y)||hIsWater(x,y))continue;
+   let cnt=0,xe=null;if(d>.5){const dx=x-P[0],dy=y-P[1],t=clamp(((O[0]-P[0])*dx+(O[1]-P[1])*dy)/(d*d),0,1);if(Math.hypot(P[0]+dx*t-O[0],P[1]+dy*t-O[1])<3.5)continue;for(const[i,A]of arms)if(hSegX(P,[x,y],O,A)){cnt++;xe=i}}
+   if(cnt>1)continue;const c={x,y,ej,sj,s,dir:atA?1:-1};if(cnt){c.xe=xe;c.xs=E[xe].a===ni?FDZ:E[xe].len-FDZ;c.xn=ni;X.push(c)}else F.push(c)}}
+ if(n.e.length<3&&Math.random()<.8)X.length=0;
+ const r=Math.random(),L=r<.5&&F.length?F:r<.85&&X.length?X:r<.93&&F.length?F:null;if(!L)return false;
+ fdPedGoTo(e,L[Math.floor(Math.random()*L.length)]);return true}
+function fdPedBusy(sh,q){const E=sh.W.net.E,X=E[q.xe];for(const c of sh.cars){if(c.park||c.fdPh)continue;
+  if(c.e===q.xe){const cs=c.dir>0?c.t:X.len-c.t,ah=(q.xs-cs)*c.dir;if(c.v<1.5){if(Math.abs(ah)<3.6)return true}else if(ah>-4&&ah<10+c.v*1.6)return true}
+  else if(q.xn!=null&&c.nx===q.xe&&c.v>1.5){const ce=E[c.e];if(ce&&(c.dir>0?ce.b:ce.a)===q.xn&&ce.len-c.t<12)return true}}
+ return false}
+fdPedGhosts=function(sh){const out=[],hp=sh.hp,E=sh.W.net.E;for(const e of sh.ents){const q=e.q;if(!e.fdPed||e.st!=="xgo"||!q||q.xe==null||Math.hypot(e.x-hp.x,e.y-hp.y)>320)continue;const ed=E[q.xe];if(!ed)continue;for(const dir of[1,-1])out.push({id:-2,e:q.xe,dir,t:dir>0?q.xs:ed.len-q.xs,v:0,vf:1,kind:"osobné auto",col:["",""],plate:"",nx:null,x:e.x,y:e.y,a:0,e3:0,fdPh:1})}return out};
+{const pn0=fdPedNew;fdPedNew=function(sh,mn,mx){const e=pn0(sh,mn,mx);if(e){e.fdC=Math.floor(Math.random()*4);e.tC=20+Math.random()*40}return e}}
+fdWaiters=function(sh){const hp=sh.hp,D=sh.dv,W3=sh.W,E=W3.net.E,M=sh.fdStW||(sh.fdStW=new Map),h=lightState().h,now=sh.fl.t;(W3.stops||[]).forEach((st,i)=>{const L=M.get(i);if(L){if(!L.some(q=>sh.ents.includes(q)))M.delete(i);return}if(st.fdCd>now)return;const e=E[st.e],p=hPtAt(e.pts,e.cum,st.s),d=Math.hypot(p.x-hp.x,p.y-hp.y);if(d>430||(d<70&&D.wInit))return;const n=h<5.5||h>22.5?(i%3?0:1):1+(i*7+3)%3;if(!n)return;const sw=HROAD[e.type].w/2+2.4,arr=[];
+  for(let k=0;k<n;k++){const q={k:"human",crowd:true,fdPed:1,fdC:(i+k)%4,e:st.e,s:clamp(st.s+(k-(n-1)/2)*1.2,2,e.len-2),dir:1,side:1,sw,off:sw,sp:1.4,st:"stand",tC:1e9,x:0,y:0,vx:0,vy:0};fdPedPos(sh,q);q.sx=q.x;q.sy=q.y;q.fx=Math.sin(p.a);q.fy=-Math.cos(p.a);sh.ents.push(q);arr.push(q)}M.set(i,arr)});D.wInit=1};
+function fdBus(sh){const W3=sh.W,E=W3.net.E,hp=sh.hp,M=sh.fdStW,now=sh.fl.t;for(const c of sh.cars){if(c.kind!=="autobus"||!(c.stop>0)||!c.lastSt||c.fdBs===c.lastSt)continue;c.fdBs=c.lastSt;if(Math.hypot(c.x-hp.x,c.y-hp.y)>350)continue;
+  const st=c.lastSt,ed=E[c.e];if(!ed||st.e!==c.e)continue;const p=hPtAt(ed.pts,ed.cum,st.s),nx=-Math.sin(p.a),ny=Math.cos(p.a),sd=(c.x-p.x)*nx+(c.y-p.y)*ny>=0?1:-1,bx=c.x+nx*sd*1.6,by=c.y+ny*sd*1.6,ux=Math.cos(p.a),uy=Math.sin(p.a);
+  const L=M&&M.get(W3.stops.indexOf(st));if(L&&sd===1){let k=0;for(const q of L){if(q.st!=="stand")continue;q.st="xgo";q.px=q.x;q.py=q.y;q.u=-k*.3;q.q={x:bx+ux*(k-1)*.35,y:by+uy*(k-1)*.35,kill:1};k++}if(k)st.fdCd=now+35}
+  const sw=HROAD[ed.type].w/2+2.1,na=Math.floor(Math.random()*3);for(let k=0;k<na;k++){const s=clamp(st.s+(k?1.6:-1.6),FDZ+1,ed.len-FDZ-1),[x,y]=fdPedSide(sh,c.e,s,sd*sw);if(hBldAt(x,y))continue;
+   sh.ents.push({k:"human",crowd:true,fdPed:1,fdC:Math.floor(Math.random()*4),e:c.e,s,dir:Math.random()<.5?1:-1,side:sd,sw,off:sd*sw,sp:1.25+Math.random()*.5,st:"xgo",tC:20+Math.random()*40,x:bx,y:by,px:bx,py:by,u:-.5-k*.6,vx:0,vy:0,q:{x,y,ej:c.e,sj:sd,s,dir:Math.random()<.5?1:-1}})}}}
+function fdPeds2(dt){const sh=S.shift,D=sh.dv,hp=sh.hp,{N,E}=sh.W.net,sp=Math.abs(D.v),now=sh.fl.t;
+ D.wtT=(D.wtT||0)-dt;if(D.wtT<=0){D.wtT=1.3;try{fdWaiters(sh)}catch(x){console.warn("fdw",x)}}
+ D.bsT=(D.bsT||0)-dt;if(D.bsT<=0){D.bsT=.4;try{fdBus(sh)}catch(x){console.warn("fdb",x)}}
+ D.pdT=(D.pdT||0)-dt;if(D.pdT<=0){D.pdT=1;sh.ents=sh.ents.filter(e=>!e.fdPed||Math.hypot(e.x-hp.x,e.y-hp.y)<470);const u=fdUrban(hp.x,hp.y),h=lightState().h,k=h<5.5||h>22?.3:h<7||h>20?.6:1,want=Math.round((u===2?30:u===1?10:3)*k),n=sh.ents.filter(e=>e.fdPed&&e.st!=="stand").length;for(let i=0;i<3&&n+i<want;i++)fdPedNew(sh,D.pdInit?90:35,400);D.pdInit=1}
+ for(const e of sh.ents){if(!e.fdPed)continue;const ed=E[e.e];if(!ed){e.dead=1;continue}
+  if(e.st==="walk"){e.s+=e.dir*e.sp*dt;fdPedPos(sh,e);
+   if(e.dir<0?e.s<FDZ:e.s>ed.len-FDZ){if(!fdPedNode(sh,e,e.dir<0?ed.a:ed.b))e.dir=-e.dir}
+   else{e.tC-=dt;if(e.tC<=0){e.tC=20+Math.random()*40;if(e.s>30&&e.s<ed.len-30&&!ed.ow&&(ed.type!=="city"||Math.random()<.08)){const[x,y]=fdPedSide(sh,e.e,e.s,-e.side*e.sw);if(!hBldAt(x,y)&&!hIsWater(x,y))fdPedGoTo(e,{x,y,ej:e.e,sj:-e.side,s:e.s,dir:e.dir,xe:e.e,xs:e.s,xn:null})}}}}
+  else if(e.st==="xwait"){const q=e.q,dx=q.x-e.px,dy=q.y-e.py,l=Math.hypot(dx,dy)||1;e.wT+=dt;e.x=e.px;e.y=e.py;e.vx=dx/l*.3;e.vy=dy/l*.3;
+   const n=q.xn!=null?N[q.xn]:null,tl=n&&n.tl;let ok=e.wT>.7;
+   if(ok&&tl){const i=n.e.indexOf(q.xe),t=(now+n.tl.off)%36;ok=i>=0&&n.tl.g[i]!==(t<18?0:1)&&t%18<7}
+   if(ok){const dp=Math.hypot(hp.x-(e.px+q.x)/2,hp.y-(e.py+q.y)/2);ok=!(dp<20&&sp>4)&&dp>3.2&&!fdPedBusy(sh,q)}
+   if(ok){e.st="xgo";e.u=0}else if(e.wT>(tl?50:14)){e.st="walk";e.q=null;if(q.xn!=null)e.dir=-e.dir}}
+  else if(e.st==="xgo"){const q=e.q,dx=q.x-e.px,dy=q.y-e.py,l=Math.hypot(dx,dy)||.01,v=e.sp*(q.xe!=null?1.15:1);e.u+=v*dt/l;
+   if(e.u>=1){if(q.kill){e.dead=1;continue}e.e=q.ej;e.side=q.sj;e.s=q.s;e.dir=q.dir;e.sw=HROAD[E[q.ej].type].w/2+2.1;e.off=e.side*e.sw;e.st="walk";e.q=null;fdPedPos(sh,e)}
+   else{const u=Math.max(0,e.u),k=e.u>0?v:.3;e.x=e.px+dx*u;e.y=e.py+dy*u;e.vx=dx/l*k;e.vy=dy/l*k}}
+  else if(e.st==="stand"){if(e.sx!=null){e.x=e.sx;e.y=e.sy;e.vx=e.fx*.3;e.vy=e.fy*.3}else fdPedPos(sh,e)}
+  else{e.st="walk";continue}
+  const d=Math.hypot(e.x-hp.x,e.y-hp.y);
+  if(d<1.25&&sp>1.5&&Math.abs(D.el||0)<1){e.dead=1;D.v*=.25;D.bumpT=1.5;try{SFX.play("crash")}catch(x){}award(0,-15,null,null);D.pedHit=(D.pedHit||0)+1;radio("Operačné: hliadka zrazila chodca! Na miesto ide záchranka a inšpekcia.","bolo-msg");D.msg="Zrazil si chodca. Reputácia −15.";D.msgT=7}
+  else if(e.st==="xgo"&&e.q&&e.q.xe!=null&&d<4.6&&sp>8.3&&!e.warn&&hPolyD(e.x,e.y,E[e.q.xe].pts)<HROAD[E[e.q.xe].type].w/2+.3){e.warn=1;D.pedWarn=(D.pedWarn||0)+1;award(0,-2,null,null);D.msg=e.q.xn!=null?"Nedal si prednosť chodcovi na priechode. Reputácia −2.":"Ohrozil si chodca na ceste. Reputácia −2.";D.msgT=4;try{SFX.play("bad")}catch(x){}}}
+ if(sh.ents.some(e=>e.dead))sh.ents=sh.ents.filter(e=>!e.dead)}
+fdPeds=fdPeds2;

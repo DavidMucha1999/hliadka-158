@@ -2,6 +2,13 @@
 
 Najnovšie zmeny sú hore.
 
+## 25. 11. 2026
+
+- **Chodci na priechodoch:** chodci v jazde už neprechádzajú cestu kdekoľvek a na križovatke nepreskakujú z ulice na ulicu. Cestu prechádzajú na priechode pri križovatke, na svetelnej križovatke čakajú, kým majú autá červenú, a okolo rohu idú po chodníku. Autá im zastavia. Prechádzanie mimo priechodu v meste zostalo len výnimočne.
+- **Zastávky:** keď na zastávke zastaví autobus, čakajúci nastúpia a niekoľko ľudí vystúpi a rozíde sa po chodníku. Čakajúci stoja tvárou k ceste.
+- **Vzhľad chodcov:** každý chodec má vlastné oblečenie namiesto štyroch spoločných, vzdialené postavy už počas chôdze nemenia farbu a zblízka sa kreslí 14 celých postáv namiesto 8.
+- **Hodnotenie:** ohrozenie chodca na priechode má vlastné hlásenie „Nedal si prednosť chodcovi na priechode“.
+
 ## 22. 11. 2026
 
 - **Križovatky:** autá odbočujú oblúkom namiesto skoku s okamžitou zmenou smeru, pred odbočením spomalia na približne 15 km/h a smerovka svieti až do dokončenia odbočenia. Na ohyboch ciest a na kruhových objazdoch sa auto natáča plynulo.
