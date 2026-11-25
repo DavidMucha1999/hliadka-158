@@ -1,12 +1,12 @@
 /* Faza 1 – prestavba cestnej kontroly: otazky a vypoved, trpezlivost, dovod prehliadky, zaznam o priestupku */
 const F1MUL={hurry:1.5,arrogant:1.4,young:1.2,nervous:1.1,trucker:1.1,calm:1,old:.9,scared:.9,drunk:.8,sorry:.8,chatty:.7};
-const F1RAW={noVP:1,opExpired:1,vpExpired:2,stkExpired:2,pzpExpired:3,docFake:4,plateMismatch:4,speed:1,noLights:1,phone:2,belt:1,helmet:2,child:2,alcLow:3,alcHigh:4,drug:3,refuse:3,tyres:2,tacho:3,weight:3,contra:3,stolen:4,wanted:4,gas:3,bribe:4,assault:4};
+const F1RAW={noVP:1,opExpired:1,vpExpired:2,stkExpired:2,pzpExpired:3,docFake:4,plateMismatch:4,speed:1,noLights:1,red:2,phone:2,belt:1,helmet:2,child:2,alcLow:3,alcHigh:4,drug:3,refuse:3,tyres:2,tacho:3,weight:3,contra:3,stolen:4,wanted:4,gas:3,bribe:4,assault:4};
 const F1CAT={
  dvod:{n:"Vodič bez platného dokladu (preukaz, OP)",g:"d",ids:["noVP","opExpired","vpExpired"]},
  dauto:{n:"Vozidlo bez platnej STK alebo PZP",g:"d",ids:["stkExpired","pzpExpired"]},
  fals:{n:"Falošný doklad alebo falošná EČV",g:"d",ids:["docFake","plateMismatch"]},
  speed:{n:"Prekročenie rýchlosti",g:"j",ids:["speed"]},
- jazda:{n:"Mobil v ruke alebo jazda bez svetiel",g:"j",ids:["phone","noLights"]},
+ jazda:{n:"Mobil v ruke, jazda bez svetiel alebo na červenú",g:"j",ids:["phone","noLights","red"]},
  bezp:{n:"Bez pásu, prilby alebo detskej sedačky",g:"j",ids:["belt","helmet","child"]},
  alko:{n:"Alkohol alebo drogy (aj odmietnutie skúšky)",g:"j",ids:["alcLow","alcHigh","drug","refuse"]},
  tech:{n:"Technický stav a náklad (pneumatiky, tachograf, váha)",g:"v",ids:["tyres","tacho","weight"]},

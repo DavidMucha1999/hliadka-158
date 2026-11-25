@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 25. 11. 2026
 
+- **Priestupky v premávke:** časť áut v jazde pácha priestupky, ktoré hliadka vidí ešte pred zastavením. Niektoré prejdú križovatku na červenú (hra to ohlási, ak je hliadka do 140 m), opitý vodič kľučkuje v pruhu, auto bez svetiel v noci naozaj nesvieti a pri sledovaní zblízka vidno mobil v ruke alebo nezapnutý pás. Postrehy sa zobrazia pri údajoch radaru a prenesú sa do zápisníka kontroly. Jazda na červenú je nový priestupok v zázname (skupina „Mobil v ruke, jazda bez svetiel alebo na červenú“).
+
 - **Predmestie:** mesto už nekončí okružnou cestou v poli. Za okružnou stoja dva rady rodinných domov, pri výpadovkách ďalšie domy a ďalej od mesta sklady s rampou, vrátami a spevnenou plochou. Na dvoch hlavných výpadovkách je čerpacia stanica s prístreškom, stojanmi, predajňou a cenovým stĺpom. Spolu 299 domov, 32 skladov a 2 čerpacie stanice.
 
 - **Vybavenie ulíc:** zastávky majú lavičku, reklamný panel, kôš a žlté značenie zastávky na ceste. Na hlavných triedach stoja reklamné panely a pri križovatkách ostrovčeky so značkou obchádzania. V starom meste a na triedach pribudli stojany s bicyklami a stĺpiky na rohoch križovatiek. Pri panelákoch stoja kontajnery na triedený odpad. Spolu 37 000 trojuholníkov na celé mesto.

@@ -126,4 +126,7 @@ patch('odbocenie smer pre hlasenie','hNext(sh,c,ni),a0=c.a;','hNext(sh,c,ni),a0=
 patch('odbocenie smer pre hlasenie 2','hMisTurn(c,ni,hAng(c.a-a0),n.e.length)','hMisTurn(c,ni,hAng((c.aE!=null?c.aE:c.a)-a0),n.e.length)')
 patch('odbocenie spomalenie','if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)','if(c.avTs&&rem<22&&!c.flee&&!c.emer&&!(c.unit&&c.goal))vT=Math.min(vT,Math.max(4.2,rem*.55));if(e.ow===void 0&&n.rbn==null&&N[ni].e.length>2&&rem<30&&!c.flee)')
 patch('prednost v jazde','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))','if(!ld&&rem<36&&!c.flee&&!c.emer&&!(c.unit&&c.goal)&&avYield(sh,c,ni,rem,lanes,dt,now))vT=Math.min(vT,Math.max(0,(rem-12)*.6));if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))')
+patch('auto bez svetiel v zozname',',tilt:c.avTl,steer:c.avSt?-c.avSt:0})}let h158n=null',',tilt:c.avTl,steer:c.avSt?-c.avSt:0,nl:c.fdNoL})}let h158n=null')
+patch('auto bez svetiel neziari','if(N>.5){for(const v of list)g3VGlow(ga,v,N*.5,N*.8)}','if(N>.5){for(const v of list)if(!v.nl)g3VGlow(ga,v,N*.5,N*.8)}')
+patch('jazda na cervenu','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!hTlGreen(n,c.e,now))','if(n.tl&&rem<55&&!c.flee&&!c.emer&&!c.goal&&!c.fdRgo&&!hTlGreen(n,c.e,now))')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

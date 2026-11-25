@@ -39,6 +39,7 @@ patch("chodci viac postav zblizka",'.slice(0,8);for(const e of sh.ents){if(!vis(
 patch("dlazba v starom meste",'strip(g2,sP,H2.w,.09,L2(H2.c),10,sE);','strip(g2,sP,H2.w,.09,L2(e.fdSt==="old"?"#8f897e":H2.c),e.fdSt==="old"?36:10,sE);')
 patch("druhy ulic pred stavbou ciest",'for(const e of W3.net.E){const H2=HROAD[e.type],{P,EL}=dens(e);','try{fdStCls(W3)}catch(x){}for(const e of W3.net.E){const H2=HROAD[e.type],{P,EL}=dens(e);')
 patch("budovy detaily",'if(b.shop){R();hShopFx(gg,W3,b,X0,X1,Z0,Z1,Y,rot)}','if(b.shop){R();hShopFx(gg,W3,b,X0,X1,Z0,Z1,Y,rot)}try{hBldFx(gg,W3,b,X0,X1,Z0,Z1,Y,rot)}catch(x){}')
+patch("vynutene priestupky",'const alim=homeC.alc;chosen.forEach(id=>{','if(car.fdForce)for(const id of car.fdForce)if(!chosen.includes(id)&&!chosen.some(x2=>conflicts(x2,id)))chosen.push(id);if(car.fdRed)c.viol.push({id:"red",sev:2,t:"Jazda na červenú na svetelnej križovatke"});const alim=homeC.alc;chosen.forEach(id=>{')
 block("drive-fd",open(os.path.join(here,"drive","fd.js"),encoding="utf8").read())
 css=open(os.path.join(here,"drive","fd.css"),encoding="utf8").read()
 d=re.sub(r'<style id="fd-css">.*?</style>',"",d,flags=re.S)
