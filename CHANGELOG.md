@@ -2,6 +2,10 @@
 
 Najnovšie zmeny sú hore.
 
+## 26. 11. 2026
+
+- **Vzdialené autá už nie sú krabice:** zjednodušený model pre autá ďalej než 40 až 90 m bol hranol s plochými bokmi a kockami namiesto kolies. Nový má zaoblenú strechu a kapotu, zúženú kabínu, zúžený predok a zadok, okrúhle kolesá s diskami, samostatné svetlá a tmavé nárazníky. Policajné autá v diaľke majú biely lak, modrý pás a maják. Model má 546 trojuholníkov namiesto 102; snímok pri jazde centrom je v teste dlhší o 1 ms.
+
 ## 25. 11. 2026
 
 - **Sekanie v jazde – skutočná príčina:** pamäť na modely postáv mala miesto len pre 40 vzhľadov a odkedy má každý chodec vlastný vzhľad, hra pri každom snímku niektoré postavy zahodila a vyrobila znova (20 až 80 nahraní geometrie za snímok, snímok až 98 ms). Pamäť je väčšia a drží naposledy použité vzhľady; snímok je späť na 34–38 ms.
