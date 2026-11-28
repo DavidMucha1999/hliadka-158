@@ -157,4 +157,7 @@ patch('svetlomety: spolocna vyska',"[-1,1].forEach(s=>{const a=s*cw*.4,b=s*cw*.9
 patch('maska: nizsia','cw=(Rf.lw[cwI]||Rf.lw[2])*.93,gy0=fy-.3,gy1=fy-.04;','cw=(Rf.lw[cwI]||Rf.lw[2])*.93,gy0=fy-.25,gy1=fy-.04;')
 patch('zadne svetla: nizsie','ty0=Math.min(belt-.3,Rr.yt-.25),ty1=Math.min(belt-.1,Rr.yt-.06),TL=st.tl;','ty0=Math.min(belt-.26,Rr.yt-.21),ty1=Math.min(belt-.1,Rr.yt-.06),TL=st.tl;')
 patch('boky: vyklenutie podla modelu','[belt-B*.06,.952],[belt,.915]],fac=y=>','[belt-B*.06,.952],[belt,.915]].map(q=>[q[0],1-(1-q[1])*(sp.sideB||1)]),fac=y=>')
+patch('podbeh: medzera podla modelu','const arR=sp.r+.075,wy=sp.r+.02,','const arR=sp.r+(sp.arG||.075),wy=sp.r+.02,')
+patch('kolesa: sirka, profil a rozchod podla modelu','wheels.push({z:Z(x),lat:s*(hw-.13),r:sp.r,w:.23,k:rim});','wheels.push({z:Z(x),lat:s*(hw-.13),lo:s*(sp.trk||0),r:sp.r,w:sp.tw||.23,k:rim+(sp.tp?"~"+sp.tp:"")});')
+patch('kolesa: rozchod pri kresleni','v.steer&&wh.z<0?M4.trs(wh.lat,wh.r,wh.z,v.steer):M4.tr(wh.lat,wh.r,wh.z)','v.steer&&wh.z<0?M4.trs(wh.lat+(wh.lo||0),wh.r,wh.z,v.steer):M4.tr(wh.lat+(wh.lo||0),wh.r,wh.z)')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

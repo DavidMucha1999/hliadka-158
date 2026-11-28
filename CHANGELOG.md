@@ -5,6 +5,7 @@ Najnovšie zmeny sú hore.
 ## 28. 11. 2026
 
 - **Vyklenuté boky:** boky áut už nie sú ploché. Karoséria je pri prahoch a pod oknami užšia a v strede širšia, blatníky nad kolesami výraznejšie vystupujú, ramená nad zadnými kolesami sú širšie a dvere majú hlbšie prehĺbenie. Kupé a športové auto to majú najvýraznejšie, bežné autá miernejšie, dodávka len trochu.
+- **Postoj a kolesá:** autá už nestoja vysoko nad cestou. Spodok karosérie je nižšie, kolesá lepšie vypĺňajú podbehy, pneumatiky sú širšie a sedia bližšie k okraju blatníkov. Športové autá majú väčšie disky s nízkym profilom pneumatík, dodávka vyšší profil.
 
 - **Maska a nárazníky:** maska už nie je obdĺžnik. Bežné masky sa zužujú smerom dole, veľké masky majú šesťuholníkový tvar. Spodný otvor predného nárazníka je lichobežník s lamelami, v rohoch sú šikmé prieduchy so svetelným pásikom namiesto hranatých hmloviek. Zadný nárazník má tmavý difúzor, športové autá s rebrami.
 
