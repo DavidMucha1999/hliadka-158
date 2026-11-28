@@ -2,6 +2,11 @@
 
 Najnovšie zmeny sú hore.
 
+## 28. 11. 2026
+
+- **Tvary hatchbacku a kupé:** obe karosérie majú vlastnú siluetu. Hatchback má krátku kapotu, klenutú strechu a strmú zadnú časť, kupé dlhú kapotu, kabínu posunutú dozadu a splývavý zadok. Rohy sú pri pohľade zhora výrazne zaoblené (predok o 34 až 42 cm namiesto 15 cm), čelo je sklonené dozadu a karoséria sa k obom koncom viac zužuje. Platí to pre policajné aj civilné autá týchto typov.
+- **Svetlá:** vnútro svetlometov je tmavé namiesto strieborného. Na zaoblených autách zmizli ploché doštičky na bokoch pri svetlách a zadné svetlo je celé zapustené vo výreze.
+
 ## 26. 11. 2026
 
 - **Vzdialené autá už nie sú krabice:** zjednodušený model pre autá ďalej než 40 až 90 m bol hranol s plochými bokmi a kockami namiesto kolies. Nový má zaoblenú strechu a kapotu, zúženú kabínu, zúžený predok a zadok, okrúhle kolesá s diskami, samostatné svetlá a tmavé nárazníky. Policajné autá v diaľke majú biely lak, modrý pás a maják. Model má 546 trojuholníkov namiesto 102; snímok pri jazde centrom je v teste dlhší o 1 ms.
