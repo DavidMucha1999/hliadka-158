@@ -169,4 +169,5 @@ patch('sklo: cistejsie','else if(m==3.){spec=1.2;shin=140.;env=.55;base=vec3(.01
 patch('lak: ostry odlesk slnka','col+=uSunC*spec*pow(max(dot(n,H),0.),shin)*.6*sh;','col+=uSunC*spec*pow(max(dot(n,H),0.),shin)*.6*sh;if(cc>0.){col+=uSunC*cc*pow(max(dot(n,H),0.),650.)*sh;float ry=reflect(-V,n).y;col+=(uSky+uSunC*.05)*cc*.34*smoothstep(.1,.2,ry)*(1.-smoothstep(.32,.6,ry));}')
 patch('lak: odraz oblohy podla materialu','col+=envC(R)*env*(.3+fr*1.1);','col+=envC(R)*env*(envB+fr*1.1);')
 patch('sklo aut: tmavsie a cistejsie','else if(m==45.){spec=1.5;shin=170.;env=.6;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.1+.5*fr5;base=vec3(.5,.56,.62);}','else if(m==45.){spec=1.5;shin=170.;env=.85;envB=.05;cc=1.3;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.3+.6*fr5;base=vec3(.05,.085,.08);}')
+patch('zadny svetelny pas: stara ciara len na starych tvaroch','if(TL==="bar"||police)rq(-rw*.5,rw*.5,ty1-.035,ty1-.018,police?red:red,6,.005);','if((TL==="bar"||police)&&(!sp.bow||G3.avNoBar))rq(-rw*.5,rw*.5,ty1-.035,ty1-.018,red,6,.005);')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

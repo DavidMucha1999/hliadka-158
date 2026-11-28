@@ -198,6 +198,10 @@ function avFace(r,sp,o){if(!sp.body||sp.truck||sp.bus||sp.moto||sp.tractor||sp==
  if(HL!=="round"&&HL!=="twin")[-1,1].forEach(s=>{const yc=(yA+yB)/2,rr=Math.min(.042,(yB-yA)*.36);for(const k of[.58,.8]){const x=s*cw*k;G.cylZ(x,yc,fz-.03+LD,fz-.005+LD,rr,12,chrome,9,chrome);G.cylZ(x,yc,fz-.032+LD,fz-.03+LD,rr*.72,10,wht,13,wht)}});if(FF)for(const k of FF.pk)if(k.k==="lamp"){const z=FF.z-.003;G.quad([k.x0,k.y0,z],[k.x1,k.y0,z],[k.x1,k.y1,z],[k.x0,k.y1,z],[.5,.56,.62],45)}if(FF)avLampShape(G,FF,st.hl);
  {const yt2=sp.body[1]?sp.body[1][1]:belt,a0=Math.min(belt-.26,yt2-.21),a1=Math.min(belt-.1,yt2-.06);if(a1-a0>.06)[-1,1].forEach(s=>{const lo=Math.min(s*rw*.5,s*rw*.985),hi=Math.max(s*rw*.5,s*rw*.985),fc=g3L("#1a1b1e");G.box(lo,hi,a1-.012,a1,rz-.01,rz+.022,fc,0);G.box(lo,hi,a0,a0+.012,rz-.01,rz+.022,fc,0);G.box(s>0?lo:hi-.012,s>0?lo+.012:hi,a0,a1,rz-.01,rz+.022,fc,0);for(let k=1;k<3;k++){const y=a0+(a1-a0)*k/3;G.box(lo+.012,hi-.012,y-.003,y+.003,rz,rz+.012,[.25,.02,.02],0)}})}
  if(FR)avLampShape(G,FR,st.tl,1);
+ /* svetelny pas medzi zadnymi svetlami (policajne auta a styl "bar"); kresli sa az po tvarovani svetiel, aby ho nestlacilo */
+ if(sp.bow&&(st.tl==="bar"||o.police)&&!G3.avNoBar){const yt3=sp.body[1]?sp.body[1][1]:belt,b1=Math.min(belt-.1,yt3-.06),bh=.085,sl=.13,bo=sp.clad||sp===SPECS.bigsuv?.016:.004;let xi=rw*.47;if(FR)for(const k of FR.pk)if(k.k==="tail")xi=Math.min(xi,Math.min(Math.abs(k.x0),Math.abs(k.x1))-.004);
+  const bq=(xa,ya,yb,c,m,dz)=>G.quad([-xa,ya,rz+dz+(b1-ya)*sl],[xa,ya,rz+dz+(b1-ya)*sl],[xa,yb,rz+dz+(b1-yb)*sl],[-xa,yb,rz+dz+(b1-yb)*sl],c,m);
+  bq(xi,b1-bh,b1,[.12,.01,.01],3,.0052+bo);bq(xi-.008,b1-bh*.74,b1-bh*.3,red,6,.0075+bo);bq(xi,b1-bh-.007,b1-bh,[.03,.03,.035],0,.0058+bo)}
  if(st.gr==="wide"||st.gr==="mesh"||!["blank","slim","shield","big","split","slots","wide","mesh"].includes(st.gr)){G.box(-cw*.39,cw*.39,gy1,gy1+.014,fz-.035,fz+.02,chrome,9);G.box(-cw*.39,cw*.39,gy0-.014,gy0,fz-.035,fz+.02,chrome,9);for(const s of[-1,1])G.box(s*cw*.39-.007,s*cw*.39+.007,gy0,gy1,fz-.035,fz+.02,chrome,9)}
  if(FF)avGrilleShape(G,FF,st.gr);
  /* zadny naraznik */
