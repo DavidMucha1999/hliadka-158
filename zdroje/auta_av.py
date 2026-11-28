@@ -156,4 +156,5 @@ patch('zvisle zadne svetlo vo vyreze','L6(.82,.97,ty0-.12,ty1)','L6(.82,.97,sp.b
 patch('svetlomety: spolocna vyska',"[-1,1].forEach(s=>{const a=s*cw*.4,b=s*cw*.985,lo=Math.min(a,b),hi=Math.max(a,b),yA=fy-(HL===\"slim\"?.05:HL===\"round\"||HL===\"twin\"?.1:.11),yB=fy+(HL===\"slim\"?.04:.06);fq(lo,hi,yA,yB,dark,3,.002);","[-1,1].forEach(s=>{const a=s*cw*.4,b=s*cw*.985,lo=Math.min(a,b),hi=Math.max(a,b),yA=avLY(HL,fy)[0],yB=avLY(HL,fy)[1];fq(lo,hi,yA,yB,dark,3,.002);")
 patch('maska: nizsia','cw=(Rf.lw[cwI]||Rf.lw[2])*.93,gy0=fy-.3,gy1=fy-.04;','cw=(Rf.lw[cwI]||Rf.lw[2])*.93,gy0=fy-.25,gy1=fy-.04;')
 patch('zadne svetla: nizsie','ty0=Math.min(belt-.3,Rr.yt-.25),ty1=Math.min(belt-.1,Rr.yt-.06),TL=st.tl;','ty0=Math.min(belt-.26,Rr.yt-.21),ty1=Math.min(belt-.1,Rr.yt-.06),TL=st.tl;')
+patch('boky: vyklenutie podla modelu','[belt-B*.06,.952],[belt,.915]],fac=y=>','[belt-B*.06,.952],[belt,.915]].map(q=>[q[0],1-(1-q[1])*(sp.sideB||1)]),fac=y=>')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))

@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 28. 11. 2026
 
+- **Vyklenuté boky:** boky áut už nie sú ploché. Karoséria je pri prahoch a pod oknami užšia a v strede širšia, blatníky nad kolesami výraznejšie vystupujú, ramená nad zadnými kolesami sú širšie a dvere majú hlbšie prehĺbenie. Kupé a športové auto to majú najvýraznejšie, bežné autá miernejšie, dodávka len trochu.
+
 - **Maska a nárazníky:** maska už nie je obdĺžnik. Bežné masky sa zužujú smerom dole, veľké masky majú šesťuholníkový tvar. Spodný otvor predného nárazníka je lichobežník s lamelami, v rohoch sú šikmé prieduchy so svetelným pásikom namiesto hranatých hmloviek. Zadný nárazník má tmavý difúzor, športové autá s rebrami.
 
 - **Predok a zadok áut:** svetlomety sú nižšie (13 cm namiesto 17 cm) a väčšina značiek ich má zužujúce sa smerom do stredu namiesto obdĺžnika. Zadné svetlá sú nižšie a tiež sa zužujú. Maska je nižšia. Výška svetiel a masky sa teraz počíta na jednom mieste, takže výrez v karosérii, šošovky a rámiky sedia spolu.
