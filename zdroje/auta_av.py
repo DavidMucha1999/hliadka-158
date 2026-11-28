@@ -160,4 +160,13 @@ patch('boky: vyklenutie podla modelu','[belt-B*.06,.952],[belt,.915]],fac=y=>','
 patch('podbeh: medzera podla modelu','const arR=sp.r+.075,wy=sp.r+.02,','const arR=sp.r+(sp.arG||.075),wy=sp.r+.02,')
 patch('kolesa: sirka, profil a rozchod podla modelu','wheels.push({z:Z(x),lat:s*(hw-.13),r:sp.r,w:.23,k:rim});','wheels.push({z:Z(x),lat:s*(hw-.13),lo:s*(sp.trk||0),r:sp.r,w:sp.tw||.23,k:rim+(sp.tp?"~"+sp.tp:"")});')
 patch('kolesa: rozchod pri kresleni','v.steer&&wh.z<0?M4.trs(wh.lat,wh.r,wh.z,v.steer):M4.tr(wh.lat,wh.r,wh.z)','v.steer&&wh.z<0?M4.trs(wh.lat+(wh.lo||0),wh.r,wh.z,v.steer):M4.tr(wh.lat+(wh.lo||0),wh.r,wh.z)')
+# lak a sklo: leskla vrchna vrstva, ostrejsi odraz oblohy, trblietky metalizy, cistejsie sklo
+patch('lak: premenne lesku','float spec=.06,shin=16.,emis=0.,env=0.,alpha=1.,fogK=1.,refK=0.;','float spec=.06,shin=16.,emis=0.,env=0.,alpha=1.,fogK=1.,refK=0.,cc=0.,envB=.3;')
+patch('lak: vrchna vrstva','env*=.62+1.6*pow(1.-ndv,3.);spec*=1.3;float mt=uPaintP.x;if(mt>.5){base*=.74+.42*ndv*ndv;spec*=1.9;shin=70.;env*=1.25;','cc=1.5*clamp(env/.42,0.,1.);envB=.2;base=mix(vec3(dot(base,vec3(.3,.59,.11))),base,1.1);env*=1.2+2.2*pow(1.-ndv,3.);spec*=1.1;float mt=uPaintP.x;if(mt>.5){base*=.7+.46*ndv*ndv;spec*=1.9;shin=70.;env*=1.2;{float fk=hash(floor(vO.xz*150.)+floor(vO.y*150.)*17.3);base*=1.+.4*step(.9,fk)*aaP(.03,fpx);}')
+patch('lak: stary bez lesku','float ag=uPaintP.y;if(ag>0.){','float ag=uPaintP.y;if(ag>0.){cc*=1.-ag*.9;')
+patch('lak: spinavy bez lesku','base=mix(base,vec3(.3,.26,.2),clamp(dm2*.85,0.,.7));','base=mix(base,vec3(.3,.26,.2),clamp(dm2*.85,0.,.7));cc*=1.-dm2;')
+patch('sklo: cistejsie','else if(m==3.){spec=1.2;shin=140.;env=.55;base=vec3(.012,.016,.022);if(uGlass>.5){float fr=pow(1.-max(dot(n,V),0.),3.);alpha=.62+.35*fr;base=vec3(.025,.032,.04);','else if(m==3.){spec=1.2;shin=140.;env=.6;envB=.05;cc=.55;base=vec3(.01,.016,.018);if(uGlass>.5){float fr=pow(1.-max(dot(n,V),0.),3.);alpha=.8+.19*fr;base=vec3(.016,.028,.027);')
+patch('lak: ostry odlesk slnka','col+=uSunC*spec*pow(max(dot(n,H),0.),shin)*.6*sh;','col+=uSunC*spec*pow(max(dot(n,H),0.),shin)*.6*sh;if(cc>0.){col+=uSunC*cc*pow(max(dot(n,H),0.),650.)*sh;float ry=reflect(-V,n).y;col+=(uSky+uSunC*.05)*cc*.34*smoothstep(.1,.2,ry)*(1.-smoothstep(.32,.6,ry));}')
+patch('lak: odraz oblohy podla materialu','col+=envC(R)*env*(.3+fr*1.1);','col+=envC(R)*env*(envB+fr*1.1);')
+patch('sklo aut: tmavsie a cistejsie','else if(m==45.){spec=1.5;shin=170.;env=.6;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.1+.5*fr5;base=vec3(.5,.56,.62);}','else if(m==45.){spec=1.5;shin=170.;env=.85;envB=.05;cc=1.3;float fr5=pow(1.-max(dot(n,V),0.),3.);alpha=.3+.6*fr5;base=vec3(.05,.085,.08);}')
 open(p,"w",encoding="utf8",newline="").write(d);print("hotovo",len(d))
