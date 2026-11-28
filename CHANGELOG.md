@@ -4,6 +4,8 @@ Najnovšie zmeny sú hore.
 
 ## 28. 11. 2026
 
+- **Predok a zadok áut:** svetlomety sú nižšie (13 cm namiesto 17 cm) a väčšina značiek ich má zužujúce sa smerom do stredu namiesto obdĺžnika. Zadné svetlá sú nižšie a tiež sa zužujú. Maska je nižšia. Výška svetiel a masky sa teraz počíta na jednom mieste, takže výrez v karosérii, šošovky a rámiky sedia spolu.
+
 - **Tvary ostatných karosérií:** rovnaký smer ako pri hatchbacku a kupé dostali SUV, veľké SUV, kombi, liftback, dodávka, športové auto a sedan. Každá má vlastný profil strechy a kapoty, zaoblené rohy, sklonené čelo a väčšie zúženie ku koncom; dodávka ostáva hranatejšia, ako sa na ňu patrí. Tým je upravených všetkých desať služobných áut (motorka sa nemenila) aj civilné autá týchto typov.
 
 - **Tvary hatchbacku a kupé:** obe karosérie majú vlastnú siluetu. Hatchback má krátku kapotu, klenutú strechu a strmú zadnú časť, kupé dlhú kapotu, kabínu posunutú dozadu a splývavý zadok. Rohy sú pri pohľade zhora výrazne zaoblené (predok o 34 až 42 cm namiesto 15 cm), čelo je sklonené dozadu a karoséria sa k obom koncom viac zužuje. Platí to pre policajné aj civilné autá týchto typov.
